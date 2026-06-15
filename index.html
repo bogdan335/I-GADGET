@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iGadget — официальный поставщик пароизоляции Изоспан, дизельных генераторов и ИБП в Узбекистане.">
+  <title>iGadget — Строительные материалы и оборудование</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0B1420; color: #fff; overflow-x: hidden; }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 68px;
+      background: rgba(11,20,32,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: #E8872A; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-phone { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; }
+    .nav-phone:hover { color: #fff; }
+    .nav-cta {
+      background: #E8872A; color: #fff; border: none;
+      padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none;
+      transition: background .2s; display: inline-block;
+    }
+    .nav-cta:hover { background: #d0771e; }
+    .nav-burger { display: none; background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 68px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    /* subtle grid texture on dark side */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-left {
+      padding: 80px 56px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(232,135,42,0.12); border: 1px solid rgba(232,135,42,0.35);
+      color: #E8872A; font-size: 11px; font-weight: 700;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+      width: fit-content; letter-spacing: 1.2px; text-transform: uppercase;
+    }
+    .hero-h1 {
+      font-size: 52px; font-weight: 900; line-height: 1.05;
+      letter-spacing: -2px; margin-bottom: 22px; color: #fff;
+    }
+    .hero-h1 em { color: #E8872A; font-style: normal; }
+    .hero-sub {
+      font-size: 16px; color: rgba(255,255,255,0.5);
+      line-height: 1.7; margin-bottom: 40px; max-width: 440px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-orange {
+      background: #E8872A; color: #fff; border: none;
+      padding: 15px 30px; border-radius: 9px; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none;
+      transition: background .2s; display: inline-block;
+    }
+    .btn-orange:hover { background: #d0771e; }
+    .btn-outline {
+      background: transparent; color: rgba(255,255,255,0.75);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      padding: 15px 30px; border-radius: 9px; font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none;
+      transition: all .2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.55); color: #fff; }
+
+    .hero-right {
+      background: #111C2A;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(232,135,42,0.13) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+    }
+    .hero-img-box {
+      position: relative; z-index: 2;
+      width: 380px; max-width: 90%;
+    }
+    .photo-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: #1A2A3D;
+      border: 2px dashed rgba(232,135,42,0.35);
+      border-radius: 14px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; color: rgba(255,255,255,0.3);
+    }
+    .photo-placeholder i { font-size: 48px; color: rgba(232,135,42,0.4); }
+    .photo-placeholder span { font-size: 13px; font-weight: 500; }
+    .hero-stats-row {
+      display: flex; gap: 0; margin-top: 16px;
+      background: #1A2A3D; border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-stat {
+      flex: 1; padding: 16px 12px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .hero-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: #E8872A; padding: 13px 56px;
+      display: flex; gap: 0; align-items: stretch; overflow: hidden;
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: #fff;
+      padding: 0 28px; white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,0.3);
+    }
+    .strip-item:first-child { padding-left: 0; }
+    .strip-item:last-child { border-right: none; }
+
+    /* ── SECTION BASE ── */
+    .s { padding: 88px 56px; }
+    .s-dark { background: #0B1420; }
+    .s-mid  { background: #0E1929; }
+    .s-light { background: #F6F7F9; color: #0B1420; }
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: #E8872A; margin-bottom: 12px;
+    }
+    .sec-title {
+      font-size: 36px; font-weight: 800; letter-spacing: -1px; line-height: 1.15;
+    }
+    .sec-title-dark { color: #fff; }
+    .sec-title-light { color: #0B1420; }
+
+    /* ── WHO WE ARE ── */
+    .who-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center; margin-top: 48px;
+    }
+    .who-text p {
+      font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .who-text p:last-child { margin-bottom: 0; }
+    .who-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .who-photo {
+      width: 100%; aspect-ratio: 4/3;
+      background: #1A2A3D;
+      border: 2px dashed rgba(232,135,42,0.35);
+      border-radius: 14px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; color: rgba(255,255,255,0.3);
+    }
+    .who-photo i { font-size: 48px; color: rgba(232,135,42,0.4); }
+    .who-photo span { font-size: 13px; font-weight: 500; }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px;
+    }
+    .why-card {
+      background: #111C2A; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 32px 28px;
+      transition: border-color .25s;
+    }
+    .why-card:hover { border-color: rgba(232,135,42,0.4); }
+    .why-icon {
+      width: 50px; height: 50px;
+      background: rgba(232,135,42,0.12); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; color: #E8872A; margin-bottom: 20px;
+    }
+    .why-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .why-text { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.65; }
+    .why-num { font-size: 28px; font-weight: 900; color: #E8872A; margin-bottom: 4px; letter-spacing: -1px; }
+
+    /* ── CATALOG + FEATURED ── */
+    .cta-big-title {
+      font-size: 48px; font-weight: 900; letter-spacing: -2px; color: #fff;
+      line-height: 1.1;
+    }
+    .cta-big-title em { color: #E8872A; font-style: normal; }
+    .cta-sub { font-size: 16px; color: rgba(255,255,255,0.45); }
+    .btn-big {
+      background: #E8872A; color: #fff; border: none;
+      padding: 18px 48px; border-radius: 10px; font-size: 17px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none;
+      transition: background .2s, transform .15s;
+      align-items: center; gap: 10px;
+    }
+    .btn-big:hover { background: #d0771e; transform: translateY(-2px); }
+
+    /* ── FEATURED PRODUCTS ── */
+    .featured-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px;
+    }
+    .feat-card {
+      background: #fff; border: 1.5px solid #E5E8ED;
+      border-radius: 14px; overflow: hidden;
+      transition: box-shadow .25s, border-color .25s; cursor: pointer;
+      text-decoration: none; display: block; color: inherit;
+    }
+    .feat-card:hover { border-color: #E8872A; box-shadow: 0 6px 24px rgba(232,135,42,0.12); }
+    .feat-img {
+      width: 100%; aspect-ratio: 3/2;
+      background: #EDF0F4;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; position: relative;
+    }
+    .feat-img i { font-size: 40px; color: #B0BAC7; }
+    .feat-img span { font-size: 12px; color: #B0BAC7; font-weight: 500; }
+    .feat-badge {
+      position: absolute; top: 12px; left: 12px;
+      font-size: 11px; font-weight: 700; padding: 4px 10px;
+      border-radius: 6px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .badge-hit { background: #E8872A; color: #fff; }
+    .badge-best { background: #1A7F4E; color: #fff; }
+    .badge-new  { background: #2563EB; color: #fff; }
+    .feat-body { padding: 20px; }
+    .feat-cat { font-size: 11px; font-weight: 700; color: #E8872A; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .feat-name { font-size: 15px; font-weight: 700; color: #0B1420; margin-bottom: 8px; line-height: 1.35; }
+    .feat-desc { font-size: 13px; color: #6B7280; line-height: 1.55; margin-bottom: 16px; }
+    .feat-cta {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 13px; font-weight: 700; color: #E8872A;
+      background: rgba(232,135,42,0.1); padding: 8px 14px;
+      border-radius: 7px; transition: background .2s;
+    }
+    .feat-card:hover .feat-cta { background: rgba(232,135,42,0.18); }
+
+    /* ── FORM ── */
+    .form-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .form-left-title { font-size: 36px; font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .form-left-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 32px; }
+    .form-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .form-point { display: flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.6); }
+    .point-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(232,135,42,0.18); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: #E8872A;
+    }
+    .form-box { background: #fff; border-radius: 18px; padding: 38px; }
+    .form-box-title { font-size: 20px; font-weight: 800; color: #0B1420; margin-bottom: 24px; }
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid #E5E7EB; border-radius: 9px;
+      font-size: 14px; color: #0B1420; background: #F9FAFB;
+      outline: none; font-family: 'Inter', sans-serif; transition: border-color .2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #E8872A; background: #fff; }
+    .field textarea { resize: none; height: 80px; }
+    .form-submit {
+      width: 100%; background: #E8872A; color: #fff; border: none;
+      padding: 15px; border-radius: 9px; font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s; margin-top: 6px;
+    }
+    .form-submit:hover { background: #d0771e; }
+    .form-note { font-size: 12px; color: #9CA3AF; text-align: center; margin-top: 12px; line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    .footer { background: #07101A; padding: 56px 56px 28px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 44px; }
+    .f-logo { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .f-logo span { color: #E8872A; }
+    .f-tagline { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.65; max-width: 210px; margin-bottom: 24px; }
+    .f-phones { display: flex; flex-direction: column; gap: 7px; }
+    .f-phone { display: flex; align-items: center; gap: 7px; }
+    .f-phone a { font-size: 14px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color .2s; }
+    .f-phone a:hover { color: #fff; }
+    .f-col-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 18px; }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .f-links a { font-size: 14px; color: rgba(255,255,255,0.48); text-decoration: none; transition: color .2s; }
+    .f-links a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .f-copy { font-size: 13px; color: rgba(255,255,255,0.22); }
+    .tg-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #229ED9; color: #fff; padding: 10px 20px;
+      border-radius: 9px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s;
+    }
+    .tg-link:hover { background: #1a8ec4; }
+
+    /* ── FLOATING TG ── */
+    .tg-float {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 56px; height: 56px; background: #229ED9; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; color: #fff; text-decoration: none; z-index: 999;
+      box-shadow: 0 6px 24px rgba(34,158,217,0.45);
+      transition: transform .2s, background .2s;
+    }
+    .tg-float:hover { background: #1a8ec4; transform: scale(1.08); }
+
+    /* ── MOBILE ── */
+    /* ── TABLET ── */
+    @media (max-width: 960px) {
+      .nav { padding: 0 20px; }
+      .nav-links, .nav-phone { display: none; }
+      .nav-burger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; gap: 0;
+        position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+        background: #0B1420; padding: 0;
+        border-top: 1px solid rgba(255,255,255,0.08); z-index: 199;
+        overflow-y: auto;
+      }
+      .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .nav-links.open a { font-size: 17px; color: #fff; padding: 18px 24px; display: block; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 44px 24px 36px; }
+      .hero-h1 { font-size: 36px; letter-spacing: -1px; }
+      .hero-right { display: none; }
+      .strip { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
+      .strip-item { padding: 4px 10px; font-size: 12px; border-right: none; }
+      .s { padding: 52px 20px; }
+      .who-grid { grid-template-columns: 1fr; gap: 28px; }
+      .who-photo { display: none; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .cta-big-title { font-size: 32px; }
+      .featured-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .form-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .footer { padding: 40px 20px 24px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .hero-left { padding: 36px 20px 28px; }
+      .hero-h1 { font-size: 30px; letter-spacing: -0.5px; }
+      .hero-sub { font-size: 15px; margin-bottom: 28px; }
+      .hero-badge { font-size: 10px; padding: 5px 12px; }
+      .btn-orange, .btn-outline { padding: 13px 22px; font-size: 14px; }
+      .hero-btns { gap: 10px; }
+      .s { padding: 44px 20px; }
+      .sec-title { font-size: 26px; }
+      .eyebrow { font-size: 10px; }
+
+      /* Полоска — скрываем на совсем маленьких */
+      .strip { display: none; }
+
+      /* О компании */
+      .who-text p { font-size: 15px; }
+      
+      /* Преимущества — 1 колонка */
+      .why-grid { grid-template-columns: 1fr; }
+      .why-card { padding: 24px 20px; }
+      .why-num { font-size: 34px; }
+      .why-title { font-size: 15px; }
+      .why-text { font-size: 13px; }
+      
+      /* Клиенты */
+      .cta-big-title { font-size: 26px; letter-spacing: -0.5px; }
+      .clients-grid { grid-template-columns: 1fr !important; }
+      .cta-sub { font-size: 14px; }
+      .btn-big { padding: 15px 28px; font-size: 15px; }
+
+      /* Хиты — 1 колонка */
+      .featured-grid { grid-template-columns: 1fr; }
+      .feat-name { font-size: 14px; }
+      .feat-desc { font-size: 12px; }
+
+      /* Форма */
+      .form-box { padding: 24px 20px; }
+      .form-left-title { font-size: 28px; }
+      .field input, .field select, .field textarea { font-size: 16px; padding: 14px; }
+      .form-submit { padding: 16px; font-size: 15px; }
+      
+      /* Футер */
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .f-logo { font-size: 20px; }
+      .tg-float { width: 52px; height: 52px; bottom: 20px; right: 20px; font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <a href="index.html" class="logo">I <span>GADGET</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="catalog.html">Продукция</a></li>
+    <li><a href="#about">О компании</a></li>
+    <li><a href="#clients">Наши клиенты</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+998903181917" class="nav-phone">+998-90-318-19-17</a>
+    <a href="catalog.html" class="nav-cta">Узнать цену</a>
+    <button class="nav-burger" id="burger" aria-label="Меню"><i class="ti ti-menu-2"></i></button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><i class="ti ti-award"></i> Официальный дистрибьютор</div>
+    <h1 class="hero-h1">Оборудование<br>и материалы<br>для <em>ваших</em><br>объектов</h1>
+    <p class="hero-sub">Дизельные генераторы, ИБП и пароизоляция Изоспан. Поставки по всему Узбекистану — с документами, гарантией и нормальными ценами.</p>
+    <div class="hero-btns">
+      <a href="catalog.html" class="btn-orange">Узнать цену</a>
+      <a href="catalog.html" class="btn-outline">Смотреть каталог</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-box">
+      <div class="photo-placeholder">
+        <i class="ti ti-photo"></i>
+        <span>Фото оборудования</span>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-lbl">клиентов</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-lbl">лет на рынке</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">56</div>
+          <div class="hero-stat-lbl">позиций</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="strip">
+  <div class="strip-item"><i class="ti ti-truck"></i> Доставка по всему Узбекистану</div>
+  <div class="strip-item"><i class="ti ti-shield-check"></i> Гарантия производителя</div>
+  <div class="strip-item"><i class="ti ti-receipt"></i> Работаем с НДС и договорами</div>
+  <div class="strip-item"><i class="ti ti-headset"></i> Консультация бесплатно</div>
+</div>
+
+<!-- ── WHO WE ARE ── -->
+<section class="s s-dark" id="about">
+  <div class="sec-title sec-title-dark">I GADGET —<br>С нами всегда светло</div>
+  <div class="who-grid">
+    <div class="who-text">
+      <p>ООО «I GADGET» осуществляет комплексный подход к решению задач создания систем <strong>генерации, преобразования и распределения электроэнергии</strong> для любых потребителей, имеющих силовую и осветительную нагрузку.</p>
+      <p>Компания постоянно развивается в плане ассортимента и региона продаж. <strong>Наша продукция востребована во многих регионах Узбекистана</strong> — от Ташкента до отдалённых промышленных объектов.</p>
+      <p>Дизельные генераторы от 10 до 1000 кВт, ИБП серии «ENEL» от 10 до 1000 кВА, пароизоляция и мембраны Изоспан. <strong>Всё с сертификатами качества и гарантией завода-изготовителя.</strong></p>
+    </div>
+    <div class="who-photo" style="border:none;background:#000;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" 
+           alt="Офис компании" 
+           style="width:100%;height:100%;object-fit:cover;border-radius:14px;opacity:0.85;"
+           onerror="this.parentElement.innerHTML='<i class=\'ti ti-building-warehouse\'></i><span>Фото офиса</span>'">
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section class="s s-mid">
+  <div class="eyebrow">Почему выбирают нас</div>
+  <div class="sec-title sec-title-dark">Три причины работать с нами</div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-shield-bolt"></i></div>
+      <div class="why-num">12 мес.</div>
+      <div class="why-title">Гарантия на всё оборудование</div>
+      <div class="why-text">Официальная гарантия производителя на каждую единицу техники. Если что-то пойдёт не так — решаем без лишних слов.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-medal"></i></div>
+      <div class="why-num">10+ лет</div>
+      <div class="why-title">Опыт на рынке Узбекистана</div>
+      <div class="why-text">Знаем рынок, знаем поставщиков, знаем что нужно вашему объекту. Не нужно объяснять с нуля — мы уже всё видели.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon"><i class="ti ti-building-community"></i></div>
+      <div class="why-num">500+</div>
+      <div class="why-title">Клиентов доверяют нам</div>
+      <div class="why-text">Строительные компании, заводы, торговые центры, жилые комплексы. Работаем с крупными и средними объектами по всей стране.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── КЛИЕНТЫ ── -->
+<section class="s s-dark" id="clients">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:64px;">
+    <div>
+      <div class="eyebrow">Нам доверяют</div>
+      <div class="sec-title sec-title-dark" style="margin-bottom:16px;">Государственные структуры, банки и крупные стройки</div>
+      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;">Среди наших клиентов — организации с высочайшими требованиями к надёжности оборудования. Они выбрали нас и продолжают работать с нами.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">500+</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">объектов<br>по всему Узбекистану</div>
+      </div>
+      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">10+</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">лет<br>на рынке</div>
+      </div>
+      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">100%</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">сертифицированная<br>продукция</div>
+      </div>
+      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
+        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">12</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">месяцев<br>гарантии</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Клиенты горизонтальный скролл-список -->
+  <div class="clients-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);">
+
+    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-building-government" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Госструктуры</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">УДАП РУЗ</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Объединённая дирекция строящихся зданий и сооружений. Станции 1000 кВт, 200 кВт и 100 кВт.</div>
+    </div>
+
+    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-shield" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">МВД</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">ХОЗУ МВД & Интерпол</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Станция 100 кВт и ИБП 65 кВт. Подразделение «Интерпол» — станция 75 кВт. Центральный ОВИР — 100 кВт.</div>
+    </div>
+
+    <div style="background:#0E1929;padding:28px 28px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-crane" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Строительство</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">СМНУ-12</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Строительно-монтажное управление. Поставка дизельной станции мощностью 100 кВт.</div>
+    </div>
+
+    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">Национальный Банк Узбекистана</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Хамзинский филиал, Ташкент. Станция 60 кВт и два ИБП по 20 кВт каждый.</div>
+    </div>
+
+    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">АгроБанк Самарканд</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Поставка дизельной станции 100 кВт. Обеспечение бесперебойного питания регионального отделения.</div>
+    </div>
+
+    <div style="background:#0E1929;padding:28px 28px 24px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
+        </div>
+        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
+      </div>
+      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">ТрастБанк & Кишлок Курилиш</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">ТрастБанк Ташкент — станция 15 кВт. Банк «Кишлок Курилиш» — поставки в областные филиалы.</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:20px;padding:16px 24px;background:#111C2A;border-radius:10px;border-left:3px solid #E8872A;">
+    <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Вся продукция имеет <strong style="color:rgba(255,255,255,0.7);">сертификаты качества, соответствия и происхождения</strong>, гарантию завода-изготовителя.</p>
+  </div>
+
+</section>
+
+<!-- ── CATALOG + FEATURED (единый блок) ── -->
+<section class="s s-mid">
+
+  <!-- Верхняя часть: заголовок + кнопка по центру -->
+  <div style="text-align:center; margin-bottom: 56px;">
+    <div class="eyebrow" style="justify-content:center; display:flex;">Каталог продукции</div>
+    <div class="cta-big-title" style="margin: 10px 0 16px;">56 позиций<br><em>Всё в наличии</em></div>
+    <p class="cta-sub" style="margin-bottom: 32px;">Генераторы, ИБП, пароизоляция Изоспан и монтажные ленты</p>
+    <a href="catalog.html" class="btn-big" style="display:inline-flex;">
+      Смотреть весь каталог <i class="ti ti-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Нижняя часть: три карточки хитов -->
+  <div class="featured-grid">
+
+    <a href="product.html?id=aj-ella-150" class="feat-card">
+      <div class="feat-img" style="background:#fff;padding:0;">
+        <div class="feat-badge badge-hit">🔥 Хит продаж</div>
+        <img src="https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_2_1665491506_1697459388.jpg" alt="Генератор AJ-ELLA 150" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+      </div>
+      <div class="feat-body">
+        <div class="feat-cat">Генераторы</div>
+        <div class="feat-name">Дизельный генератор AJ-ELLA 150</div>
+        <div class="feat-desc">Для средних объектов: торговые центры, производства, строительные площадки. Мощность 150 кВА.</div>
+        <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </a>
+
+    <a href="product.html?id=b" class="feat-card">
+      <div class="feat-img" style="background:#fff;padding:0;">
+        <div class="feat-badge badge-best">✅ Bestseller</div>
+        <img src="https://isospan.gexa.ru/wp-content/uploads/2020/11/b_01.png" alt="Изоспан В" style="width:100%;height:100%;object-fit:contain;padding:16px;" onerror="this.style.display='none'">
+      </div>
+      <div class="feat-body">
+        <div class="feat-cat">Пароизоляция</div>
+        <div class="feat-name">Изоспан В</div>
+        <div class="feat-desc">Самая популярная пароизоляция для жилых домов и офисов. Защищает утеплитель от влаги изнутри.</div>
+        <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </a>
+
+    <a href="product.html?id=aj-s-825" class="feat-card">
+      <div class="feat-img" style="background:#fff;padding:0;">
+        <div class="feat-badge badge-new">⚡ Акция</div>
+        <img src="https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_1_1665491358_1697455274.jpg" alt="Генератор AJ-S 825" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+      </div>
+      <div class="feat-body">
+        <div class="feat-cat">Генераторы</div>
+        <div class="feat-name">Дизельный генератор AJ – S 825</div>
+        <div class="feat-desc">750 кВА на двигателе SDEC. Топ промышленной серии S для заводов и дата-центров.</div>
+        <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── FORM ── -->
+<section class="s s-dark" id="contact">
+  <div class="form-wrap">
+    <div>
+      <div class="eyebrow">Связь с нами</div>
+      <div class="form-left-title">Связаться<br>с нами</div>
+      <p class="form-left-sub">Опишите что нужно — менеджер перезвонит и подберёт под ваш объект. Без воды и лишних звонков.</p>
+      <ul class="form-points">
+        <li class="form-point"><div class="point-check"><i class="ti ti-check"></i></div>Бесплатная консультация</li>
+        <li class="form-point"><div class="point-check"><i class="ti ti-check"></i></div>Расчёт объёма под объект</li>
+        <li class="form-point"><div class="point-check"><i class="ti ti-check"></i></div>Доставка под ключ</li>
+        <li class="form-point"><div class="point-check"><i class="ti ti-check"></i></div>Договор, счёт, НДС</li>
+      </ul>
+    </div>
+    <div class="form-box">
+      <div class="form-box-title">Оставьте заявку</div>
+      <div class="field">
+        <label>Ваше имя</label>
+        <input type="text" id="f-name" placeholder="Ваше имя">
+      </div>
+      <div class="field">
+        <label>Телефон</label>
+        <input type="tel" id="f-phone" placeholder="+998 (__) ___-__-__" maxlength="19" autocomplete="tel">
+      </div>
+      <div class="field">
+        <label>Что вас интересует?</label>
+        <select id="f-product">
+          <option>Дизельный генератор</option>
+          <option>ИБП</option>
+          <option>Пароизоляция Изоспан</option>
+          <option>Соединительные ленты</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Комментарий</label>
+        <textarea id="f-comment" placeholder="Объём, объект, сроки..."></textarea>
+      </div>
+      <button class="form-submit" id="send-btn">Отправить в Telegram</button>
+      <div class="form-note">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности. Ответим в течение часа.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="f-logo">I <span>GADGET</span></div>
+      <div class="f-tagline">Надёжные строительные материалы и промышленное оборудование. Поставки по всему Узбекистану.</div>
+      <div class="f-phones">
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998903181917">+998-90-318-19-17</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998981285">+998-99-898-12-85</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998911929">+998-99-891-19-29</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Продукция</div>
+      <ul class="f-links">
+        <li><a href="catalog.html">Генераторы</a></li>
+        <li><a href="catalog.html">ИБП</a></li>
+        <li><a href="catalog.html">Пароизоляция</a></li>
+        <li><a href="catalog.html">Мембраны</a></li>
+        <li><a href="catalog.html">Ленты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Компания</div>
+      <ul class="f-links">
+        <li><a href="#about">О нас</a></li>
+        <li><a href="catalog.html">Каталог</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Мессенджеры</div>
+      <ul class="f-links">
+        <li><a href="https://t.me/bltnkov" target="_blank">Telegram</a></li>
+        <li><a href="https://wa.me/998909982513" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© iGadget 2026 — Все права защищены</div>
+    <a href="https://t.me/bltnkov" target="_blank" class="tg-link"><i class="ti ti-brand-telegram"></i> Написать в Telegram</a>
+  </div>
+</footer>
+
+<!-- FLOATING TG -->
+<a href="https://t.me/bltnkov" target="_blank" class="tg-float" title="Написать в Telegram">
+  <i class="ti ti-brand-telegram"></i>
+</a>
+
+<script>
+  // Burger
+  document.getElementById('burger').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Phone mask +998 (XX) XXX-XX-XX
+  const phoneInput = document.getElementById('f-phone');
+  phoneInput.addEventListener('focus', function() {
+    if (!this.value) this.value = '+998 (';
+  });
+  phoneInput.addEventListener('input', function(e) {
+    let digits = this.value.replace(/\D/g, '');
+    if (digits.startsWith('998')) digits = digits.slice(3);
+    digits = digits.slice(0, 9);
+    let out = '+998 (';
+    if (digits.length > 0) out += digits.slice(0, 2);
+    if (digits.length >= 2) out += ') ';
+    if (digits.length > 2) out += digits.slice(2, 5);
+    if (digits.length >= 5) out += '-';
+    if (digits.length > 5) out += digits.slice(5, 7);
+    if (digits.length >= 7) out += '-';
+    if (digits.length > 7) out += digits.slice(7, 9);
+    this.value = out;
+  });
+  phoneInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      if (this.value === '+998 (' || this.value === '') {
+        this.value = '';
+        return;
+      }
+      // Strip all non-digits after 998, remove last digit, reformat
+      let digits = this.value.replace(/\D/g, '');
+      if (digits.startsWith('998')) digits = digits.slice(3);
+      digits = digits.slice(0, -1); // remove last digit
+      // Reformat
+      let out = '+998 (';
+      if (digits.length > 0) out += digits.slice(0, 2);
+      if (digits.length >= 2) out += ') ';
+      if (digits.length > 2) out += digits.slice(2, 5);
+      if (digits.length >= 5) out += '-';
+      if (digits.length > 5) out += digits.slice(5, 7);
+      if (digits.length >= 7) out += '-';
+      if (digits.length > 7) out += digits.slice(7, 9);
+      this.value = out;
+    }
+  });
+  phoneInput.addEventListener('blur', function() {
+    if (this.value === '+998 (') this.value = '';
+  });
+
+  // Form -> Telegram
+  document.getElementById('send-btn').addEventListener('click', function() {
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const product = document.getElementById('f-product').value;
+    const comment = document.getElementById('f-comment').value.trim();
+
+    if (!name || !phone) {
+      alert('Пожалуйста, укажите имя и телефон');
+      return;
+    }
+
+    const msg = `Новая заявка с сайта iGadget:\n\nИмя: ${name}\nТелефон: ${phone}\nИнтересует: ${product}${comment ? '\nКомментарий: ' + comment : ''}`;
+    const url = `https://t.me/bltnkov?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  });
+</script>
+</body>
+</html>

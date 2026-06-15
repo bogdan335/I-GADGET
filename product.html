@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Товар — I GADGET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:#0B1420;color:#fff;overflow-x:hidden}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:200}
+    .logo{font-size:21px;font-weight:900;color:#fff;text-decoration:none}.logo span{color:#E8872A}
+    .nav-links{display:flex;gap:36px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:#fff}
+    .nav-right{display:flex;align-items:center;gap:14px}
+    .nav-phone{font-size:14px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none}
+    .nav-cta{background:#E8872A;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .2s}
+    .nav-cta:hover{background:#d0771e}
+    .nav-burger{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer}
+    .breadcrumb-bar{padding:18px 56px;background:#0E1929;border-bottom:1px solid rgba(255,255,255,.06)}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35)}
+    .breadcrumb a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+    .breadcrumb a:hover{color:#E8872A}
+    .product-hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:#0E1929}
+    .product-img-side{padding:48px 56px;display:flex;flex-direction:column;gap:16px;border-right:1px solid rgba(255,255,255,.06)}
+    .product-img-box{width:100%;aspect-ratio:4/3;background:#fff;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .product-img-box img{width:100%;height:100%;object-fit:contain;padding:16px}
+    .img-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;width:100%;height:100%;background:#EDF1F6}
+    .img-placeholder i{font-size:56px;color:#C5CDD8}
+    .img-placeholder span{font-size:13px;color:#C5CDD8;font-weight:500}
+    .who-for-box{background:#111C2A;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 24px}
+    .who-for-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-bottom:14px}
+    .who-for-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .who-tag{display:flex;align-items:center;gap:7px;background:rgba(232,135,42,.1);border:1px solid rgba(232,135,42,.2);padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+    .who-tag i{font-size:15px;color:#E8872A}
+    .product-info-side{padding:48px 56px;display:flex;flex-direction:column;gap:28px}
+    .product-cat-tag{font-size:11px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.5px}
+    .product-title{font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.15}
+    .product-tagline{font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;padding:20px;background:#111C2A;border-radius:12px;border-left:3px solid #E8872A}
+    .key-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .spec-pill{background:#111C2A;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px 16px}
+    .spec-pill-label{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+    .spec-pill-value{font-size:16px;font-weight:700;color:#fff}
+    .product-ctas{display:flex;gap:12px}
+    .btn-orange{flex:1;background:#E8872A;color:#fff;border:none;padding:16px 24px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+    .btn-orange:hover{background:#d0771e}
+    .btn-tg{background:#229ED9;color:#fff;border:none;padding:16px 20px;border-radius:10px;font-size:22px;cursor:pointer;transition:background .2s;text-decoration:none;display:flex;align-items:center;justify-content:center}
+    .btn-tg:hover{background:#1a8ec4}
+    .s{padding:56px 56px}
+    .s-dark{background:#0B1420}
+    .s-mid{background:#0E1929}
+    .section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8872A;margin-bottom:12px}
+    .section-title{font-size:28px;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:28px}
+    .desc-text{font-size:15px;color:rgba(255,255,255,.55);line-height:1.75;max-width:760px}
+    .specs-table{width:100%;border-collapse:collapse}
+    .specs-table tr{border-bottom:1px solid rgba(255,255,255,.05)}
+    .specs-table tr:last-child{border-bottom:none}
+    .specs-table td{padding:12px 0;font-size:14px}
+    .specs-table td:first-child{color:rgba(255,255,255,.4);width:55%;font-weight:500}
+    .specs-table td:last-child{color:#fff;font-weight:600;text-align:right}
+    .specs-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .rel-card{background:#111C2A;border:1.5px solid rgba(255,255,255,.07);border-radius:12px;padding:20px;text-decoration:none;transition:border-color .2s;display:block}
+    .rel-card:hover{border-color:#E8872A}
+    .rel-cat{font-size:10px;color:#E8872A;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .rel-name{font-size:14px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px}
+    .rel-cta{font-size:12px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:4px}
+    .footer{background:#07101A;padding:48px 56px 24px}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+    .f-logo{font-size:22px;font-weight:900;color:#fff;margin-bottom:12px}.f-logo span{color:#E8872A}
+    .f-tagline{font-size:13px;color:rgba(255,255,255,.32);line-height:1.65;max-width:210px;margin-bottom:20px}
+    .f-phones{display:flex;flex-direction:column;gap:7px}
+    .f-phone{display:flex;align-items:center;gap:7px}
+    .f-phone a{font-size:14px;color:rgba(255,255,255,.55);text-decoration:none}
+    .f-col-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+    .f-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .f-links a{font-size:14px;color:rgba(255,255,255,.48);text-decoration:none}
+    .f-links a:hover{color:#fff}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .f-copy{font-size:13px;color:rgba(255,255,255,.22)}
+    .tg-link{display:inline-flex;align-items:center;gap:8px;background:#229ED9;color:#fff;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none}
+    .tg-float{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#229ED9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;text-decoration:none;z-index:999;box-shadow:0 6px 24px rgba(34,158,217,.45);transition:transform .2s}
+    .tg-float:hover{transform:scale(1.08)}
+    .not-found{padding:120px 56px;text-align:center}
+    .not-found i{font-size:64px;color:rgba(255,255,255,.1);display:block;margin-bottom:20px}
+    .not-found h2{font-size:28px;font-weight:700;color:#fff;margin-bottom:12px}
+    .not-found p{color:rgba(255,255,255,.4);margin-bottom:28px}
+    @media(max-width:900px){
+      .nav{padding:0 20px}.nav-links,.nav-phone{display:none}.nav-burger{display:block}
+      .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;left:0;right:0;bottom:0;background:#0B1420;padding:0;border-top:1px solid rgba(255,255,255,.08);z-index:199;overflow-y:auto}
+      .nav-links.open li{border-bottom:1px solid rgba(255,255,255,.07)}
+      .nav-links.open a{font-size:17px;color:#fff;padding:18px 24px;display:block}
+      .breadcrumb-bar{padding:12px 20px}
+      .breadcrumb{font-size:12px}
+      .product-hero{grid-template-columns:1fr}
+      .product-img-side{padding:24px 20px;border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}
+      .product-info-side{padding:24px 20px;gap:20px}
+      .product-title{font-size:24px;letter-spacing:-0.5px}
+      .product-tagline{font-size:14px;padding:16px}
+      .key-specs{grid-template-columns:1fr 1fr;gap:10px}
+      .spec-pill{padding:12px 14px}
+      .spec-pill-value{font-size:14px}
+      /* Big touch-friendly CTA */
+      .product-ctas{flex-direction:row;gap:10px}
+      .btn-orange{padding:16px 20px;font-size:15px}
+      .btn-tg{padding:16px 18px;font-size:20px}
+      .who-for-tags{gap:6px}
+      .who-tag{font-size:12px;padding:7px 12px}
+      .s{padding:36px 20px}
+      .section-title{font-size:22px;margin-bottom:20px}
+      .specs-cols{grid-template-columns:1fr;gap:0}
+      .specs-table td{font-size:13px;padding:10px 0}
+      .related-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .rel-name{font-size:13px}
+      .footer{padding:36px 20px 20px}
+      .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+    }
+    @media(max-width:480px){
+      .key-specs{grid-template-columns:1fr 1fr}
+      .product-title{font-size:22px}
+      .footer-top{grid-template-columns:1fr}
+      .related-grid{grid-template-columns:1fr}
+      .product-img-box{aspect-ratio:3/2}
+    }
+    @media(max-width:380px){
+      .key-specs{grid-template-columns:1fr}
+      .product-ctas{flex-direction:column}
+      .btn-tg{padding:15px;font-size:18px}
+    }
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="logo">I <span>GADGET</span></a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="catalog.html">Продукция</a></li>
+    <li><a href="index.html#about">О компании</a></li>
+    <li><a href="index.html#clients">Наши клиенты</a></li>
+    <li><a href="index.html#contact">Контакты</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+998903181917" class="nav-phone">+998-90-318-19-17</a>
+    <a href="index.html#contact" class="nav-cta">Узнать цену</a>
+    <button class="nav-burger" id="burger"><i class="ti ti-menu-2"></i></button>
+  </div>
+</nav>
+<div class="breadcrumb-bar">
+  <div class="breadcrumb">
+    <a href="index.html">Главная</a>
+    <i class="ti ti-chevron-right" style="font-size:12px"></i>
+    <a href="catalog.html">Каталог</a>
+    <i class="ti ti-chevron-right" style="font-size:12px"></i>
+    <span id="bc-name">Товар</span>
+  </div>
+</div>
+<div id="product-root"></div>
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="f-logo">I <span>GADGET</span></div>
+      <div class="f-tagline">Надёжные строительные материалы и промышленное оборудование для вашего объекта.</div>
+      <div class="f-phones">
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px"></i><a href="tel:+998903181917">+998-90-318-19-17</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px"></i><a href="tel:+998998981285">+998-99-898-12-85</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px"></i><a href="tel:+998998911929">+998-99-891-19-29</a></div>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Продукция</div>
+      <ul class="f-links">
+        <li><a href="catalog.html">Генераторы</a></li>
+        <li><a href="catalog.html">ИБП</a></li>
+        <li><a href="catalog.html">Пароизоляция</a></li>
+        <li><a href="catalog.html">Мембраны</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Компания</div>
+      <ul class="f-links">
+        <li><a href="index.html#about">О нас</a></li>
+        <li><a href="index.html#clients">Клиенты</a></li>
+        <li><a href="index.html#contact">Контакты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Мессенджеры</div>
+      <ul class="f-links">
+        <li><a href="https://t.me/bltnkov" target="_blank">Telegram</a></li>
+        <li><a href="https://wa.me/998909982513" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© I GADGET 2026 — Все права защищены</div>
+    <a href="https://t.me/bltnkov" target="_blank" class="tg-link"><i class="ti ti-brand-telegram"></i> Написать в Telegram</a>
+  </div>
+</footer>
+<a href="https://t.me/bltnkov" target="_blank" class="tg-float"><i class="ti ti-brand-telegram"></i></a>
+<script>
+const CDN='https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_';
+const IMG_B=CDN+'pic_1_1665491358_1697455274.jpg';
+const IMG_ELLA_S=CDN+'pic_3_1665491462_1697459086.jpg';
+const IMG_ELLA_L=CDN+'pic_2_1665491506_1697459388.jpg';
+const IZ='https://isospan.gexa.ru/wp-content/uploads/2020/';
+
+const ELLA_BASE_SPECS=[
+  ['Напряжение','380–440 В, 50 Гц'],['Производитель','ELLA'],
+  ['Тип двигателя','В ЛИНИЮ, 4-цилиндровый'],['Стандартный регулятор','Электронный'],
+  ['Охлаждение','Водяное'],['Режим запуска','Автоматический (AMF)'],
+  ['Степень защиты','IP54'],['Скорость вращения','1500 об/мин'],
+  ['Класс изоляции','Н'],['Рекомендованное топливо','Дизельное топливо № 2'],
+];
+
+const PRODUCTS={
+  'aj-b-25':{
+    cat:'Генераторы',name:'Дизельный генератор AJ B 25',img:IMG_B,
+    tagline:'25 кВА на двигателе BAUDOUIN — первый шаг в профессиональный класс.',
+    whofor:[{icon:'ti-home',label:'Дача / частный дом'},{icon:'ti-coffee',label:'Небольшой магазин'},{icon:'ti-tool',label:'Подсобное помещение'}],
+    specs:[{k:'Основная мощность',v:'23 кВА / 18 кВт'},{k:'Резервная мощность',v:'25 кВА / 20 кВт'},{k:'Двигатель',v:'BAUDOUIN 4M06G25/5'},{k:'Топливный бак',v:'250 л (45 ч работы)'}],
+    desc:'Надёжная дизельная установка на двигателе BAUDOUIN (Франция). 4 цилиндра, водяное охлаждение, автоматический запуск AMF. Бак 250 л обеспечивает до 45 часов автономной работы.',
+    fullSpecs:[
+      ['Основная мощность','23 кВА / 18 кВт'],['Резервная мощность','25 кВА / 20 кВт'],
+      ['Двигатель','BAUDOUIN 4M06G25/5'],['Число цилиндров','4'],
+      ['Тип двигателя','В ЛИНИЮ'],['Объём двигателя','2.3 л'],
+      ['Диаметр/ход поршня','89 × 92 мм'],['Коэффициент сжатия','17:1'],
+      ['Напряжение','380–440 В, 50 Гц'],['Охлаждение','Водяное'],
+      ['Режим запуска','Автоматический'],['Аккумулятор','60 А·ч'],
+      ['Расход топлива (100%)','6.2 л/час'],['Топливный бак','250 л'],
+      ['Система смазки','9.5 л'],['Степень защиты','IP54'],
+      ['Скорость вращения','1500 об/мин'],['Класс изоляции','Н'],
+    ]
+  },
+  'aj-b-1250':{
+    cat:'Генераторы',name:'Дизельный генератор AJ – B 1250',img:IMG_B,
+    tagline:'1250 кВА на двигателе BAUDOUIN — максимальная мощность для крупнейших объектов.',
+    whofor:[{icon:'ti-building-factory-2',label:'Крупный завод'},{icon:'ti-server',label:'Дата-центр'},{icon:'ti-building-store',label:'Торговый комплекс'}],
+    specs:[{k:'Основная мощность',v:'1250 кВА / 1000 кВт'},{k:'Двигатель',v:'BAUDOUIN 12M33G1250/5'},{k:'Цилиндров',v:'12 (V-образный)'},{k:'Топливный бак',v:'1500 л'}],
+    desc:'Флагман серии B. 12-цилиндровый V-образный двигатель BAUDOUIN объёмом 39.2 л. Панель DATAKOM с русскоязычным интерфейсом. Запуск за 5 секунд. Экологический стандарт ЕВРО-3.',
+    fullSpecs:[
+      ['Основная мощность','1250 кВА / 1000 кВт'],['Двигатель','BAUDOUIN 12M33G1250/5'],
+      ['Число цилиндров','12 (V-образный)'],['Объём двигателя','39.2 л'],
+      ['Диаметр/ход поршня','150 × 185 мм'],['Коэффициент сжатия','16:1'],
+      ['Напряжение','230–400 В'],['Частота','50 Гц / 1500 об/мин'],
+      ['Запуск (авто)','5 сек.'],['Аккумулятор','2 × 200 А·ч'],
+      ['Расход (50%)','118 л/час'],['Расход (75%)','170 л/час'],
+      ['Расход (100%)','221 л/час'],['Топливный бак','1500 л'],
+      ['Система смазки','146 л'],['Антифриз','233 л'],
+      ['Панель управления','DATAKOM (рус.)'],['Экостандарт','ЕВРО-3'],
+      ['Год производства','2022'],['Степень защиты','IP23'],
+    ]
+  },
+  'aj-ella-16':{
+    cat:'Генераторы',name:'Дизельный генератор AJ ELLA 16',img:IMG_ELLA_S,
+    tagline:'16 кВА — первый шаг в профессиональный класс.',
+    whofor:[{icon:'ti-coffee',label:'Кафе / ресторан'},{icon:'ti-building-store',label:'Небольшой магазин'},{icon:'ti-home',label:'Коттедж / дом'}],
+    specs:[{k:'Основная мощность',v:'14 кВА / 11 кВт'},{k:'Двигатель',v:'ELLA E480D'},{k:'Топливный бак',v:'115 л (12 ч работы)'},{k:'Запуск',v:'Автоматический AMF'}],
+    desc:'Профессиональная дизельная установка начального класса. Водяное охлаждение, автозапуск AMF, встроенный бак 115 л для 12 часов автономной работы при нагрузке 75%.',
+    fullSpecs:[
+      ['Основная мощность','14 кВА / 11 кВт'],['Двигатель','ELLA E480D'],
+      ['Число цилиндров','4'],['Тип двигателя','В ЛИНИЮ'],
+      ['Объём двигателя','1.8 л'],['Диаметр/ход поршня','80 × 90 мм'],
+      ['Коэффициент сжатия','17:1'],['Напряжение','380–440 В, 50 Гц'],
+      ['Охлаждение','Водяное'],['Режим запуска','Автоматический (AMF)'],
+      ['Аккумулятор','30 А·ч'],['Расход топлива (100%)','9 л/час'],
+      ['Топливный бак','115 л'],['Система смазки','8 л'],
+      ['Хладагент','12 л'],['Степень защиты','IP54'],
+      ['Скорость вращения','1500 об/мин'],['Класс изоляции','Н'],
+    ]
+  },
+  'aj-ella-22':{
+    cat:'Генераторы',name:'Дизельный генератор AJ ELLA 22',img:IMG_ELLA_S,
+    tagline:'22 кВА — для небольших коммерческих объектов.',
+    whofor:[{icon:'ti-building-store',label:'Магазин / аптека'},{icon:'ti-building',label:'Офис'},{icon:'ti-tools',label:'Мастерская'}],
+    specs:[{k:'Основная мощность',v:'20 кВА / 16 кВт'},{k:'Двигатель',v:'ELLA E485D'},{k:'Топливный бак',v:'115 л'},{k:'Запуск',v:'Автоматический AMF'}],
+    desc:'Дизельная установка для небольших коммерческих объектов. Двигатель ELLA E485D, 4 цилиндра, водяное охлаждение. Автозапуск при отключении основной сети.',
+    fullSpecs:[
+      ['Основная мощность','20 кВА / 16 кВт'],['Резервная мощность','22 кВА / 18 кВт'],
+      ['Двигатель','ELLA E485D'],['Число цилиндров','4'],
+      ['Объём двигателя','2.043 л'],['Диаметр/ход поршня','85 × 95 мм'],
+      ['Коэффициент сжатия','17:1'],['Напряжение','380–440 В, 50 Гц'],
+      ['Охлаждение','Водяное'],['Режим запуска','Автоматический (AMF)'],
+      ['Аккумулятор','30 А·ч'],['Расход топлива (100%)','9 л/час'],
+      ['Топливный бак','115 л'],['Система смазки','8 л'],
+      ['Степень защиты','IP54'],['Скорость вращения','1500 об/мин'],
+    ]
+  },
+  'aj-ella-37':{
+    cat:'Генераторы',name:'Дизельный генератор AJ ELLA 37',img:IMG_ELLA_L,
+    tagline:'37 кВА — средний бизнес без перебоев.',
+    whofor:[{icon:'ti-building-store',label:'Супермаркет'},{icon:'ti-tools',label:'Производственный цех'},{icon:'ti-building',label:'Бизнес-центр'}],
+    specs:[{k:'Основная мощность',v:'37 кВА / 30 кВт'},{k:'Двигатель',v:'ELLA E4100D1'},{k:'Топливный бак',v:'135 л'},{k:'Запуск',v:'Автоматический AMF'}],
+    desc:'Установка среднего класса для коммерческих объектов. Двигатель ELLA E4100D1, объём 3.61 л. Бак 135 л — достаточно для длительной автономной работы.',
+    fullSpecs:[
+      ['Основная мощность','37 кВА / 30 кВт'],['Резервная мощность','41 кВА / 33 кВт'],
+      ['Двигатель','ELLA E4100D1'],['Число цилиндров','4'],
+      ['Объём двигателя','3.61 л'],['Диаметр/ход поршня','100 × 115 мм'],
+      ['Коэффициент сжатия','17:1'],['Напряжение','380–440 В, 50 Гц'],
+      ['Охлаждение','Водяное'],['Режим запуска','Автоматический (AMF)'],
+      ['Аккумулятор','30 А·ч'],['Расход топлива (100%)','7.7 л/час'],
+      ['Топливный бак','135 л'],['Система смазки','14 л'],
+      ['Хладагент','17 л'],['Степень защиты','IP54'],
+      ['Скорость вращения','1500 об/мин'],['Класс изоляции','Н'],
+    ]
+  },
+  'aj-ella-75':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 75',img:IMG_ELLA_L,
+    tagline:'75 кВА — уверенное резервное питание для офиса или склада.',
+    whofor:[{icon:'ti-building',label:'Офисное здание'},{icon:'ti-building-warehouse',label:'Склад / логистика'},{icon:'ti-building-store',label:'Торговый объект'}],
+    specs:[{k:'Основная мощность',v:'70 кВА / 56 кВт'},{k:'Двигатель',v:'ELLA E4105ZD1'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Топливный бак',v:'160 л'}],
+    desc:'Турбированный двигатель ELLA E4105ZD1 — больше мощности при том же объёме. Панель COMAP, защита по уровню хладагента, степень защиты IP23.',
+    fullSpecs:[
+      ['Основная мощность','70 кВА / 56 кВт'],['Резервная мощность','75 кВА / 60 кВт'],
+      ['Двигатель','ELLA E4105ZD1'],['Число цилиндров','4'],
+      ['Тип двигателя','Рядный'],['Объём двигателя','4.33 л'],
+      ['Диаметр/ход поршня','105 × 125 мм'],['Коэффициент сжатия','15.5:1'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический (COMAP)'],['Аккумулятор','2 × 60 А·ч'],
+      ['Расход топлива (100%)','18 л/час'],['Топливный бак','160 л'],
+      ['Система смазки','14 л'],['Хладагент','20 л'],
+      ['Степень защиты','IP23'],['Скорость вращения','1500 об/мин'],
+    ]
+  },
+  'aj-ella-90':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 90',img:IMG_ELLA_L,
+    tagline:'90 кВА — для объектов где нельзя прерываться.',
+    whofor:[{icon:'ti-building-hospital',label:'Больница / клиника'},{icon:'ti-building',label:'Гостиница / отель'},{icon:'ti-tools',label:'Производство'}],
+    specs:[{k:'Основная мощность',v:'90 кВА / 72 кВт'},{k:'Двигатель',v:'ELLA E4105ZLD1'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Топливный бак',v:'160 л'}],
+    desc:'Усиленная версия на базе двигателя E4105ZLD1 с увеличенной отдачей. Незаменима для больниц, гостиниц и производств — объектов где каждая секунда без света стоит денег.',
+    fullSpecs:[
+      ['Основная мощность','90 кВА / 72 кВт'],['Резервная мощность','99 кВА / 79 кВт'],
+      ['Двигатель','ELLA E4105ZLD1'],['Число цилиндров','4'],
+      ['Тип двигателя','Рядный'],['Объём двигателя','4.33 л'],
+      ['Диаметр/ход поршня','105 × 125 мм'],['Коэффициент сжатия','15.5:1'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический (COMAP)'],['Аккумулятор','2 × 60 А·ч'],
+      ['Расход топлива (100%)','18 л/час'],['Топливный бак','160 л'],
+      ['Система смазки','14 л'],['Хладагент','20 л'],
+      ['Степень защиты','IP23'],['Скорость вращения','1500 об/мин'],
+    ]
+  },
+  'aj-ella-110':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 110',img:IMG_ELLA_L,
+    tagline:'110 кВА — следующий уровень надёжности.',
+    whofor:[{icon:'ti-building-store',label:'ТЦ среднего масштаба'},{icon:'ti-tools',label:'Производственная линия'},{icon:'ti-building',label:'Бизнес-центр'}],
+    specs:[{k:'Основная мощность',v:'110 кВА'},{k:'Серия',v:'ELLA'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Запуск',v:'Автоматический'}],
+    desc:'Мощная установка серии ELLA для объектов с высокой нагрузкой. Турбированный двигатель, автозапуск, промышленный глушитель. Стабильное напряжение даже при пиковом потреблении.',
+    fullSpecs:[
+      ['Основная мощность','110 кВА'],['Серия','ELLA'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический'],['Степень защиты','IP23'],
+      ['Глушитель','Промышленный (9-18 дБА)'],['Рама','Антивибрационная'],
+      ['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-ella-125':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 125',img:IMG_ELLA_L,
+    tagline:'125 кВА — крупные объекты без компромиссов.',
+    whofor:[{icon:'ti-building-hospital',label:'Медцентр'},{icon:'ti-building',label:'Крупный офис'},{icon:'ti-building',label:'Отель'}],
+    specs:[{k:'Основная мощность',v:'125 кВА'},{k:'Серия',v:'ELLA'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Запуск',v:'Автоматический'}],
+    desc:'Профессиональная установка для крупных объектов с требованиями к непрерывности электроснабжения. Автоматически берёт нагрузку при отключении основной сети.',
+    fullSpecs:[
+      ['Основная мощность','125 кВА'],['Серия','ELLA'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический'],['Степень защиты','IP23'],
+      ['Глушитель','Промышленный (9-18 дБА)'],['Рама','Антивибрационная'],
+      ['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-ella-150':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 150',img:IMG_ELLA_L,
+    tagline:'150 кВА — самый популярный выбор наших клиентов.',
+    whofor:[{icon:'ti-building-store',label:'Торговый центр'},{icon:'ti-tools',label:'Производство'},{icon:'ti-crane',label:'Стройплощадка'}],
+    specs:[{k:'Основная мощность',v:'150 кВА'},{k:'Серия',v:'ELLA'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Запуск',v:'Автоматический'}],
+    desc:'Хит продаж iGadget. Идеальное соотношение мощности и цены. Именно эту модель чаще всего выбирают наши клиенты для торговых центров, производств и строительных площадок.',
+    fullSpecs:[
+      ['Основная мощность','150 кВА'],['Серия','ELLA'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический'],['Степень защиты','IP23'],
+      ['Глушитель','Промышленный (9-18 дБА)'],['Рама','Антивибрационная'],
+      ['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-ella-225':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 225',img:IMG_ELLA_L,
+    tagline:'225 кВА — промышленная мощность серии ELLA.',
+    whofor:[{icon:'ti-building-factory-2',label:'Промышленный объект'},{icon:'ti-building-store',label:'Крупный ТЦ'},{icon:'ti-building',label:'Жилой комплекс'}],
+    specs:[{k:'Основная мощность',v:'225 кВА'},{k:'Серия',v:'ELLA'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Запуск',v:'Автоматический'}],
+    desc:'Серьёзная промышленная установка для объектов с высоким потреблением. Надёжный резерв для всего предприятия или крупного торгового комплекса.',
+    fullSpecs:[
+      ['Основная мощность','225 кВА'],['Серия','ELLA'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический'],['Степень защиты','IP23'],
+      ['Глушитель','Промышленный (9-18 дБА)'],['Рама','Антивибрационная'],
+      ['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-ella-250':{
+    cat:'Генераторы',name:'Дизельный генератор AJ-ELLA 250',img:IMG_ELLA_L,
+    tagline:'250 кВА — флагман серии ELLA.',
+    whofor:[{icon:'ti-building-factory-2',label:'Завод / предприятие'},{icon:'ti-building',label:'Жилой комплекс'},{icon:'ti-building-store',label:'Торгово-деловой центр'}],
+    specs:[{k:'Основная мощность',v:'250 кВА'},{k:'Серия',v:'ELLA'},{k:'Охлаждение',v:'Турбо + водяное'},{k:'Запуск',v:'Автоматический'}],
+    desc:'Максимальная мощность линейки ELLA. Обеспечивает резервное питание крупных жилых и коммерческих комплексов.',
+    fullSpecs:[
+      ['Основная мощность','250 кВА'],['Серия','ELLA'],
+      ['Охлаждение','Турбокомпрессор / водяное'],['Напряжение','380–440 В, 50 Гц'],
+      ['Режим запуска','Автоматический'],['Степень защиты','IP23'],
+      ['Глушитель','Промышленный (9-18 дБА)'],['Рама','Антивибрационная'],
+      ['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-s-275':{cat:'Генераторы',name:'Дизельный генератор AJ – S 275',img:IMG_B,tagline:'275 кВА — вход в тяжёлую промышленную серию S.',whofor:[{icon:'ti-building-factory-2',label:'Промпредприятие'},{icon:'ti-crane',label:'Крупная стройка'},{icon:'ti-building-store',label:'Крупный ТЦ'}],specs:[{k:'Мощность',v:'275 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Первая ступень промышленной серии S. Рассчитана на длительную эксплуатацию в жёстких условиях с высокими требованиями к надёжности.',fullSpecs:[['Основная мощность','275 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Частота','50 Гц / 1500 об/мин'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM (рус.)'],['Степень защиты','IP23'],['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-330':{cat:'Генераторы',name:'Дизельный генератор AJ – S 330',img:IMG_B,tagline:'330 кВА — мощь без компромиссов.',whofor:[{icon:'ti-building-factory-2',label:'Завод'},{icon:'ti-building-store',label:'Торгово-деловой центр'},{icon:'ti-server',label:'Дата-центр'}],specs:[{k:'Мощность',v:'330 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Промышленная установка серии S для объектов с высокой нагрузкой и требованиями к бесперебойности.',fullSpecs:[['Основная мощность','330 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Частота','50 Гц / 1500 об/мин'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM (рус.)'],['Степень защиты','IP23'],['Класс изоляции','Н'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-440':{cat:'Генераторы',name:'Дизельный генератор AJ – S 440',img:IMG_B,tagline:'440 кВА — промышленная серия S на полную.',whofor:[{icon:'ti-building-factory-2',label:'Завод'},{icon:'ti-server',label:'ЦОД'},{icon:'ti-crane',label:'Крупная стройка'}],specs:[{k:'Мощность',v:'440 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'440 кВА серии S — для объектов с непрерывным производственным циклом и нулевым допуском к простоям.',fullSpecs:[['Основная мощность','440 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-470':{cat:'Генераторы',name:'Дизельный генератор AJ – S 470',img:IMG_B,tagline:'470 кВА — стабильность для крупных предприятий.',whofor:[{icon:'ti-building-factory-2',label:'Предприятие'},{icon:'ti-building',label:'Инфраструктурный объект'},{icon:'ti-server',label:'ЦОД'}],specs:[{k:'Мощность',v:'470 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Мощная промышленная установка для объектов с высоким энергопотреблением.',fullSpecs:[['Основная мощность','470 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-525':{cat:'Генераторы',name:'Дизельный генератор AJ – S 525',img:IMG_B,tagline:'525 кВА — для непрерывного производства.',whofor:[{icon:'ti-building-factory-2',label:'Завод'},{icon:'ti-server',label:'ЦОД'},{icon:'ti-building',label:'Крупный объект'}],specs:[{k:'Мощность',v:'525 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Серьёзная установка для объектов с непрерывным производственным циклом.',fullSpecs:[['Основная мощность','525 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-600':{cat:'Генераторы',name:'Дизельный генератор AJ – S 600',img:IMG_B,tagline:'600 кВА — большие объекты, большая надёжность.',whofor:[{icon:'ti-building-factory-2',label:'Крупный завод'},{icon:'ti-server',label:'Дата-центр'},{icon:'ti-building',label:'Горнодобывающий'}],specs:[{k:'Мощность',v:'600 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'600 кВА — уровень для крупнейших промышленных объектов и дата-центров.',fullSpecs:[['Основная мощность','600 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23'],['Стандарты','ISO 3046, ISO 8528']]},
+  'aj-s-640':{cat:'Генераторы',name:'Дизельный генератор AJ – S 640',img:IMG_B,tagline:'640 кВА — энергия для критической инфраструктуры.',whofor:[{icon:'ti-building-factory-2',label:'Критическая инфраструктура'},{icon:'ti-server',label:'ЦОД'},{icon:'ti-building',label:'Крупный объект'}],specs:[{k:'Мощность',v:'640 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Для объектов где надёжность питания — вопрос безопасности, а не удобства.',fullSpecs:[['Основная мощность','640 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23']]},
+  'aj-s-700':{cat:'Генераторы',name:'Дизельный генератор AJ – S 700',img:IMG_B,tagline:'700 кВА — стационарная мощь.',whofor:[{icon:'ti-building-factory-2',label:'Завод'},{icon:'ti-building',label:'Крупный объект'},{icon:'ti-server',label:'ЦОД'}],specs:[{k:'Мощность',v:'700 кВА'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],desc:'Промышленный гигант для стационарной установки на крупнейших объектах страны.',fullSpecs:[['Основная мощность','700 кВА'],['Серия','AJ-S'],['Напряжение','230–400 В'],['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM'],['Степень защиты','IP23']]},
+  'aj-s-825':{
+    cat:'Генераторы',name:'Дизельный генератор AJ – S 825',img:IMG_B,
+    tagline:'825 кВА на двигателе SDEC — топ промышленной серии S.',
+    whofor:[{icon:'ti-building-factory-2',label:'Крупный завод'},{icon:'ti-server',label:'Дата-центр'},{icon:'ti-building',label:'Энергетический объект'}],
+    specs:[{k:'Основная мощность',v:'750 кВА / 600 кВт'},{k:'Двигатель',v:'SDEC S283TAD72'},{k:'Цилиндров',v:'12 (V-образный)'},{k:'Топливный бак',v:'1000 л'}],
+    desc:'Один из самых мощных генераторов нашего ассортимента. 12-цилиндровый V-образный двигатель SDEC, панель DATAKOM с русскоязычным интерфейсом. ЕВРО-3.',
+    fullSpecs:[
+      ['Основная мощность','750 кВА / 600 кВт'],['Резервная мощность','825 кВА / 660 кВт'],
+      ['Двигатель','SDEC S283TAD72'],['Число цилиндров','12 (V-образный)'],
+      ['Объём двигателя','28.3 л'],['Диаметр/ход поршня','138 × 158 мм'],
+      ['Коэффициент сжатия','16:1'],['Напряжение','230–400 В'],
+      ['Частота','50 Гц / 1500 об/мин'],['Запуск (авто)','5 сек.'],
+      ['Аккумулятор','2 × 100 А·ч'],['Расход (50%)','70 л/час'],
+      ['Расход (75%)','95 л/час'],['Расход (100%)','130 л/час'],
+      ['Топливный бак','1000 л'],['Система смазки','57 л'],
+      ['Антифриз','84 л'],['Панель управления','DATAKOM (рус.)'],
+      ['Экостандарт','ЕВРО-3'],['Год производства','2022'],
+      ['Степень защиты','IP23'],['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'aj-s-1250':{
+    cat:'Генераторы',name:'Дизельный генератор AJ – S 1250',img:IMG_B,
+    tagline:'1250 кВА — максимум серии S. Для тех, кому нужно всё.',
+    whofor:[{icon:'ti-building-factory-2',label:'Крупнейший завод'},{icon:'ti-server',label:'ЦОД Tier III+'},{icon:'ti-building',label:'Стратегический объект'}],
+    specs:[{k:'Основная мощность',v:'1250 кВА / 1000 кВт'},{k:'Серия',v:'AJ-S'},{k:'Запуск',v:'Авто, 5 сек'},{k:'Панель',v:'DATAKOM'}],
+    desc:'Флагман промышленной серии S. Максимальная мощность для самых крупных и ответственных объектов. Все параметры соответствуют стандартам ISO 3046 и ISO 8528.',
+    fullSpecs:[
+      ['Основная мощность','1250 кВА / 1000 кВт'],['Серия','AJ-S'],
+      ['Напряжение','230–400 В'],['Частота','50 Гц / 1500 об/мин'],
+      ['Запуск (авто)','5 сек.'],['Панель управления','DATAKOM (рус.)'],
+      ['Степень защиты','IP23'],['Класс изоляции','Н'],
+      ['Стандарты','ISO 3046, ISO 8528'],
+    ]
+  },
+  'ibp-c1':{cat:'ИБП',name:'ИБП Серия C1 10-120 кВА',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/kl_01-2.jpg',tagline:'Трёхфазный ИБП от 10 до 120 кВА для офисов и серверных.',whofor:[{icon:'ti-building',label:'Офисное здание'},{icon:'ti-server',label:'Серверная комната'},{icon:'ti-building-hospital',label:'Медучреждение'}],specs:[{k:'Мощность',v:'10–120 кВА'},{k:'Фаз',v:'3'},{k:'Серия',v:'ENEL C1'},{k:'Применение',v:'Коммерческое'}],desc:'Источник бесперебойного питания трёхфазного исполнения. Защищает оборудование от скачков напряжения, провалов и полного отключения.',fullSpecs:[['Мощность','10–120 кВА'],['Фаз','3'],['Серия','ENEL C1'],['Тип','Двойное преобразование (on-line)'],['Частота','50 Гц'],['Напряжение','380–400 В']]},
+  'ibp-d1':{cat:'ИБП',name:'ИБП Серия D1 160-800 кВА',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',tagline:'Промышленный ИБП от 160 до 800 кВА — серьёзная защита.',whofor:[{icon:'ti-building-factory-2',label:'Промпредприятие'},{icon:'ti-server',label:'Дата-центр'},{icon:'ti-building-store',label:'Крупный ТЦ'}],specs:[{k:'Мощность',v:'160–800 кВА'},{k:'Фаз',v:'3'},{k:'Серия',v:'ENEL D1'},{k:'Применение',v:'Промышленное'}],desc:'Мощный трёхфазный ИБП для промышленных объектов и дата-центров. Обеспечивает чистое питание без помех при любой нагрузке.',fullSpecs:[['Мощность','160–800 кВА'],['Фаз','3'],['Серия','ENEL D1'],['Тип','Двойное преобразование (on-line)'],['Частота','50 Гц'],['Напряжение','380–400 В']]},
+  'ibp-e3':{cat:'ИБП',name:'ИБП Серия Е3 10-800 кВА',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',tagline:'Универсальная серия — от офиса до завода в одном ряду.',whofor:[{icon:'ti-building',label:'Офис / бизнес-центр'},{icon:'ti-building-factory-2',label:'Производство'},{icon:'ti-server',label:'ЦОД'}],specs:[{k:'Мощность',v:'10–800 кВА'},{k:'Фаз',v:'3'},{k:'Серия',v:'ENEL E3'},{k:'Применение',v:'Универсальное'}],desc:'Самая широкая серия ИБП в нашем ассортименте. Один модельный ряд закрывает потребности от небольшого офиса до крупного промышленного объекта.',fullSpecs:[['Мощность','10–800 кВА'],['Фаз','3'],['Серия','ENEL E3'],['Тип','Двойное преобразование (on-line)'],['Частота','50 Гц'],['Напряжение','380–400 В']]},
+  'ibp-e4':{cat:'ИБП',name:'ИБП Модули серии E4 20кВА × 6',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',tagline:'Модульная архитектура — масштабируйте без замены оборудования.',whofor:[{icon:'ti-server',label:'Дата-центр'},{icon:'ti-building-factory-2',label:'Гибкое производство'},{icon:'ti-building',label:'Объект с ростом нагрузки'}],specs:[{k:'Мощность модуля',v:'20 кВА'},{k:'Макс. модулей',v:'6'},{k:'Итого',v:'до 120 кВА'},{k:'Архитектура',v:'Модульная'}],desc:'Революционная модульная архитектура. Начинаете с нужной мощности — добавляете модули по мере роста без замены всего ИБП.',fullSpecs:[['Мощность модуля','20 кВА'],['Макс. модулей','6'],['Суммарная мощность','до 120 кВА'],['Архитектура','Модульная (N+1)'],['Фаз','3'],['Частота','50 Гц']]},
+  'aq-proff':{cat:'Мембраны',name:'Изоспан AQ PROFF',img:'https://isospan.gexa.ru/wp-content/uploads/2025/11/aq_01.png',tagline:'Супердиффузионная мембрана — максимальная защита кровли.',whofor:[{icon:'ti-home',label:'Скатная кровля'},{icon:'ti-building',label:'Коммерческое здание'},{icon:'ti-wind',label:'Регионы с ветром'}],specs:[{k:'Тип',v:'Супердиффузионная'},{k:'Применение',v:'Кровля, стены'},{k:'Слоёв',v:'3'},{k:'Паропроницаемость',v:'Высокая'}],desc:'Профессиональная мембрана высшего класса. Пропускает пар изнутри наружу и не пускает влагу снаружи.',fullSpecs:[['Тип','Супердиффузионная'],['Слоёв','3'],['Применение','Скатные кровли, стены'],['Паропроницаемость','Высокая'],['Водоупорность','Высокая']]},
+  'aq-150':{cat:'Мембраны',name:'Изоспан AQ 150 PROFF',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/aq150_01.jpg',tagline:'AQ PROFF с плотностью 150 г/м² — для тяжёлых условий.',whofor:[{icon:'ti-wind',label:'Суровый климат'},{icon:'ti-home',label:'Тяжёлая кровля'},{icon:'ti-building-factory-2',label:'Промобъект'}],specs:[{k:'Плотность',v:'150 г/м²'},{k:'Тип',v:'Супердиффузионная'},{k:'Применение',v:'Кровля'},{k:'Класс',v:'PROFF'}],desc:'Усиленная версия AQ PROFF с увеличенной плотностью. Для объектов с экстремальными ветровыми нагрузками.',fullSpecs:[['Плотность','150 г/м²'],['Тип','Супердиффузионная'],['Слоёв','3'],['Применение','Скатные кровли']]},
+  'as-130':{cat:'Мембраны',name:'Изоспан AS 130',img:'https://isospan.gexa.ru/wp-content/uploads/2020/10/as-130_01.jpg',tagline:'Трёхслойная мембрана 130 г/м² для скатных кровель.',whofor:[{icon:'ti-home',label:'Жилой дом'},{icon:'ti-building',label:'Коммерческое здание'},{icon:'ti-building-warehouse',label:'Склад'}],specs:[{k:'Плотность',v:'130 г/м²'},{k:'Слоёв',v:'3'},{k:'Применение',v:'Скатные кровли'}],desc:'Надёжная трёхслойная мембрана для скатных кровель. Паропроницаемая снаружи, водонепроницаемая снаружи.',fullSpecs:[['Плотность','130 г/м²'],['Слоёв','3'],['Применение','Скатные кровли']]},
+  'as':{cat:'Мембраны',name:'Изоспан AS',img:'https://isospan.gexa.ru/wp-content/uploads/2020/12/as_01.png',tagline:'Классика — самая популярная мембрана для кровли.',whofor:[{icon:'ti-home',label:'Частный дом'},{icon:'ti-building',label:'Коммерческое здание'},{icon:'ti-building-warehouse',label:'Склад / цех'}],specs:[{k:'Тип',v:'Гидро-ветрозащита'},{k:'Применение',v:'Кровля, стены'},{k:'Популярность',v:'Хит продаж'}],desc:'Самая популярная гидро-ветрозащитная мембрана. Универсальный выбор для большинства задач.',fullSpecs:[['Тип','Гидро-ветрозащитная'],['Применение','Скатные кровли, стены'],['Популярность','Хит продаж']]},
+  'am':{cat:'Мембраны',name:'Изоспан AM',img:'https://isospan.gexa.ru/wp-content/uploads/2020/12/am_01.png',tagline:'Для утеплённых кровель — отводит влагу из утеплителя.',whofor:[{icon:'ti-home',label:'Утеплённая кровля'},{icon:'ti-building',label:'Здание с утеплением'}],specs:[{k:'Тип',v:'Диффузионная'},{k:'Применение',v:'Утеплённые кровли'}],desc:'Специализированная мембрана для утеплённых скатных кровель. Выводит влажный воздух из утеплителя наружу, защищая конструкцию.',fullSpecs:[['Тип','Диффузионная'],['Применение','Утеплённые кровли']]},
+  'a-ozd':{cat:'Мембраны',name:'Изоспан A С ОЗД',img:'https://isospan.gexa.ru/wp-content/uploads/2020/07/a-c-ozd_01.png',tagline:'С огнезащитной добавкой — для требовательных объектов.',whofor:[{icon:'ti-building-hospital',label:'Больница'},{icon:'ti-building',label:'Общественное здание'},{icon:'ti-shield',label:'Пожарные требования'}],specs:[{k:'Особенность',v:'Огнезащитная добавка'},{k:'Применение',v:'Стены, кровля'}],desc:'Ветрозащитная мембрана с огнезащитной добавкой ОЗД. Для объектов с повышенными требованиями к пожарной безопасности.',fullSpecs:[['Тип','Ветрозащитная'],['Особенность','Огнезащитная добавка (ОЗД)'],['Применение','Стены, кровля']]},
+  'a':{cat:'Мембраны',name:'Изоспан A',img:'https://isospan.gexa.ru/wp-content/uploads/2020/07/a_01.jpg',tagline:'Базовая ветрозащита для стен и вентфасадов.',whofor:[{icon:'ti-home',label:'Частный дом'},{icon:'ti-building',label:'Вентилируемый фасад'}],specs:[{k:'Тип',v:'Ветрозащита'},{k:'Применение',v:'Стены, фасады'}],desc:'Классическая ветрозащитная мембрана для стеновых конструкций.',fullSpecs:[['Тип','Ветрозащитная'],['Применение','Стены, вентфасады']]},
+  'a-coсol':{cat:'Мембраны',name:'Изоспан A цоколь',img:'https://isospan.gexa.ru/wp-content/uploads/2020/07/a-czokol_01-1.png',tagline:'Специально для цокольной части зданий.',whofor:[{icon:'ti-home',label:'Цоколь дома'},{icon:'ti-building',label:'Фундамент здания'}],specs:[{k:'Тип',v:'Ветрозащита'},{k:'Применение',v:'Цоколь'}],desc:'Специальная модификация для защиты цокольной части зданий.',fullSpecs:[['Тип','Ветрозащитная'],['Применение','Цоколь зданий']]},
+  'af-plus':{cat:'Мембраны',name:'Изоспан AF+',img:'https://isospan.gexa.ru/wp-content/uploads/2020/04/af_01.png',tagline:'Негорючая мембрана — там где требует норматив.',whofor:[{icon:'ti-building',label:'Объект с НГ-требованиями'},{icon:'ti-building-hospital',label:'Медучреждение'}],specs:[{k:'Тип',v:'Негорючая'},{k:'Применение',v:'Стены, кровля'}],desc:'Ветрозащитная мембрана класса НГ (негорючая). Для объектов где нормы требуют негорючих материалов.',fullSpecs:[['Тип','Негорючая (НГ)'],['Применение','Стены, кровля']]},
+  'rs':{cat:'Пароизоляция',name:'Изоспан RS',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/rs_01.png',tagline:'Армированная пароизоляция повышенной прочности.',whofor:[{icon:'ti-home',label:'Полы / перекрытия'},{icon:'ti-building-warehouse',label:'Склад'}],specs:[{k:'Тип',v:'Армированная'},{k:'Применение',v:'Полы, перекрытия'}],desc:'Прочная армированная пароизоляция. Усиленная структура выдерживает нагрузки при монтаже.',fullSpecs:[['Тип','Армированная пароизоляция'],['Применение','Полы, перекрытия']]},
+  'rs-fix':{cat:'Пароизоляция',name:'Изоспан RS fix',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/rs-fix_01.jpg',tagline:'RS со встроенной клейкой полосой — монтаж без лент.',whofor:[{icon:'ti-home',label:'Полы'},{icon:'ti-building',label:'Перекрытия'}],specs:[{k:'Тип',v:'Армированная'},{k:'Особенность',v:'Самоклеящаяся кромка'}],desc:'Изоспан RS с самоклеящейся полосой по краям для упрощённого монтажа.',fullSpecs:[['Тип','Армированная пароизоляция'],['Особенность','Самоклеящаяся кромка'],['Применение','Полы, перекрытия']]},
+  'dm':{cat:'Пароизоляция',name:'Изоспан DM',img:'https://isospan.gexa.ru/wp-content/uploads/2020/09/dm_01-32.jpg',tagline:'Для полов по грунту — защита от почвенной влаги.',whofor:[{icon:'ti-home',label:'Пол по грунту'},{icon:'ti-building-warehouse',label:'Склад / гараж'}],specs:[{k:'Применение',v:'Полы по грунту'},{k:'Защита',v:'От почвенной влаги'}],desc:'Специальная пароизоляция для полов, уложенных непосредственно по грунту.',fullSpecs:[['Тип','Пароизоляция'],['Применение','Полы по грунту'],['Защита','От капиллярной влаги']]},
+  'b':{cat:'Пароизоляция',name:'Изоспан В',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/b_01.png',tagline:'Самая популярная пароизоляция — выбор большинства.',whofor:[{icon:'ti-home',label:'Жилой дом / квартира'},{icon:'ti-building',label:'Офис'},{icon:'ti-home',label:'Дача / коттедж'}],specs:[{k:'Тип',v:'Двухслойный'},{k:'Применение',v:'Кровля, стены, перекрытия'},{k:'Популярность',v:'Bestseller'}],desc:'Хит продаж линейки Изоспан. Двухслойный материал с гладкой и шероховатой сторонами. Подходит для большинства жилых и коммерческих объектов.',fullSpecs:[['Тип','Двухслойная пароизоляция'],['Применение','Кровля, стены, перекрытия'],['Поверхность','Гладкая + шероховатая']]},
+  'b-fix':{cat:'Пароизоляция',name:'Изоспан В fix',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/b-fix_01.png',tagline:'Изоспан В с самоклеящейся полосой — монтаж быстрее.',whofor:[{icon:'ti-home',label:'Жилой дом'},{icon:'ti-building',label:'Офис'}],specs:[{k:'Основа',v:'Изоспан В'},{k:'Особенность',v:'Самоклеящаяся кромка'}],desc:'Изоспан В с готовой самоклеящейся полосой для нахлёста. Ускоряет монтаж.',fullSpecs:[['Основа','Изоспан В'],['Особенность','Самоклеящаяся кромка'],['Применение','Кровля, стены, перекрытия']]},
+  'c':{cat:'Пароизоляция',name:'Изоспан C',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/s_01-1.png',tagline:'Усиленная защита для влажных помещений.',whofor:[{icon:'ti-home',label:'Подвал / цоколь'},{icon:'ti-building',label:'Помещение с влажностью'},{icon:'ti-building-warehouse',label:'Техпомещение'}],specs:[{k:'Тип',v:'Усиленная пароизоляция'},{k:'Применение',v:'Подвалы, цоколи'}],desc:'Более прочная пароизоляция для помещений с повышенной влажностью.',fullSpecs:[['Тип','Усиленная пароизоляция'],['Применение','Подвалы, цоколи, санузлы']]},
+  'd':{cat:'Пароизоляция',name:'Изоспан D',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/d_01.png',tagline:'Полипропилен — для эксплуатируемых поверхностей.',whofor:[{icon:'ti-home',label:'Эксплуатируемая кровля'},{icon:'ti-building',label:'Пол под нагрузкой'}],specs:[{k:'Материал',v:'Полипропилен'},{k:'Применение',v:'Кровли, полы'}],desc:'Прочная пароизоляция из полипропилена для поверхностей, по которым ходят.',fullSpecs:[['Материал','Полипропилен'],['Применение','Эксплуатируемые кровли, полы']]},
+  'd-fix':{cat:'Пароизоляция',name:'Изоспан D fix',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/d_01.png',tagline:'Изоспан D со встроенной клейкой кромкой.',whofor:[{icon:'ti-home',label:'Эксплуатируемая кровля'},{icon:'ti-building',label:'Пол'}],specs:[{k:'Основа',v:'Изоспан D'},{k:'Особенность',v:'Самоклеящаяся кромка'}],desc:'Изоспан D с самоклеящейся полосой. Надёжное крепление нахлёстов.',fullSpecs:[['Основа','Изоспан D'],['Особенность','Самоклеящаяся кромка']]},
+  'rm':{cat:'Пароизоляция',name:'Изоспан RM',img:'https://isospan.gexa.ru/wp-content/uploads/2020/11/rm_01.png',tagline:'Монтажная — для временного закрытия конструкций.',whofor:[{icon:'ti-crane',label:'Стройка'},{icon:'ti-tools',label:'Временная защита'}],specs:[{k:'Тип',v:'Монтажная'},{k:'Применение',v:'Временная защита'}],desc:'Пароизоляция для временного закрытия конструкций в период строительства.',fullSpecs:[['Тип','Монтажная пароизоляция'],['Применение','Временная защита на стройке']]},
+  'rf':{cat:'Отражающая изоляция',name:'Изоспан RF',img:'https://isospan.gexa.ru/wp-content/uploads/2020/10/rf_01.png',tagline:'Фольга для бани, сауны и тёплой кровли.',whofor:[{icon:'ti-bath',label:'Баня / сауна'},{icon:'ti-home',label:'Тёплая кровля'}],specs:[{k:'Тип',v:'Фольгированная'},{k:'Применение',v:'Баня, сауна, кровля'}],desc:'Отражает тепловое излучение обратно в помещение. Незаменима в банях и саунах.',fullSpecs:[['Тип','Фольгированная пароизоляция'],['Применение','Баня, сауна, тёплая кровля']]},
+  'fs':{cat:'Отражающая изоляция',name:'Изоспан FS',img:'https://isospan.gexa.ru/wp-content/uploads/2020/10/fs_01.png',tagline:'Отражает тепло внутрь — для жилых помещений.',whofor:[{icon:'ti-home',label:'Жилой дом'},{icon:'ti-building',label:'Тёплое помещение'}],specs:[{k:'Тип',v:'Фольгированная'},{k:'Популярность',v:'Хит продаж'}],desc:'Фольгированная пароизоляция с высоким коэффициентом отражения для жилых помещений.',fullSpecs:[['Тип','Фольгированная пароизоляция'],['Применение','Жилые помещения, кровля']]},
+  'fd':{cat:'Отражающая изоляция',name:'Изоспан FD',img:'https://isospan.gexa.ru/wp-content/uploads/2020/10/fd_01.png',tagline:'Отражающий экран для систем тёплого пола.',whofor:[{icon:'ti-home',label:'Тёплый пол'},{icon:'ti-building',label:'Энергоэффективное здание'}],specs:[{k:'Тип',v:'Двусторонняя фольга'},{k:'Применение',v:'Тёплый пол'}],desc:'Двусторонний фольгированный материал. Применяется как отражающий экран под тёплым полом.',fullSpecs:[['Тип','Двусторонняя фольга'],['Применение','Тёплый пол, экраны']]},
+  'fb':{cat:'Отражающая изоляция',name:'Изоспан FB',img:'https://isospan.gexa.ru/wp-content/uploads/2020/05/fb_01.png',tagline:'Для утепления трубопроводов и оборудования.',whofor:[{icon:'ti-pipe',label:'Трубопроводы'},{icon:'ti-tools',label:'Инженерные системы'}],specs:[{k:'Применение',v:'Трубопроводы, оборудование'}],desc:'Фольгированная теплоизоляция для трубопроводов и промышленного оборудования.',fullSpecs:[['Тип','Фольгированная изоляция'],['Применение','Трубопроводы, оборудование']]},
+  'fx':{cat:'Отражающая изоляция',name:'Изоспан FX',img:'https://isospan.gexa.ru/wp-content/uploads/2020/10/fx_01.png',tagline:'Новинка — экстремальная отражающая эффективность.',whofor:[{icon:'ti-home',label:'Энергоэффективный дом'},{icon:'ti-building',label:'Экстремальный климат'}],specs:[{k:'Поколение',v:'Новое'},{k:'Применение',v:'Кровля, стены, полы'}],desc:'Новейший фольгированный материал с улучшенными характеристиками для экстремальных условий.',fullSpecs:[['Тип','Фольгированная изоляция нового поколения'],['Применение','Кровля, стены, полы']]},
+  'kl-plus':{cat:'Соединительные ленты',name:'Изоспан KL+',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/kl_01-2.jpg',tagline:'Универсальная — подходит ко всем мембранам и плёнкам.',whofor:[{icon:'ti-home',label:'Любой объект с Изоспаном'},{icon:'ti-tools',label:'Проф. монтаж'}],specs:[{k:'Тип',v:'Универсальная'},{k:'Применение',v:'Стыки, нахлёсты'},{k:'Популярность',v:'Хит продаж'}],desc:'Самая популярная соединительная лента. Герметично соединяет нахлёсты. Совместима со всей линейкой Изоспан.',fullSpecs:[['Тип','Универсальная соединительная'],['Основа','Акриловая'],['Применение','Стыки и нахлёсты Изоспан']]},
+  'ml-proff':{cat:'Соединительные ленты',name:'Изоспан ML proff',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/ml-proff_01-2.jpg',tagline:'Профессиональная лента с усиленной адгезией.',whofor:[{icon:'ti-building',label:'Проф. монтаж'},{icon:'ti-building-factory-2',label:'Промышленный объект'}],specs:[{k:'Класс',v:'Профессиональный'},{k:'Адгезия',v:'Усиленная'}],desc:'Профессиональная монтажная лента с повышенной силой сцепления. Держит на любой поверхности.',fullSpecs:[['Тип','Монтажная лента'],['Класс','Профессиональный'],['Адгезия','Усиленная']]},
+  'fl':{cat:'Соединительные ленты',name:'Изоспан FL',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/fl_01-3.jpg',tagline:'Двусторонняя — для надёжного крепления нахлёстов.',whofor:[{icon:'ti-home',label:'Жилые объекты'},{icon:'ti-building',label:'Любое строительство'}],specs:[{k:'Тип',v:'Двусторонняя'},{k:'Популярность',v:'Bestseller'}],desc:'Двусторонняя лента для крепления нахлёстов пароизоляции и мембран.',fullSpecs:[['Тип','Двусторонняя соединительная'],['Применение','Нахлёсты пароизоляции']]},
+  'fl-termo':{cat:'Соединительные ленты',name:'Изоспан FL termo',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/fl-termo_01-2.jpg',tagline:'Термостойкая — для горячих зон и бань.',whofor:[{icon:'ti-bath',label:'Баня / сауна'},{icon:'ti-building-factory-2',label:'Горячий цех'}],specs:[{k:'Особенность',v:'Термостойкая'},{k:'Применение',v:'Высокотемпературные зоны'}],desc:'Версия FL для применения при высоких температурах. Не теряет клеящих свойств в банях и саунах.',fullSpecs:[['Тип','Термостойкая лента'],['Применение','Баня, сауна, горячие цеха']]},
+  'kl':{cat:'Соединительные ленты',name:'Изоспан KL',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/kl_01-2-1.jpg',tagline:'Акриловая основа — долговечное соединение.',whofor:[{icon:'ti-home',label:'Жилое строительство'},{icon:'ti-building',label:'Любой объект'}],specs:[{k:'Основа',v:'Акриловая'},{k:'Срок службы',v:'Длительный'}],desc:'Соединительная лента на акриловой основе. Не теряет адгезии при температурных перепадах.',fullSpecs:[['Тип','Соединительная лента'],['Основа','Акриловая']]},
+  'sl':{cat:'Соединительные ленты',name:'Изоспан SL',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/3dc85c9d9901aa1873fe256c0ec86345.jpg',tagline:'Сигнальная — для разметки стыков на объекте.',whofor:[{icon:'ti-crane',label:'Стройплощадка'},{icon:'ti-tools',label:'Проф. монтаж'}],specs:[{k:'Тип',v:'Сигнальная'},{k:'Применение',v:'Разметка стыков'}],desc:'Яркая сигнальная лента для обозначения монтажных стыков на объекте.',fullSpecs:[['Тип','Сигнальная лента'],['Применение','Разметка стыков при монтаже']]},
+  'sul':{cat:'Соединительные ленты',name:'Изоспан СУЛ лента',img:'https://isospan.gexa.ru/wp-content/uploads/2020/08/sul_01-2.jpg',tagline:'Уплотнительная — герметизирует примыкания.',whofor:[{icon:'ti-home',label:'Примыкания к стенам'},{icon:'ti-building',label:'Проходки, балки'}],specs:[{k:'Тип',v:'Уплотнительная'},{k:'Применение',v:'Примыкания, проходки'}],desc:'Уплотнительная лента для герметизации примыканий пароизоляции к стенам, балкам и трубопроводам.',fullSpecs:[['Тип','Уплотнительная лента'],['Применение','Примыкания, проходки']]},
+};
+
+function getRelated(currentId,cat){
+  return Object.entries(PRODUCTS).filter(([id,p])=>p.cat===cat&&id!==currentId).slice(0,3);
+}
+
+function render(){
+  const params=new URLSearchParams(window.location.search);
+  const id=params.get('id');
+  const root=document.getElementById('product-root');
+  if(!id||!PRODUCTS[id]){
+    root.innerHTML=`<div class="not-found"><i class="ti ti-mood-sad"></i><h2>Товар не найден</h2><p>Возможно, страница была перемещена или удалена</p><a href="catalog.html" style="display:inline-flex;background:#E8872A;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:700;margin-top:8px">← Вернуться в каталог</a></div>`;
+    return;
+  }
+  const p=PRODUCTS[id];
+  document.title=p.name+' — I GADGET';
+  document.getElementById('bc-name').textContent=p.name;
+  const imgHtml=p.img
+    ?`<img src="${p.img}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\\'img-placeholder\\'><i class=\\'ti ti-photo\\'></i><span>Фото скоро появится</span></div>'">`
+    :`<div class="img-placeholder"><i class="ti ti-photo"></i><span>Фото скоро появится</span></div>`;
+  const specsHtml=p.specs.map(s=>`<div class="spec-pill"><div class="spec-pill-label">${s.k}</div><div class="spec-pill-value">${s.v}</div></div>`).join('');
+  const whoforHtml=p.whofor.map(w=>`<div class="who-tag"><i class="ti ${w.icon}"></i>${w.label}</div>`).join('');
+  const half=Math.ceil(p.fullSpecs.length/2);
+  const fullSpecsHtml=`
+    <section class="s s-mid">
+      <div class="section-label">Характеристики</div>
+      <div class="section-title">Технические данные</div>
+      <div class="specs-cols">
+        <table class="specs-table">${p.fullSpecs.slice(0,half).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table>
+        <table class="specs-table">${p.fullSpecs.slice(half).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join('')}</table>
+      </div>
+    </section>`;
+  const related=getRelated(id,p.cat);
+  const relatedHtml=related.length?`
+    <section class="s s-dark">
+      <div class="section-label">Смотрите также</div>
+      <div class="section-title">Похожие товары</div>
+      <div class="related-grid">${related.map(([rid,rp])=>`<a href="product.html?id=${rid}" class="rel-card"><div class="rel-cat">${rp.cat}</div><div class="rel-name">${rp.name}</div><div class="rel-cta">Подробнее <i class="ti ti-arrow-right"></i></div></a>`).join('')}</div>
+    </section>`:'';
+  const tgMsg=encodeURIComponent(`Здравствуйте! Интересует: ${p.name}`);
+  const waMsg=encodeURIComponent(`Здравствуйте! Хочу узнать цену на: ${p.name}`);
+  root.innerHTML=`
+    <div class="product-hero">
+      <div class="product-img-side">
+        <div class="product-img-box">${imgHtml}</div>
+        <div class="who-for-box"><div class="who-for-title">Подходит для</div><div class="who-for-tags">${whoforHtml}</div></div>
+      </div>
+      <div class="product-info-side">
+        <div class="product-cat-tag">${p.cat}</div>
+        <div class="product-title">${p.name}</div>
+        <div class="product-tagline">${p.tagline}</div>
+        <div class="key-specs">${specsHtml}</div>
+        <div class="product-ctas">
+          <a href="https://t.me/bltnkov?text=${tgMsg}" target="_blank" class="btn-orange"><i class="ti ti-message-circle"></i> Узнать цену</a>
+          <a href="https://wa.me/998909982513?text=${waMsg}" target="_blank" class="btn-tg" title="WhatsApp"><i class="ti ti-brand-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <section class="s s-dark">
+      <div class="section-label">О товаре</div>
+      <div class="section-title">Описание</div>
+      <div class="desc-text"><p>${p.desc}</p></div>
+    </section>
+    ${fullSpecsHtml}
+    ${relatedHtml}`;
+}
+
+document.getElementById('burger').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open')});
+render();
+</script>
+</body>
+</html>
