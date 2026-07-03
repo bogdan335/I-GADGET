@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог iGadget — дизельные генераторы, ИБП, пароизоляция Изоспан. 56 позиций в наличии. Узбекистан.">
-  <title>Каталог — iGadget</title>
+  <meta name="description" content="Каталог I GADGET — дизель-генераторы TGU, ИБП ELEN, материалы НЕОСПАН. 57 позиций в наличии. Узбекистан.">
+  <title>Каталог — I GADGET</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0B1420; color: #fff; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', sans-serif; color: #fff; overflow-x: hidden; max-width: 100vw;
+      background-color: #0B1420;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.035' stroke-width='2.5'%3E%3Ccircle cx='40' cy='40' r='16'/%3E%3Cpath d='M40 18v-8M40 70v-8M18 40h-8M70 40h-8M23.7 23.7l-5.7-5.7M61.9 61.9l-5.7-5.7M23.7 56.3l-5.7 5.7M61.9 18.1l-5.7 5.7'/%3E%3Ccircle cx='145' cy='125' r='22'/%3E%3Cpath d='M145 96v-9M145 163v-9M116 125h-9M183 125h-9M127 107l-6.4-6.4M169.4 149.4l-6.4-6.4M127 143l-6.4 6.4M169.4 100.6l-6.4 6.4'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-attachment: fixed;
+    }
+    * { -webkit-tap-highlight-color: transparent; }
 
-    /* ── NAV ── */
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
@@ -22,193 +28,85 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
       position: sticky; top: 0; z-index: 200;
     }
-    .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+    .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; }
     .logo span { color: #E8872A; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover, .nav-links a.active { color: #fff; }
     .nav-right { display: flex; align-items: center; gap: 14px; }
     .nav-phone { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7); text-decoration: none; }
-    .nav-phone:hover { color: #fff; }
-    .nav-cta {
-      background: #E8872A; color: #fff; border: none;
-      padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600;
-      cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none;
-      transition: background .2s; display: inline-block;
-    }
+    .nav-cta { background: #E8872A; color: #fff; border: none; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; text-decoration: none; transition: background .2s; }
     .nav-cta:hover { background: #d0771e; }
-    .nav-burger { display: none; background: none; border: none; color: #fff; font-size: 26px; cursor: pointer; }
+    .nav-burger {
+      display: none; background: none; border: none; color: #fff;
+      font-size: 28px; cursor: pointer; padding: 12px; margin-right: -12px;
+      touch-action: manipulation; min-width: 48px; min-height: 48px;
+      align-items: center; justify-content: center;
+    }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      background: #111C2A;
-      padding: 56px 56px 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      position: relative; overflow: hidden;
-    }
-    .page-header::before {
-      content: '';
-      position: absolute; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(232,135,42,0.07) 0%, transparent 65%);
-      top: -100px; right: -100px; pointer-events: none;
-    }
-    .breadcrumb {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 20px;
-    }
+    .page-header { background: #111C2A; padding: 56px 56px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,135,42,0.07) 0%, transparent 65%); top: -100px; right: -100px; pointer-events: none; }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
     .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color .2s; }
     .breadcrumb a:hover { color: #E8872A; }
-    .breadcrumb i { font-size: 12px; }
-    .page-header h1 {
-      font-size: 42px; font-weight: 900; letter-spacing: -1.5px;
-      color: #fff; line-height: 1.1; margin-bottom: 12px;
-    }
+    .page-header h1 { font-size: 42px; font-weight: 900; letter-spacing: -1.5px; color: #fff; line-height: 1.1; margin-bottom: 12px; }
     .page-header h1 em { color: #E8872A; font-style: normal; }
     .page-header-sub { font-size: 16px; color: rgba(255,255,255,0.45); }
 
-    /* ── LAYOUT ── */
-    .catalog-layout {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 0;
-      min-height: calc(100vh - 68px);
-    }
+    .catalog-layout { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: calc(100vh - 68px); }
 
-    /* ── SIDEBAR ── */
-    .sidebar {
-      background: #0E1929;
-      border-right: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 24px;
-      position: sticky; top: 68px;
-      height: calc(100vh - 68px);
-      overflow-y: auto;
-    }
+    .sidebar { background: #0E1929; border-right: 1px solid rgba(255,255,255,0.06); padding: 32px 24px; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; }
     .sidebar::-webkit-scrollbar { width: 4px; }
     .sidebar::-webkit-scrollbar-track { background: transparent; }
     .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
-    .sidebar-title {
-      font-size: 11px; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: rgba(255,255,255,0.3);
-      margin-bottom: 16px; padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .cat-group { margin-bottom: 28px; }
-    .cat-group-label {
-      font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.25);
-      text-transform: uppercase; letter-spacing: 1.2px;
-      margin-bottom: 8px; padding: 0 4px;
-    }
-    .cat-btn {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; padding: 10px 12px; border-radius: 8px;
-      background: transparent; border: none; cursor: pointer;
-      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
-      color: rgba(255,255,255,0.55); transition: all .2s;
-      text-align: left; margin-bottom: 2px;
-    }
+    .sidebar-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .cat-group { margin-bottom: 24px; }
+    .cat-group-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; padding: 0 4px; }
+    .cat-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 10px 12px; border-radius: 8px; background: transparent; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); transition: all .2s; text-align: left; margin-bottom: 2px; min-height: 44px; }
     .cat-btn:hover { background: rgba(255,255,255,0.05); color: #fff; }
     .cat-btn.active { background: rgba(232,135,42,0.15); color: #E8872A; font-weight: 600; }
-    .cat-btn .count {
-      font-size: 11px; font-weight: 600; padding: 2px 7px;
-      border-radius: 100px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4);
-    }
+    .cat-btn .count { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 100px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
     .cat-btn.active .count { background: rgba(232,135,42,0.2); color: #E8872A; }
     .sidebar-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 20px 0; }
-    .sidebar-cta {
-      background: #E8872A; color: #fff; border: none;
-      width: 100%; padding: 12px; border-radius: 9px; font-size: 14px; font-weight: 700;
-      cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      text-decoration: none;
-    }
+    .sidebar-cta { background: #E8872A; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 9px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
     .sidebar-cta:hover { background: #d0771e; }
 
-    /* ── MAIN CONTENT ── */
+    .mobile-filter-btn { display: none; }
     .catalog-main { padding: 32px 40px; }
-
-    /* search + sort bar */
-    .catalog-bar {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap;
-    }
-    .search-wrap {
-      flex: 1; min-width: 200px; position: relative;
-    }
-    .search-wrap i {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      color: rgba(255,255,255,0.3); font-size: 18px; pointer-events: none;
-    }
-    .search-input {
-      width: 100%; padding: 11px 14px 11px 42px;
-      background: #111C2A; border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: 9px; font-size: 14px; color: #fff;
-      font-family: 'Inter', sans-serif; outline: none; transition: border-color .2s;
-    }
+    .catalog-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .search-wrap { flex: 1; min-width: 200px; position: relative; }
+    .search-wrap i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.3); font-size: 18px; pointer-events: none; }
+    .search-input { width: 100%; padding: 11px 14px 11px 42px; background: #111C2A; border: 1.5px solid rgba(255,255,255,0.08); border-radius: 9px; font-size: 14px; color: #fff; font-family: 'Inter', sans-serif; outline: none; transition: border-color .2s; }
     .search-input::placeholder { color: rgba(255,255,255,0.3); }
     .search-input:focus { border-color: #E8872A; }
-    .results-count {
-      font-size: 13px; color: rgba(255,255,255,0.35); white-space: nowrap;
-    }
+    .results-count { font-size: 13px; color: rgba(255,255,255,0.35); white-space: nowrap; }
     .results-count span { color: #fff; font-weight: 600; }
 
-    /* grid */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
-    /* product card */
-    .p-card {
-      background: #fff; border: 1.5px solid #E5E8ED;
-      border-radius: 14px; overflow: hidden;
-      transition: box-shadow .25s, border-color .25s, transform .2s;
-      text-decoration: none; display: flex; flex-direction: column;
-      cursor: pointer;
-    }
+    .p-card { background: #fff; border: 1.5px solid #E5E8ED; border-radius: 14px; overflow: hidden; transition: box-shadow .25s, border-color .25s, transform .2s; text-decoration: none; display: flex; flex-direction: column; cursor: pointer; }
     .p-card:hover { border-color: #E8872A; box-shadow: 0 8px 28px rgba(232,135,42,0.13); transform: translateY(-2px); }
-    .p-img {
-      width: 100%; aspect-ratio: 4/3;
-      background: #EDF1F6;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 8px; position: relative;
-    }
+    .p-img { width: 100%; aspect-ratio: 4/3; background: #EDF1F6; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; position: relative; }
+    .p-img img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
     .p-img i { font-size: 36px; color: #B8C4D0; }
     .p-img span { font-size: 11px; color: #B8C4D0; font-weight: 500; }
-    .p-badge {
-      position: absolute; top: 10px; left: 10px;
-      font-size: 10px; font-weight: 700; padding: 3px 9px;
-      border-radius: 5px; letter-spacing: 0.5px; text-transform: uppercase;
-    }
-    .badge-hit  { background: #E8872A; color: #fff; }
+    .p-badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 5px; letter-spacing: 0.5px; text-transform: uppercase; z-index: 2; }
+    .badge-hit { background: #E8872A; color: #fff; }
     .badge-best { background: #1A7F4E; color: #fff; }
-    .badge-new  { background: #2563EB; color: #fff; }
-    .p-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .badge-new { background: #2563EB; color: #fff; }
+    .p-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 5px; }
     .p-cat { font-size: 10px; font-weight: 700; color: #E8872A; text-transform: uppercase; letter-spacing: 1px; }
-    .p-name { font-size: 14px; font-weight: 700; color: #0B1420; line-height: 1.35; }
-    .p-hint { font-size: 12px; color: #6B7280; line-height: 1.5; margin-top: 2px; flex: 1; }
-    .p-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 16px;
-      border-top: 1px solid #F0F2F5;
-    }
-    .p-more { font-size: 12px; color: #9CA3AF; display: flex; align-items: center; gap: 4px; }
-    .p-choose {
-      background: #E8872A; color: #fff; border: none;
-      padding: 8px 14px; border-radius: 7px; font-size: 12px; font-weight: 700;
-      cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s;
-      display: flex; align-items: center; gap: 5px;
-    }
+    .p-name { font-size: 13px; font-weight: 700; color: #0B1420; line-height: 1.35; }
+    .p-hint { font-size: 11px; color: #6B7280; line-height: 1.5; margin-top: 2px; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .p-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid #F0F2F5; }
+    .p-more { font-size: 11px; color: #9CA3AF; display: flex; align-items: center; gap: 4px; }
+    .p-choose { background: #E8872A; color: #fff; border: none; padding: 8px 12px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s; display: flex; align-items: center; gap: 5px; min-height: 36px; }
     .p-choose:hover { background: #d0771e; }
 
-    /* empty state */
-    .empty-state {
-      grid-column: 1/-1; text-align: center; padding: 64px 24px;
-    }
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 64px 24px; }
     .empty-state i { font-size: 48px; color: rgba(255,255,255,0.15); margin-bottom: 16px; display: block; }
     .empty-state p { color: rgba(255,255,255,0.35); font-size: 15px; }
 
-    /* ── FOOTER ── */
     .footer { background: #07101A; padding: 48px 56px 24px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
     .f-logo { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
@@ -222,75 +120,38 @@
     .f-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .f-links a { font-size: 14px; color: rgba(255,255,255,0.48); text-decoration: none; transition: color .2s; }
     .f-links a:hover { color: #fff; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-    }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .f-copy { font-size: 13px; color: rgba(255,255,255,0.22); }
-    .tg-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #229ED9; color: #fff; padding: 10px 20px;
-      border-radius: 9px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s;
-    }
+    .tg-link { display: inline-flex; align-items: center; gap: 8px; background: #229ED9; color: #fff; padding: 10px 20px; border-radius: 9px; font-size: 13px; font-weight: 600; text-decoration: none; transition: background .2s; }
     .tg-link:hover { background: #1a8ec4; }
-    .tg-float {
-      position: fixed; bottom: 28px; right: 28px;
-      width: 56px; height: 56px; background: #229ED9; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; color: #fff; text-decoration: none; z-index: 999;
-      box-shadow: 0 6px 24px rgba(34,158,217,0.45);
-      transition: transform .2s, background .2s;
-    }
+    .tg-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #229ED9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; text-decoration: none; z-index: 999; box-shadow: 0 6px 24px rgba(34,158,217,0.45); transition: transform .2s, background .2s; }
     .tg-float:hover { background: #1a8ec4; transform: scale(1.08); }
 
-    /* ── MOBILE ── */
-    @media (max-width: 1200px) {
-      .products-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    @media (max-width: 1200px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 860px) {
       .nav { padding: 0 20px; }
       .nav-links, .nav-phone { display: none; }
-      .nav-burger { display: block; }
-      .nav-links.open {
-        display: flex; flex-direction: column; gap: 0;
-        position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
-        background: #0B1420; padding: 0;
-        border-top: 1px solid rgba(255,255,255,0.08); z-index: 199;
-        overflow-y: auto;
-      }
+      .nav-burger { display: flex !important; }
+      .nav-links.open { display: flex; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #0B1420; padding: 0; border-top: 1px solid rgba(255,255,255,0.08); z-index: 199; overflow-y: auto; }
       .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.07); }
       .nav-links.open a { font-size: 17px; color: #fff; padding: 18px 24px; display: block; }
       .page-header { padding: 28px 20px 24px; }
       .page-header h1 { font-size: 26px; letter-spacing: -0.5px; }
       .page-header-sub { font-size: 14px; }
       .catalog-layout { grid-template-columns: 1fr; }
-      .sidebar {
-        position: static; height: auto; overflow: visible;
-        padding: 16px 20px; display: none;
-        border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06);
-      }
+      .sidebar { position: static; height: auto; overflow: visible; padding: 16px 20px; display: none; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
       .sidebar.open { display: block; }
-      .mobile-filter-btn {
-        display: flex; align-items: center; gap: 8px;
-        background: #111C2A; border: 1.5px solid rgba(255,255,255,0.15);
-        color: #fff; padding: 12px 18px; border-radius: 9px;
-        font-size: 14px; font-weight: 600; cursor: pointer;
-        font-family: 'Inter', sans-serif; margin-bottom: 16px;
-        width: 100%;
-      }
+      .mobile-filter-btn { display: flex; align-items: center; gap: 8px; background: #111C2A; border: 1.5px solid rgba(255,255,255,0.15); color: #fff; padding: 12px 18px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; margin-bottom: 16px; width: 100%; min-height: 48px; }
       .catalog-main { padding: 20px 16px; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .catalog-bar { gap: 10px; margin-bottom: 16px; }
-      .search-input { font-size: 16px; padding: 12px 12px 12px 40px; }
-      /* Touch-friendly cards */
+      .search-input { font-size: 16px; padding: 12px 12px 12px 40px; min-height: 48px; }
       .p-body { padding: 12px; gap: 5px; }
-      .p-cat { font-size: 9px; }
-      .p-name { font-size: 13px; }
-      .p-hint { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .p-footer { padding: 10px 12px; }
-      .p-choose { padding: 9px 12px; font-size: 12px; }
-      .p-more { font-size: 11px; }
-      /* Breadcrumb */
+      .p-name { font-size: 12px; }
+      .p-hint { font-size: 11px; }
+      .p-footer { padding: 8px 10px; }
+      .p-choose { padding: 8px 10px; font-size: 11px; }
+      .p-more { display: none; }
       .breadcrumb { font-size: 12px; }
       .footer { padding: 36px 20px 20px; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -301,67 +162,16 @@
       .page-header h1 { font-size: 22px; }
       .results-count { display: none; }
     }
-    @media (max-width: 380px) {
-      .products-grid { grid-template-columns: 1fr; }
-    }
-    .mobile-filter-btn { display: none; }
-
-    /* ── CATALOG MOBILE FIXES ── */
-    * { -webkit-tap-highlight-color: transparent; }
-    body, html { overflow-x: hidden !important; max-width: 100% !important; }
-    
-    .nav-burger { 
-      display: none;
-      background: none; border: none; color: #fff;
-      font-size: 28px; cursor: pointer;
-      padding: 12px; margin-right: -12px;
-      touch-action: manipulation;
-      min-width: 48px; min-height: 48px;
-      align-items: center; justify-content: center;
-    }
-    
-    @media (max-width: 860px) {
-      .nav-burger { display: flex !important; }
-      
-      /* Sidebar categories - scrollable pills instead */
-      .cat-btn { min-height: 44px; }
-      
-      /* Cards touch-friendly */
-      .p-choose { min-height: 40px; min-width: 80px; touch-action: manipulation; }
-      
-      /* Search bigger */
-      .search-input { font-size: 16px !important; min-height: 48px; }
-      
-      /* Mobile filter button */
-      .mobile-filter-btn { min-height: 48px; }
-    }
-    
-    @media (max-width: 480px) {
-      /* Sidebar as horizontal scroll of pills */
-      .products-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
-      .p-img { aspect-ratio: 1/1 !important; }
-      .p-name { font-size: 12px !important; }
-      .p-hint { font-size: 11px !important; -webkit-line-clamp: 2 !important; }
-      .p-footer { padding: 8px 10px !important; }
-      .p-choose { font-size: 11px !important; padding: 8px 10px !important; }
-      .p-more { display: none !important; }
-      
-      .catalog-main { padding: 16px 12px !important; }
-      .page-header { padding: 20px 16px !important; }
-      .page-header h1 { font-size: 20px !important; }
-    }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="index.html" class="logo">I <span>GADGET</span></a>
   <ul class="nav-links" id="nav-links">
     <li><a href="index.html">Главная</a></li>
     <li><a href="catalog.html" class="active">Продукция</a></li>
     <li><a href="index.html#about">О компании</a></li>
-    <li><a href="index.html#clients">Наши клиенты</a></li>
     <li><a href="index.html#contact">Контакты</a></li>
   </ul>
   <div class="nav-right">
@@ -371,7 +181,6 @@
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="breadcrumb">
     <a href="index.html">Главная</a>
@@ -379,103 +188,76 @@
     <span>Каталог</span>
   </div>
   <h1>Каталог <em>продукции</em></h1>
-  <p class="page-header-sub">56 позиций в наличии — генераторы, ИБП, изоляция и монтажные ленты</p>
+  <p class="page-header-sub">57 позиций в наличии — генераторы TGU, ИБП ELEN, материалы НЕОСПАН и осветительные мачты</p>
 </div>
 
-<!-- CATALOG LAYOUT -->
 <div class="catalog-layout">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-title">Категории</div>
 
     <div class="cat-group">
       <div class="cat-group-label">Все</div>
-      <button class="cat-btn active" data-cat="all">
-        Все товары <span class="count">56</span>
-      </button>
+      <button class="cat-btn active" data-cat="all">Все товары <span class="count">57</span></button>
     </div>
 
     <div class="cat-group">
-      <div class="cat-group-label">Оборудование</div>
-      <button class="cat-btn" data-cat="gen">
-        <span><i class="ti ti-engine" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>Генераторы</span>
-        <span class="count">22</span>
-      </button>
-      <button class="cat-btn" data-cat="ibp">
-        <span><i class="ti ti-bolt" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>ИБП</span>
-        <span class="count">4</span>
-      </button>
+      <div class="cat-group-label">Генераторы</div>
+      <button class="cat-btn" data-cat="gen-rs"><span><i class="ti ti-engine" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Ricardo/SDEC</span><span class="count">20</span></button>
+      <button class="cat-btn" data-cat="gen-bd"><span><i class="ti ti-engine" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Baudouin</span><span class="count">20</span></button>
     </div>
 
     <div class="cat-group">
-      <div class="cat-group-label">Изоспан</div>
-      <button class="cat-btn" data-cat="mem">
-        <span><i class="ti ti-wind" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>Мембраны</span>
-        <span class="count">9</span>
-      </button>
-      <button class="cat-btn" data-cat="par">
-        <span><i class="ti ti-layers-intersect" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>Пароизоляция</span>
-        <span class="count">9</span>
-      </button>
-      <button class="cat-btn" data-cat="ref">
-        <span><i class="ti ti-sun" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>Отражающая</span>
-        <span class="count">5</span>
-      </button>
-      <button class="cat-btn" data-cat="len">
-        <span><i class="ti ti-rolls" style="margin-right:7px;font-size:15px;vertical-align:-2px;"></i>Соед. ленты</span>
-        <span class="count">7</span>
-      </button>
+      <div class="cat-group-label">Питание</div>
+      <button class="cat-btn" data-cat="ibp"><span><i class="ti ti-bolt" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>ИБП ELEN</span><span class="count">4</span></button>
+      <button class="cat-btn" data-cat="mast"><span><i class="ti ti-bulb" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Осв. мачты</span><span class="count">1</span></button>
+    </div>
+
+    <div class="cat-group">
+      <div class="cat-group-label">НЕОСПАН</div>
+      <button class="cat-btn" data-cat="ns-vapor"><span><i class="ti ti-droplet" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Парозащита</span><span class="count">7</span></button>
+      <button class="cat-btn" data-cat="ns-wind"><span><i class="ti ti-wind" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Ветрозащита</span><span class="count">2</span></button>
+      <button class="cat-btn" data-cat="ns-moisture"><span><i class="ti ti-umbrella" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Влагозащита</span><span class="count">4</span></button>
+      <button class="cat-btn" data-cat="ns-tape"><span><i class="ti ti-rolls" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Ленты</span><span class="count">3</span></button>
     </div>
 
     <div class="sidebar-divider"></div>
-
-    <a href="index.html#contact" class="sidebar-cta">
-      <i class="ti ti-message-circle"></i> Задать вопрос
-    </a>
+    <a href="index.html#contact" class="sidebar-cta"><i class="ti ti-message-circle"></i> Задать вопрос</a>
   </aside>
 
-  <!-- MAIN -->
   <main class="catalog-main">
-
-    <button class="mobile-filter-btn" id="mobile-filter">
-      <i class="ti ti-filter"></i> Фильтр по категории
-    </button>
+    <button class="mobile-filter-btn" id="mobile-filter"><i class="ti ti-filter"></i> Фильтр по категории</button>
 
     <div class="catalog-bar">
       <div class="search-wrap">
         <i class="ti ti-search"></i>
         <input type="text" class="search-input" id="search" placeholder="Поиск по названию...">
       </div>
-      <div class="results-count">Показано: <span id="count-display">56</span> позиций</div>
+      <div class="results-count">Показано: <span id="count-display">57</span> позиций</div>
     </div>
 
-    <div class="products-grid" id="products-grid">
-      <!-- Рендерится JS -->
-    </div>
+    <div class="products-grid" id="products-grid"></div>
   </main>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
     <div>
       <div class="f-logo">I <span>GADGET</span></div>
-      <div class="f-tagline">Надёжные строительные материалы и промышленное оборудование для вашего объекта.</div>
+      <div class="f-tagline">Дизель-генераторы, ИБП и материалы для надёжного электроснабжения вашего объекта.</div>
       <div class="f-phones">
         <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998903181917">+998-90-318-19-17</a></div>
-        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998981285">+998-99-898-12-85</a></div>
-        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998911929">+998-99-891-19-29</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998901285987">+998-90-128-59-87</a></div>
+        <div class="f-phone"><i class="ti ti-mail" style="color:#E8872A;font-size:14px;"></i><a href="mailto:t-es@yandex.uz">t-es@yandex.uz</a></div>
       </div>
     </div>
     <div>
       <div class="f-col-title">Продукция</div>
       <ul class="f-links">
-        <li><a href="#" data-cat="gen">Генераторы</a></li>
-        <li><a href="#" data-cat="ibp">ИБП</a></li>
-        <li><a href="#" data-cat="par">Пароизоляция</a></li>
-        <li><a href="#" data-cat="mem">Мембраны</a></li>
-        <li><a href="#" data-cat="len">Ленты</a></li>
+        <li><a href="#" data-cat="gen-rs">Генераторы Ricardo</a></li>
+        <li><a href="#" data-cat="gen-bd">Генераторы Baudouin</a></li>
+        <li><a href="#" data-cat="ibp">ИБП ELEN</a></li>
+        <li><a href="#" data-cat="ns-vapor">НЕОСПАН</a></li>
       </ul>
     </div>
     <div>
@@ -495,165 +277,91 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="f-copy">© iGadget 2026 — Все права защищены</div>
+    <div class="f-copy">© I GADGET 2026 — Все права защищены</div>
     <a href="https://t.me/bltnkov" target="_blank" class="tg-link"><i class="ti ti-brand-telegram"></i> Написать в Telegram</a>
   </div>
 </footer>
 
-<a href="https://t.me/bltnkov" target="_blank" class="tg-float" title="Telegram">
-  <i class="ti ti-brand-telegram"></i>
-</a>
+<a href="https://t.me/bltnkov" target="_blank" class="tg-float" title="Telegram"><i class="ti ti-brand-telegram"></i></a>
 
 <script>
-const IMG_B='https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_1_1665491358_1697455274.jpg';
-const IMG_ELLA_S='https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_3_1665491462_1697459086.jpg';
-const IMG_ELLA_L='https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_2_1665491506_1697459388.jpg';
-const IZ='https://isospan.gexa.ru/wp-content/uploads/2020/';
-
-const PRODUCT_IMGS={
-  // Генераторы
-  'aj-b-25':IMG_B,
-  'aj-b-1250':IMG_B,
-  'aj-ella-16':IMG_ELLA_S,
-  'aj-ella-22':IMG_ELLA_S,
-  'aj-ella-37':IMG_ELLA_L,
-  'aj-ella-75':IMG_ELLA_L,
-  'aj-ella-90':IMG_ELLA_L,
-  'aj-ella-110':IMG_ELLA_L,
-  'aj-ella-125':IMG_ELLA_L,
-  'aj-ella-150':IMG_ELLA_L,
-  'aj-ella-225':IMG_ELLA_L,
-  'aj-ella-250':IMG_ELLA_L,
-  'aj-s-275':IMG_B,
-  'aj-s-330':IMG_B,
-  'aj-s-440':IMG_B,
-  'aj-s-470':IMG_B,
-  'aj-s-525':IMG_B,
-  'aj-s-600':IMG_B,
-  'aj-s-640':IMG_B,
-  'aj-s-700':IMG_B,
-  'aj-s-825':IMG_B,
-  'aj-s-1250':IMG_B,
-  // ИБП
-  'ibp-c1':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-  'ibp-d1':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-  'ibp-e3':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-  'ibp-e4':'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-  // Мембраны
-  'aq-proff':'https://isospan.gexa.ru/wp-content/uploads/2025/11/aq_01.png',
-  'aq-150':'https://isospan.gexa.ru/wp-content/uploads/2020/08/aq150_01.jpg',
-  'as-130':'https://isospan.gexa.ru/wp-content/uploads/2020/10/as-130_01.jpg',
-  'as':'https://isospan.gexa.ru/wp-content/uploads/2020/12/as_01.png',
-  'am':'https://isospan.gexa.ru/wp-content/uploads/2020/12/am_01.png',
-  'a-ozd':'https://isospan.gexa.ru/wp-content/uploads/2020/07/a-c-ozd_01.png',
-  'a':'https://isospan.gexa.ru/wp-content/uploads/2020/07/a_01.jpg',
-  'a-coсol':'https://isospan.gexa.ru/wp-content/uploads/2020/07/a-czokol_01-1.png',
-  'af-plus':'https://isospan.gexa.ru/wp-content/uploads/2020/04/af_01.png',
-  // Пароизоляция
-  'rs':'https://isospan.gexa.ru/wp-content/uploads/2020/11/rs_01.png',
-  'rs-fix':'https://isospan.gexa.ru/wp-content/uploads/2020/11/rs-fix_01.jpg',
-  'dm':'https://isospan.gexa.ru/wp-content/uploads/2020/09/dm_01-32.jpg',
-  'b':'https://isospan.gexa.ru/wp-content/uploads/2020/11/b_01.png',
-  'b-fix':'https://isospan.gexa.ru/wp-content/uploads/2020/11/b-fix_01.png',
-  'c':'https://isospan.gexa.ru/wp-content/uploads/2020/11/s_01-1.png',
-  'd':'https://isospan.gexa.ru/wp-content/uploads/2020/11/d_01.png',
-  'd-fix':'https://isospan.gexa.ru/wp-content/uploads/2020/11/d_01.png',
-  'rm':'https://isospan.gexa.ru/wp-content/uploads/2020/11/rm_01.png',
-  // Отражающая
-  'rf':'https://isospan.gexa.ru/wp-content/uploads/2020/10/rf_01.png',
-  'fs':'https://isospan.gexa.ru/wp-content/uploads/2020/10/fs_01.png',
-  'fd':'https://isospan.gexa.ru/wp-content/uploads/2020/10/fd_01.png',
-  'fb':'https://isospan.gexa.ru/wp-content/uploads/2020/05/fb_01.png',
-  'fx':'https://isospan.gexa.ru/wp-content/uploads/2020/10/fx_01.png',
-  // Ленты
-  'kl-plus':'https://isospan.gexa.ru/wp-content/uploads/2020/08/kl_01-2.jpg',
-  'ml-proff':'https://isospan.gexa.ru/wp-content/uploads/2020/08/ml-proff_01-2.jpg',
-  'fl':'https://isospan.gexa.ru/wp-content/uploads/2020/08/fl_01-3.jpg',
-  'fl-termo':'https://isospan.gexa.ru/wp-content/uploads/2020/08/fl-termo_01-2.jpg',
-  'kl':'https://isospan.gexa.ru/wp-content/uploads/2020/08/kl_01-2-1.jpg',
-  'sl':'https://isospan.gexa.ru/wp-content/uploads/2020/08/3dc85c9d9901aa1873fe256c0ec86345.jpg',
-  'sul':'https://isospan.gexa.ru/wp-content/uploads/2020/08/sul_01-2.jpg',
-};
-
 const ALL_PRODUCTS = [
-  // ── ГЕНЕРАТОРЫ ──
-  { id:'aj-b-25',    cat:'gen', name:'AJ B 25',    label:'Дизельный генератор AJ B 25',    badge:'',     icon:'ti-engine',           hint:'Малая мощность для небольших объектов: дачи, маленькие магазины, подсобные помещения.' },
-  { id:'aj-b-1250',  cat:'gen', name:'AJ B 1250',  label:'Дизельный генератор AJ – B 1250',badge:'hit',  icon:'ti-engine',           hint:'Крупный промышленный генератор. Для заводов, торговых центров, крупных строек.' },
-  { id:'aj-ella-16', cat:'gen', name:'AJ ELLA 16', label:'Дизельный генератор AJ ELLA 16', badge:'',     icon:'ti-engine',           hint:'16 кВА — для небольших коммерческих объектов и резервного питания офисов.' },
-  { id:'aj-ella-22', cat:'gen', name:'AJ ELLA 22', label:'Дизельный генератор AJ ELLA 22', badge:'',     icon:'ti-engine',           hint:'22 кВА — небольшие производственные площадки, кафе, магазины.' },
-  { id:'aj-ella-37', cat:'gen', name:'AJ ELLA 37', label:'Дизельный генератор AJ ELLA 37', badge:'',     icon:'ti-engine',           hint:'37 кВА — средние коммерческие помещения, склады, рестораны.' },
-  { id:'aj-ella-75', cat:'gen', name:'AJ ELLA 75', label:'Дизельный генератор AJ-ELLA 75', badge:'',     icon:'ti-engine',           hint:'75 кВА — офисные здания, небольшие торговые объекты, производства.' },
-  { id:'aj-ella-90', cat:'gen', name:'AJ ELLA 90', label:'Дизельный генератор AJ-ELLA 90', badge:'',     icon:'ti-engine',           hint:'90 кВА — хорошее решение для больниц, отелей и средних производств.' },
-  { id:'aj-ella-110',cat:'gen', name:'AJ ELLA 110',label:'Дизельный генератор AJ-ELLA 110',badge:'',     icon:'ti-engine',           hint:'110 кВА — торговые центры средней руки, производственные линии.' },
-  { id:'aj-ella-125',cat:'gen', name:'AJ ELLA 125',label:'Дизельный генератор AJ-ELLA 125',badge:'',     icon:'ti-engine',           hint:'125 кВА — крупные офисные здания, отели, медицинские учреждения.' },
-  { id:'aj-ella-150',cat:'gen', name:'AJ ELLA 150',label:'Дизельный генератор AJ-ELLA 150',badge:'hit',  icon:'ti-engine',           hint:'150 кВА — самая популярная серия. Торговые центры, производства, стройплощадки.' },
-  { id:'aj-ella-225',cat:'gen', name:'AJ ELLA 225',label:'Дизельный генератор AJ-ELLA 225',badge:'',     icon:'ti-engine',           hint:'225 кВА — крупные промышленные объекты и производственные предприятия.' },
-  { id:'aj-ella-250',cat:'gen', name:'AJ ELLA 250',label:'Дизельный генератор AJ-ELLA 250',badge:'',     icon:'ti-engine',           hint:'250 кВА — мощное резервное питание для крупных жилых и коммерческих комплексов.' },
-  { id:'aj-s-275',   cat:'gen', name:'AJ S 275',   label:'Дизельный генератор AJ – S 275',  badge:'',     icon:'ti-engine',           hint:'275 кВА — промышленные предприятия, крупные строительные объекты.' },
-  { id:'aj-s-330',   cat:'gen', name:'AJ S 330',   label:'Дизельный генератор AJ – S 330',  badge:'',     icon:'ti-engine',           hint:'330 кВА — для крупных производств и объектов с высокой нагрузкой.' },
-  { id:'aj-s-440',   cat:'gen', name:'AJ S 440',   label:'Дизельный генератор AJ – S 440',  badge:'',     icon:'ti-engine',           hint:'440 кВА — серьёзная промышленная мощность. Заводы, большие торговые комплексы.' },
-  { id:'aj-s-470',   cat:'gen', name:'AJ S 470',   label:'Дизельный генератор AJ – S 470',  badge:'',     icon:'ti-engine',           hint:'470 кВА — мощные производственные линии и крупные инфраструктурные объекты.' },
-  { id:'aj-s-525',   cat:'gen', name:'AJ S 525',   label:'Дизельный генератор AJ – S 525',  badge:'',     icon:'ti-engine',           hint:'525 кВА — для объектов с непрерывным производственным циклом.' },
-  { id:'aj-s-600',   cat:'gen', name:'AJ S 600',   label:'Дизельный генератор AJ – S 600',  badge:'',     icon:'ti-engine',           hint:'600 кВА — крупные промышленные заводы, дата-центры, горнодобывающие объекты.' },
-  { id:'aj-s-640',   cat:'gen', name:'AJ S 640',   label:'Дизельный генератор AJ – S 640',  badge:'',     icon:'ti-engine',           hint:'640 кВА — энергоёмкие производства и объекты критической инфраструктуры.' },
-  { id:'aj-s-700',   cat:'gen', name:'AJ S 700',   label:'Дизельный генератор AJ – S 700',  badge:'',     icon:'ti-engine',           hint:'700 кВА — для крупнейших промышленных объектов и стационарных установок.' },
-  { id:'aj-s-825',   cat:'gen', name:'AJ S 825',   label:'Дизельный генератор AJ – S 825',  badge:'best', icon:'ti-engine',           hint:'825 кВА — топовое решение для крупной промышленности и энергетических объектов.' },
-  { id:'aj-s-1250',  cat:'gen', name:'AJ S 1250',  label:'Дизельный генератор AJ – S 1250', badge:'best', icon:'ti-engine',           hint:'1250 кВА — флагман линейки. Максимальная мощность для самых крупных объектов.' },
-
-  // ── ИБП ──
-  { id:'ibp-c1',  cat:'ibp', name:'Серия C1',  label:'ИБП Серия C1 10-120 кВА',          badge:'',    icon:'ti-bolt',             hint:'10–120 кВА, три фазы. Для офисных зданий, медицинских учреждений, серверных комнат.' },
-  { id:'ibp-d1',  cat:'ibp', name:'Серия D1',  label:'ИБП Серия D1 160-800 кВА',         badge:'hit', icon:'ti-bolt',             hint:'160–800 кВА, три фазы. Промышленные объекты, дата-центры, крупные предприятия.' },
-  { id:'ibp-e3',  cat:'ibp', name:'Серия Е3',  label:'ИБП Серия Е3 10-800 кВА',          badge:'new', icon:'ti-bolt',             hint:'10–800 кВА, три фазы. Широкий диапазон мощностей — от офиса до завода.' },
-  { id:'ibp-e4',  cat:'ibp', name:'Серия E4',  label:'ИБП Модули серии E4 20кВА × 6',    badge:'new', icon:'ti-bolt',             hint:'Модульная архитектура. Масштабируется под нужды объекта без замены оборудования.' },
-
-  // ── МЕМБРАНЫ ──
-  { id:'aq-proff',    cat:'mem', name:'AQ PROFF',    label:'Изоспан AQ PROFF',    badge:'',    icon:'ti-wind', hint:'Супердиффузионная мембрана. Максимальная защита от ветра и влаги для кровли и стен.' },
-  { id:'aq-150',      cat:'mem', name:'AQ 150 PROFF',label:'Изоспан AQ 150 PROFF',badge:'best',icon:'ti-wind', hint:'Усиленная версия AQ PROFF с плотностью 150 г/м². Тяжёлые климатические условия.' },
-  { id:'as-130',      cat:'mem', name:'AS 130',       label:'Изоспан AS 130',      badge:'',    icon:'ti-wind', hint:'Трёхслойная мембрана 130 г/м². Для скатных кровель с утеплителем.' },
-  { id:'as',          cat:'mem', name:'AS',            label:'Изоспан AS',          badge:'hit', icon:'ti-wind', hint:'Классическая гидро-ветрозащита. Один из самых популярных материалов для кровли.' },
-  { id:'am',          cat:'mem', name:'AM',            label:'Изоспан AM',          badge:'',    icon:'ti-wind', hint:'Для утеплённых скатных кровель. Отводит влагу из утеплителя наружу.' },
-  { id:'a-ozd',       cat:'mem', name:'A С ОЗД',       label:'Изоспан A С ОЗД',     badge:'',    icon:'ti-wind', hint:'С огнезащитной добавкой. Для объектов с повышенными требованиями к пожарной безопасности.' },
-  { id:'a',           cat:'mem', name:'A',              label:'Изоспан A',           badge:'',    icon:'ti-wind', hint:'Ветрозащитная мембрана. Применяется в стеновых конструкциях и вентилируемых фасадах.' },
-  { id:'a-coсol',    cat:'mem', name:'A цоколь',       label:'Изоспан A цоколь',    badge:'',    icon:'ti-wind', hint:'Специальная модификация для защиты цокольной части зданий от ветра и брызг.' },
-  { id:'af-plus',     cat:'mem', name:'AF+',            label:'Изоспан AF+',         badge:'',    icon:'ti-wind', hint:'Негорючая ветрозащитная мембрана. Для объектов с классом огнестойкости.' },
-
-  // ── ПАРОИЗОЛЯЦИЯ ──
-  { id:'rs',       cat:'par', name:'RS',      label:'Изоспан RS',      badge:'',    icon:'ti-layers-intersect', hint:'Армированная пароизоляция. Повышенная прочность для полов и перекрытий.' },
-  { id:'rs-fix',   cat:'par', name:'RS fix',  label:'Изоспан RS fix',  badge:'',    icon:'ti-layers-intersect', hint:'RS с самоклеящейся лентой по краям. Упрощает монтаж и обеспечивает герметичность.' },
-  { id:'dm',       cat:'par', name:'DM',      label:'Изоспан DM',      badge:'',    icon:'ti-layers-intersect', hint:'Для полов по грунту и перекрытий. Защищает конструкции от почвенной влаги.' },
-  { id:'b',        cat:'par', name:'В',       label:'Изоспан В',       badge:'hit', icon:'ti-layers-intersect', hint:'Самая популярная пароизоляция. Жилые дома, офисы, квартиры — защита утеплителя от пара.' },
-  { id:'b-fix',    cat:'par', name:'В fix',   label:'Изоспан В fix',   badge:'',    icon:'ti-layers-intersect', hint:'Изоспан В с самоклеящейся полосой. Быстрый монтаж без дополнительных лент.' },
-  { id:'c',        cat:'par', name:'C',       label:'Изоспан C',       badge:'best',icon:'ti-layers-intersect', hint:'Усиленная пароизоляция. Для подвалов, цоколей и помещений с высокой влажностью.' },
-  { id:'d',        cat:'par', name:'D',       label:'Изоспан D',       badge:'',    icon:'ti-layers-intersect', hint:'Прочная пароизоляция из полипропилена. Для эксплуатируемых кровель и полов.' },
-  { id:'d-fix',    cat:'par', name:'D fix',   label:'Изоспан D fix',   badge:'',    icon:'ti-layers-intersect', hint:'Изоспан D с самоклеящейся полосой для простого и надёжного крепления.' },
-  { id:'rm',       cat:'par', name:'RM',      label:'Изоспан RM',      badge:'',    icon:'ti-layers-intersect', hint:'Монтажная пароизоляция — для быстрого закрытия конструкций на период строительства.' },
-
-  // ── ОТРАЖАЮЩАЯ ──
-  { id:'rf', cat:'ref', name:'RF', label:'Изоспан RF', badge:'',    icon:'ti-sun', hint:'Отражающая пароизоляция с фольгированным покрытием. Для бань, саун и тёплых кровель.' },
-  { id:'fs', cat:'ref', name:'FS', label:'Изоспан FS', badge:'hit', icon:'ti-sun', hint:'Фольгированная пароизоляция для жилых помещений. Отражает тепловое излучение внутрь.' },
-  { id:'fd', cat:'ref', name:'FD', label:'Изоспан FD', badge:'',    icon:'ti-sun', hint:'Двусторонняя фольга. Применяется как отражающий экран в системах тёплого пола.' },
-  { id:'fb', cat:'ref', name:'FB', label:'Изоспан FB', badge:'',    icon:'ti-sun', hint:'Для утепления трубопроводов и оборудования — снижает теплопотери.' },
-  { id:'fx', cat:'ref', name:'FX', label:'Изоспан FX', badge:'new', icon:'ti-sun', hint:'Фольгированный утеплитель нового поколения. Эффективен при экстремальных температурах.' },
-
-  // ── ЛЕНТЫ ──
-  { id:'kl-plus', cat:'len', name:'KL+',       label:'Изоспан KL+',       badge:'hit', icon:'ti-rolls', hint:'Универсальная соединительная лента. Для стыков и примыканий пароизоляции и мембран.' },
-  { id:'ml-proff',cat:'len', name:'ML proff',  label:'Изоспан ML proff',  badge:'',    icon:'ti-rolls', hint:'Профессиональная монтажная лента. Повышенная адгезия к различным поверхностям.' },
-  { id:'fl',      cat:'len', name:'FL',         label:'Изоспан FL',        badge:'best',icon:'ti-rolls', hint:'Двусторонняя соединительная лента. Для надёжного крепления нахлёстов пароизоляции.' },
-  { id:'fl-termo',cat:'len', name:'FL termo',   label:'Изоспан FL termo',  badge:'',    icon:'ti-rolls', hint:'Термостойкая лента. Применяется в системах с высокой температурной нагрузкой.' },
-  { id:'kl',      cat:'len', name:'KL',         label:'Изоспан KL',        badge:'',    icon:'ti-rolls', hint:'Соединительная лента на акриловой основе. Долговечное соединение нахлёстов.' },
-  { id:'sl',      cat:'len', name:'SL',         label:'Изоспан SL',        badge:'',    icon:'ti-rolls', hint:'Сигнальная лента для разметки монтажных стыков. Яркий цвет — видно на объекте.' },
-  { id:'sul',     cat:'len', name:'СУЛ',        label:'Изоспан СУЛ лента', badge:'',    icon:'ti-rolls', hint:'Уплотнительная лента. Герметизирует примыкания к стенам, балкам и проходкам.' },
+  // ── ГЕНЕРАТОРЫ RICARDO/SDEC ──
+  { id:'tgu-100', cat:'gen-rs', name:'TGU-100', label:'Дизель-генераторная установка TGU — 100', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'hit', hint:'125 кВА / 100 кВт на двигателе RICARDO R6105AZLD1 — для торговых и производственных объектов.' },
+  { id:'tgu-1000', cat:'gen-rs', name:'TGU-1000', label:'Дизель-генераторная установка TGU — 1000', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'1000 кВА / 800 кВт на двигателе SDEC S302TAD96 — для объектов критической инфраструктуры.' },
+  { id:'tgu-1250', cat:'gen-rs', name:'TGU-1250', label:'Дизель-генераторная установка TGU — 1250', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'1250 кВА / 1000 кВт на двигателе SDEC S310TAD107 — для крупнейших промышленных и стратегических объектов.' },
+  { id:'tgu-1375', cat:'gen-rs', name:'TGU-1375', label:'Дизель-генераторная установка TGU — 1375 (Atlas)', img:'images/products/image_2026-03-01_20-46-16.png', badge:'new', hint:'1719 кВА / 1375 кВт на двигателе SDEC S310TAD116 — для крупнейших промышленных и стратегических объектов.' },
+  { id:'tgu-150', cat:'gen-rs', name:'TGU-150', label:'Дизель-генераторная установка TGU — 150', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'187,5 кВА / 150 кВт на двигателе RICARDO E6110ZLD1 — для крупных коммерческих и производственных объектов.' },
+  { id:'tgu-20', cat:'gen-rs', name:'TGU-20', label:'Дизель-генераторная установка TGU — 20', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'25 кВА / 20 кВт на двигателе RICARDO E490D — для небольших объектов: дачи, магазины, подсобные помещения.' },
+  { id:'tgu-200', cat:'gen-rs', name:'TGU-200', label:'Дизель-генераторная установка TGU — 200', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'best', hint:'250 кВА / 200 кВт на двигателе RICARDO R6126ZLD — для крупных коммерческих и производственных объектов.' },
+  { id:'tgu-250', cat:'gen-rs', name:'TGU-250', label:'Дизель-генераторная установка TGU — 250', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'312 кВА / 250 кВт на двигателе RICARDO HKWP12A — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-30', cat:'gen-rs', name:'TGU-30', label:'Дизель-генераторная установка TGU — 30', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'37 кВА / 30 кВт на двигателе RICARDO E4100D1 — для небольших коммерческих объектов.' },
+  { id:'tgu-300', cat:'gen-rs', name:'TGU-300', label:'Дизель-генераторная установка TGU — 300', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'375 кВА / 300 кВт на двигателе SDEC/RICARDO HKWP15A — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-350', cat:'gen-rs', name:'TGU-350', label:'Дизель-генераторная установка TGU — 350', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'440 кВА / 352 кВт на двигателе SDEC S142TAD40 — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-40', cat:'gen-rs', name:'TGU-40', label:'Дизель-генераторная установка TGU — 40', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'50 кВА / 40 кВт на двигателе RICARDO E4100ZD1 — для небольших коммерческих объектов.' },
+  { id:'tgu-400', cat:'gen-rs', name:'TGU-400', label:'Дизель-генераторная установка TGU — 400', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'500 кВА / 400 кВт на двигателе SDEC HHP12D405E200 — для крупных промышленных объектов.' },
+  { id:'tgu-50', cat:'gen-rs', name:'TGU-50', label:'Дизель-генераторная установка TGU — 50', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'62 кВА / 50 кВт на двигателе RICARDO R4105ZD — для складов и офисных зданий.' },
+  { id:'tgu-500', cat:'gen-rs', name:'TGU-500', label:'Дизель-генераторная установка TGU — 500', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'636 кВА / 509 кВт на двигателе SDEC S266TAD63 — для крупных промышленных объектов.' },
+  { id:'tgu-640', cat:'gen-rs', name:'TGU-640', label:'Дизель-генераторная установка TGU — 640', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'640 кВА / 512 кВт на двигателе SDEC DNV 970 — для крупных промышленных объектов.' },
+  { id:'tgu-70', cat:'gen-rs', name:'TGU-70', label:'Дизель-генераторная установка TGU — 70', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'87 кВА / 70 кВт на двигателе RICARDO R6105ZD — для складов и офисных зданий.' },
+  { id:'tgu-825', cat:'gen-rs', name:'TGU-825', label:'Дизель-генераторная установка TGU — 825', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'best', hint:'825 кВА / 660 кВт на двигателе SDEC S283TAD72 — для крупных промышленных объектов.' },
+  { id:'tgu-950', cat:'gen-rs', name:'TGU-950', label:'Дизель-генераторная установка TGU — 950', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'950 кВА / 760 кВт на двигателе SDEC S283TAD80 — для объектов критической инфраструктуры.' },
+  { id:'tgu-80', cat:'gen-rs', name:'TGU-80', label:'Дизель-генераторная установка TGU 80', img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png', badge:'', hint:'80 кВА / 64 кВт на двигателе RICARDO R6105ZD — для складов и офисных зданий.' },
+  // ── ГЕНЕРАТОРЫ BAUDOUIN ──
+  { id:'tgu-b-100', cat:'gen-bd', name:'TGU B-100', label:'Дизель-генераторная установка TGU B-100', img:'images/products/TGU-_100-01.png', badge:'hit', hint:'125 кВА / 100 кВт на двигателе BAUDOUIN 6M11G150/5 — для торговых и производственных объектов.' },
+  { id:'tgu-b-1000', cat:'gen-bd', name:'TGU B-1000', label:'Дизель-генераторная установка TGU B-1000', img:'images/products/TGU-_1000-01.png', badge:'new', hint:'1250 кВА / 1000 кВт на двигателе BAUDOUIN / WEICHAI 12M33G1250/5 — для крупнейших промышленных и стратегических объектов.' },
+  { id:'tgu-b-120', cat:'gen-bd', name:'TGU B-120', label:'Дизель-генераторная установка TGU B-120', img:'images/products/TGU-_120-01.png', badge:'', hint:'150 кВА / 120 кВт на двигателе BAUDOUIN 6M11G165/5 — для торговых и производственных объектов.' },
+  { id:'tgu-b-1280', cat:'gen-bd', name:'TGU B-1280', label:'Дизель-генераторная установка TGU B-1280', img:'images/products/TGU-_1280-01.jpg', badge:'new', hint:'1600 кВА / 1280 кВт на двигателе BAUDOUIN 12M33G1650/5e2 — для крупнейших промышленных и стратегических объектов.' },
+  { id:'tgu-b-150', cat:'gen-bd', name:'TGU B-150', label:'Дизель-генераторная установка TGU B-150', img:'images/products/TGU-_150-01.png', badge:'', hint:'200 кВА / 150 кВт на двигателе BAUDOUIN 6M16G220/5 — для крупных коммерческих и производственных объектов.' },
+  { id:'tgu-b-200', cat:'gen-bd', name:'TGU B-200', label:'Дизель-генераторная установка TGU B-200', img:'images/products/TGU-_200-01.png', badge:'', hint:'250 кВА / 200 кВт на двигателе BAUDOUIN / WEICHAI 6M16G275/5 — для крупных коммерческих и производственных объектов.' },
+  { id:'tgu-b-250', cat:'gen-bd', name:'TGU B-250', label:'Дизель-генераторная установка TGU B-250', img:'images/products/TGU_B_250-01.png', badge:'', hint:'315 кВА / 250 кВт на двигателе BAUDOUIN / WEICHAI 6M16G350/5 — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-b-30', cat:'gen-bd', name:'TGU B-30', label:'Дизель-генераторная установка TGU B-30', img:'images/products/TGU-_30-01.png', badge:'', hint:'38 кВА / 30 кВт на двигателе BAUDOUIN 4M06G44/5 — для небольших коммерческих объектов.' },
+  { id:'tgu-b-300', cat:'gen-bd', name:'TGU B-300', label:'Дизель-генераторная установка TGU B-300', img:'images/products/TGU-_300-01.png', badge:'', hint:'375 кВА / 300 кВт на двигателе BAUDOUIN/WEICHAI 6M21G440/5 — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-b-350', cat:'gen-bd', name:'TGU B-350', label:'Дизель-генераторная установка TGU B-350', img:'images/products/TGU-_350-01.png', badge:'', hint:'440 кВА / 350 кВт на двигателе BAUDOUIN / WEICHAI 6M21G500/5 — для заводов, ТЦ и дата-центров.' },
+  { id:'tgu-b-40', cat:'gen-bd', name:'TGU B-40', label:'Дизель-генераторная установка TGU B-40', img:'images/products/TGU-_40-01.png', badge:'', hint:'50 кВА / 40 кВт на двигателе BAUDOUIN 4M06G55/5 — для небольших коммерческих объектов.' },
+  { id:'tgu-b-400', cat:'gen-bd', name:'TGU B-400', label:'Дизель-генераторная установка TGU B-400', img:'images/products/TGU-_400-01.png', badge:'', hint:'500 кВА / 400 кВт на двигателе BAUDOUIN / WEICHAI 6M33G715/5 — для крупных промышленных объектов.' },
+  { id:'tgu-b-50', cat:'gen-bd', name:'TGU B-50', label:'Дизель-генераторная установка TGU B-50', img:'images/products/TGU-_50-01.png', badge:'', hint:'64 кВА / 50 кВт на двигателе BAUDOUIN 4M10G70/5 — для складов и офисных зданий.' },
+  { id:'tgu-b-500', cat:'gen-bd', name:'TGU B-500', label:'Дизель-генераторная установка TGU B-500', img:'images/products/TGU-_500-01.png', badge:'', hint:'625 кВА / 500 кВт на двигателе BAUDOUIN / WEICHAI 6M33G715/5 — для крупных промышленных объектов.' },
+  { id:'tgu-b-60', cat:'gen-bd', name:'TGU B-60', label:'Дизель-генераторная установка TGU B-60', img:'images/products/TGU-_60-01.png', badge:'', hint:'70 кВА / 64 кВт на двигателе BAUDOUIN 4M11G90/5 — для складов и офисных зданий.' },
+  { id:'tgu-b-600', cat:'gen-bd', name:'TGU B-600', label:'Дизель-генераторная установка TGU B-600', img:'images/products/TGU-_600-01.png', badge:'', hint:'750 кВА / 600 кВт на двигателе BAUDOUIN / WEICHAI 6M33G825/5 — для крупных промышленных объектов.' },
+  { id:'tgu-b-700', cat:'gen-bd', name:'TGU B-700', label:'Дизель-генераторная установка TGU B-700', img:'images/products/TGU-_700-01.png', badge:'', hint:'875 кВА / 700 кВт на двигателе BAUDOUIN / WEICHAI 12M26G1000/5 — для объектов критической инфраструктуры.' },
+  { id:'tgu-b-80', cat:'gen-bd', name:'TGU B-80', label:'Дизель-генераторная установка TGU B-80', img:'images/products/TGU-_80-01.png', badge:'', hint:'100 кВА / 80 кВт на двигателе BAUDOUIN 4M10G110/5 — для торговых и производственных объектов.' },
+  { id:'tgu-b-800', cat:'gen-bd', name:'TGU B-800', label:'Дизель-генераторная установка TGU B-800', img:'images/products/TGU-_800-01.png', badge:'', hint:'1000 кВА / 800 кВт на двигателе BAUDOUIN / WEICHAI 12M26G1100/5 — для объектов критической инфраструктуры.' },
+  { id:'tgu-b-900', cat:'gen-bd', name:'TGU B-900', label:'Дизель-генераторная установка TGU B-900', img:'images/products/TGU-_900-01.png', badge:'', hint:'1125 кВА / 900 кВт на двигателе BAUDOUIN / WEICHAI 12M33G1250/5 — для объектов критической инфраструктуры.' },
+  // ── ИБП ELEN ──
+  { id:'ibp-c1', cat:["ibp"], name:'IBP-C1', label:'ИБП СЕРИЯ C1 | 10–120 кВА | Трёхфазный', img:'images/products/photo_2026-03-02_00-27-49.jpg', badge:'hit', hint:'Трёхфазный онлайн ИБП с двойным преобразованием (ELEN C1). Доступен в 9 номиналах мощности: 10, 15, 20, 30, 40, 60, 80, 100, 120 кВА. Двухуровневое…' },
+  { id:'ibp-d1', cat:["ibp"], name:'IBP-D1', label:'ИБП СЕРИЯ D1 | 160–600 кВА | Трёхфазный', img:'images/products/image_2026-03-02_00-31-53.png', badge:'', hint:'ELEN D1 Series | Онлайн ИБП с двойным преобразованием | 160 / 200 / 250 / 300 / 400 / 500 / 600 кВА. Основные особенности: IGBT-выпрямитель с…' },
+  { id:'ibp-e3', cat:["ibp"], name:'IBP-E3', label:'ИБП СЕРИЯ E3 | 10–800 кВА | Трёхфазный', img:'images/products/image_2026-03-02_00-28-16.png', badge:'', hint:'ELEN E3 Series | Онлайн ИБП с трёхуровневым преобразованием | 10 / 20 / 30 / 40 / 60 / 80 / 100 / 120 / 160 / 200 / 250 / 300 / 400 / 500 / 600 / 800…' },
+  { id:'ibp-e4', cat:["ibp"], name:'IBP-E4', label:'ИБП СЕРИЯ E4 | Модульный | 40 кВА × 5 модулей | Трёхфазный', img:'images/products/image_2026-03-02_00-26-17.png', badge:'new', hint:'ELEN E4 Series Модульный | Модули горячей замены | 40 / 80 / 120 / 160 / 200 кВА (1–5 модулей по 40 кВА). Технология трёхуровневого выпрямителя и…' },
+  // ── ОСВЕТИТЕЛЬНЫЕ МАЧТЫ ──
+  { id:'as1400l5t', cat:["mast"], name:'AS1400L5T', label:'Осветительная мачта AS1400L5T (8,8 кВт)', img:'images/products/image_2026-06-19_17-28-38.png', badge:'', hint:'Передвижная осветительная установка на базе дизель-генератора. Применяется на строительных площадках, аварийных и спасательных работах, открытых…' },
+  // ── НЕОСПАН: парозащитные ──
+  { id:'ns-hpi-anticond', cat:["ns-vapor","ns-moisture"], name:'NS-HPI-ANTICOND', label:'НЕОСПАН Гидро-пароизоляция с антиконденсатной поверхностью', img:'images/products/NS-HPI-ANTICOND-1.jpg', badge:'', hint:'Гидро-пароизоляционная плёнка НЕОСПАН с антиконденсатным слоем. Впитывает излишки конденсата и постепенно высушивает их, предотвращая капель в…' },
+  { id:'ns-fn-hpi', cat:["ns-vapor","ns-moisture"], name:'NS-FN-HPI', label:'НЕОСПАН Гидропароизоляция повышенной прочности', img:'images/products/NS-FN-HPI-1.jpg', badge:'', hint:'Гидропароизоляционная мембрана НЕОСПАН повышенной прочности. Двойной барьер для пара и капельной влаги, армированный слой для повышенной…' },
+  { id:'ns-fn-pi', cat:["ns-vapor"], name:'NS-FN-PI', label:'НЕОСПАН Пароизоляционная мембрана', img:'images/products/NS-FN-PI-1.jpg', badge:'', hint:'Пароизоляционная мембрана НЕОСПАН функциональной серии. Барьер для водяного пара со стороны помещения. Доступна в форматах 35 и 70 м², облегчённый…' },
+  { id:'ns-fn-pi-plus', cat:["ns-vapor"], name:'NS-FN-PI-PLUS', label:'НЕОСПАН Пароизоляционная мембрана+', img:'images/products/NS-FN-PI-PLUS-1.jpg', badge:'', hint:'Усиленная пароизоляционная мембрана НЕОСПАН функциональной серии. Повышенная плотность. Усиленный вариант для помещений с повышенной влажностью.…' },
+  { id:'ns-prof-hpi', cat:["ns-vapor","ns-moisture"], name:'NS-PROF-HPI', label:'НЕОСПАН ПРОФ Гидро-пароизоляция', img:'images/products/NS-PROF-HPI-1.jpg', badge:'', hint:'Гидро-пароизоляционная мембрана линейки НЕОСПАН ПРОФ. Двусторонняя защита: барьер для пара и капельной влаги одновременно. Применяется в холодных…' },
+  { id:'ns-prof-pi', cat:["ns-vapor"], name:'NS-PROF-PI', label:'НЕОСПАН ПРОФ Пароизоляция', img:'images/products/NS-PROF-PI-1.jpg', badge:'', hint:'Пароизоляционная плёнка линейки НЕОСПАН ПРОФ. Препятствует проникновению водяного пара изнутри помещений в утеплитель и несущие конструкции.…' },
+  { id:'ns-prof-pi-plus', cat:["ns-vapor"], name:'NS-PROF-PI-PLUS', label:'НЕОСПАН ПРОФ Пароизоляция+', img:'images/products/NS-PROF-PI-PLUS-1.jpg', badge:'', hint:'Усиленная пароизоляционная мембрана НЕОСПАН ПРОФ для эксплуатации в помещениях с повышенной влажностью. Усиленный вариант с повышенной плотностью и…' },
+  // ── НЕОСПАН: ветрозащитные ──
+  { id:'ns-fn-vvz', cat:["ns-wind","ns-moisture"], name:'NS-FN-VVZ', label:'НЕОСПАН Ветро-влагозащитная паропроницаемая мембрана', img:'images/products/NS-FN-VVZ-1.jpg', badge:'', hint:'Ветро-влагозащитная паропроницаемая мембрана функциональной серии НЕОСПАН. Защищает утеплитель от ветра и капиллярной влаги, при этом пропускает…' },
+  { id:'ns-prof-vz', cat:["ns-wind"], name:'NS-PROF-VZ', label:'НЕОСПАН ПРОФ Ветрозащита', img:'images/products/NS-PROF-VZ-1.jpg', badge:'', hint:'Ветрозащитная паропроницаемая мембрана линейки НЕОСПАН ПРОФ. Применяется для защиты теплоизоляции и конструкций от ветровой инфильтрации и…' },
+  // ── НЕОСПАН: влагозащитные (не перечисленные выше) ──
+  // ── НЕОСПАН: соединительные ленты ──
+  { id:'ns-t-arm-clear', cat:["ns-tape"], name:'NS-T-ARM-CLEAR', label:'НЕОСПАН Армированная клеевая лента', img:'images/products/NS-T-ARM-CLEAR-1.jpg', badge:'', hint:'Армированная клеевая лента НЕОСПАН для герметичного соединения полотен мембран и пароизоляции. Армирование обеспечивает высокую прочность на разрыв.…' },
+  { id:'ns-t-butyl', cat:["ns-tape"], name:'NS-T-BUTYL', label:'НЕОСПАН Бутилкаучуковая лента двухсторонняя', img:'images/products/NS-T-BUTYL-1.jpg', badge:'', hint:'Бутилкаучуковая лента НЕОСПАН с двухсторонним клеевым слоем. Применяется для герметизации стыков мембран в местах примыкания к стенам, окнам,…' },
+  { id:'ns-t-poly', cat:["ns-tape"], name:'NS-T-POLY', label:'НЕОСПАН Полимерная соединительная лента', img:'images/products/NS-T-POLY-1.jpg', badge:'', hint:'Полимерная соединительная лента НЕОСПАН с армированием. Эластичная, обеспечивает долговечное и герметичное соединение полотен в зонах с…' },
 ];
 
 const BADGE_HTML = {
-  hit:  '<div class="p-badge badge-hit">🔥 Хит продаж</div>',
+  hit: '<div class="p-badge badge-hit">🔥 Хит продаж</div>',
   best: '<div class="p-badge badge-best">✅ Bestseller</div>',
-  new:  '<div class="p-badge badge-new">⚡ Акция</div>',
+  new: '<div class="p-badge badge-new">⚡ Новинка</div>',
 };
 
 const CAT_LABEL = {
-  gen: 'Генераторы', ibp: 'ИБП', mem: 'Мембраны',
-  par: 'Пароизоляция', ref: 'Отражающая', len: 'Ленты'
+  'gen-rs': 'Ricardo/SDEC', 'gen-bd': 'Baudouin', 'ibp': 'ИБП ELEN', 'mast': 'Осв. мачты',
+  'ns-vapor': 'Парозащита', 'ns-wind': 'Ветрозащита', 'ns-moisture': 'Влагозащита', 'ns-tape': 'Ленты',
 };
 
 let currentCat = 'all';
@@ -661,7 +369,7 @@ let searchQuery = '';
 
 function getFiltered() {
   return ALL_PRODUCTS.filter(p => {
-    const catOk = currentCat === 'all' || p.cat === currentCat;
+    const catOk = currentCat === 'all' || (Array.isArray(p.cat) ? p.cat.includes(currentCat) : p.cat === currentCat);
     const q = searchQuery.toLowerCase();
     const searchOk = !q || p.name.toLowerCase().includes(q) || p.label.toLowerCase().includes(q);
     return catOk && searchOk;
@@ -679,19 +387,17 @@ function renderGrid() {
   }
 
   grid.innerHTML = filtered.map(p => {
-    const imgSrc = PRODUCT_IMGS[p.id];
-    const imgHtml = imgSrc
-      ? `<img src="${imgSrc}" alt="${p.label}" style="width:100%;height:100%;object-fit:contain;padding:12px;" onerror="this.style.display='none'">`
-      : `<i class="ti ${p.icon}"></i><span>Фото товара</span>`;
-    const imgStyle = imgSrc ? 'background:#fff;' : '';
+    const imgHtml = p.img
+      ? `<img src="${p.img}" alt="${p.label}" onerror="this.parentElement.innerHTML='${p.badge ? BADGE_HTML[p.badge].replace(/'/g,"\\'").replace(/"/g,'&quot;') : ''}<i class=\\'ti ti-photo\\'></i><span>Фото скоро</span>'">`
+      : `<i class="ti ti-photo"></i><span>Фото скоро</span>`;
     return `
-    <div class="p-card" onclick="goToProduct('${p.id}', '${p.label.replace(/'/g,"\\'")}')">
-      <div class="p-img" style="${imgStyle}">
+    <div class="p-card" onclick="goToProduct('${p.id}')">
+      <div class="p-img">
         ${p.badge ? BADGE_HTML[p.badge] : ''}
         ${imgHtml}
       </div>
       <div class="p-body">
-        <div class="p-cat">${CAT_LABEL[p.cat]}</div>
+        <div class="p-cat">${(Array.isArray(p.cat)?p.cat:[p.cat]).map(c=>CAT_LABEL[c]).join(" / ")}</div>
         <div class="p-name">${p.label}</div>
         <div class="p-hint">${p.hint}</div>
       </div>
@@ -705,7 +411,7 @@ function renderGrid() {
   `}).join('');
 }
 
-function goToProduct(id, name) {
+function goToProduct(id) {
   window.location.href = `product.html?id=${id}`;
 }
 
@@ -714,49 +420,40 @@ function chooseProd(name) {
   window.open(`https://t.me/bltnkov?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// Sidebar filter
 document.querySelectorAll('.cat-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     currentCat = this.dataset.cat;
     renderGrid();
-    // scroll to top of main on mobile
     document.querySelector('.catalog-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Footer links filter
 document.querySelectorAll('.f-links a[data-cat]').forEach(a => {
   a.addEventListener('click', function(e) {
     e.preventDefault();
     const cat = this.dataset.cat;
-    document.querySelectorAll('.cat-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.cat === cat);
-    });
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
     currentCat = cat;
     renderGrid();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
 
-// Search
 document.getElementById('search').addEventListener('input', function() {
   searchQuery = this.value;
   renderGrid();
 });
 
-// Mobile filter toggle
 document.getElementById('mobile-filter').addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('open');
 });
 
-// Burger
 document.getElementById('burger').addEventListener('click', function() {
   document.getElementById('nav-links').classList.toggle('open');
 });
 
-// Check URL param for preselected category
 const urlParams = new URLSearchParams(window.location.search);
 const catParam = urlParams.get('cat');
 if (catParam) {

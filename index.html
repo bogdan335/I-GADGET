@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="iGadget — официальный поставщик пароизоляции Изоспан, дизельных генераторов и ИБП в Узбекистане.">
-  <title>iGadget — Строительные материалы и оборудование</title>
+  <meta name="description" content="I GADGET — дизель-генераторы TGU, ИБП ELEN, материалы НЕОСПАН в Узбекистане.">
+  <title>I GADGET — Генераторы, ИБП, изоляционные материалы</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -260,6 +260,32 @@
     }
     .feat-card:hover .feat-cta { background: rgba(232,135,42,0.18); }
 
+    .map-section { background: #0E1929; padding: 64px 56px; }
+    .map-card {
+      background: #111C2A; border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; overflow: hidden;
+    }
+    .map-card-inner { display: grid; grid-template-columns: 1fr 1.4fr; }
+    .map-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+    .map-address-row { display: flex; align-items: flex-start; gap: 12px; }
+    .map-address-icon {
+      width: 38px; height: 38px; background: rgba(232,135,42,0.12);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px; color: #E8872A;
+    }
+    .map-address-text { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .map-address-text strong { display: block; color: #fff; font-size: 16px; margin-bottom: 4px; }
+    .map-route-btn {
+      background: #E8872A; color: #fff; border: none;
+      padding: 14px 24px; border-radius: 9px; font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s;
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      width: fit-content;
+    }
+    .map-route-btn:hover { background: #d0771e; }
+    .map-iframe-wrap { position: relative; min-height: 340px; }
+    .map-iframe-wrap iframe { width: 100%; height: 100%; min-height: 340px; border: none; display: block; filter: grayscale(15%) contrast(1.05); }
+
     /* ── FORM ── */
     .form-wrap {
       display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
@@ -412,6 +438,13 @@
     }
 
     /* ── CRITICAL MOBILE FIXES ── */
+    @media (max-width: 960px) {
+      .map-section { padding: 40px 20px; }
+      .map-card-inner { grid-template-columns: 1fr; }
+      .map-info { padding: 28px 24px; }
+      .map-iframe-wrap { min-height: 260px; }
+      .map-iframe-wrap iframe { min-height: 260px; }
+    }
     * { -webkit-tap-highlight-color: transparent; }
     
     /* Kill ALL horizontal overflow */
@@ -508,7 +541,6 @@
     <li><a href="index.html">Главная</a></li>
     <li><a href="catalog.html">Продукция</a></li>
     <li><a href="#about">О компании</a></li>
-    <li><a href="#clients">Наши клиенты</a></li>
     <li><a href="#contact">Контакты</a></li>
   </ul>
   <div class="nav-right">
@@ -523,7 +555,7 @@
   <div class="hero-left">
     <div class="hero-badge"><i class="ti ti-award"></i> Официальный дистрибьютор</div>
     <h1 class="hero-h1">Оборудование<br>и материалы<br>для <em>ваших</em><br>объектов</h1>
-    <p class="hero-sub">Дизельные генераторы, ИБП и пароизоляция Изоспан. Поставки по всему Узбекистану — с документами, гарантией и нормальными ценами.</p>
+    <p class="hero-sub">Дизельные генераторы TGU, ИБП ELEN и изоляционные материалы НЕОСПАН. Поставки по всему Узбекистану — с документами, гарантией и нормальными ценами.</p>
     <div class="hero-btns">
       <a href="catalog.html" class="btn-orange">Узнать цену</a>
       <a href="catalog.html" class="btn-outline">Смотреть каталог</a>
@@ -531,9 +563,11 @@
   </div>
   <div class="hero-right">
     <div class="hero-img-box">
-      <div class="photo-placeholder">
-        <i class="ti ti-photo"></i>
-        <span>Фото оборудования</span>
+      <div class="photo-placeholder" style="border:none;background:#fff;overflow:hidden;">
+        <img src="images/products/image_2026-03-01_20-46-16.png"
+             alt="Дизель-генераторная установка TGU Atlas"
+             style="width:100%;height:100%;object-fit:contain;padding:20px;"
+             onerror="this.parentElement.innerHTML='<i class=\'ti ti-photo\'></i><span>Фото оборудования</span>'">
       </div>
       <div class="hero-stats-row">
         <div class="hero-stat">
@@ -545,7 +579,7 @@
           <div class="hero-stat-lbl">лет на рынке</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">56</div>
+          <div class="hero-stat-num">57</div>
           <div class="hero-stat-lbl">позиций</div>
         </div>
       </div>
@@ -568,7 +602,7 @@
     <div class="who-text">
       <p>ООО «I GADGET» осуществляет комплексный подход к решению задач создания систем <strong>генерации, преобразования и распределения электроэнергии</strong> для любых потребителей, имеющих силовую и осветительную нагрузку.</p>
       <p>Компания постоянно развивается в плане ассортимента и региона продаж. <strong>Наша продукция востребована во многих регионах Узбекистана</strong> — от Ташкента до отдалённых промышленных объектов.</p>
-      <p>Дизельные генераторы от 10 до 1000 кВт, ИБП серии «ENEL» от 10 до 1000 кВА, пароизоляция и мембраны Изоспан. <strong>Всё с сертификатами качества и гарантией завода-изготовителя.</strong></p>
+      <p>Дизельные генераторы TGU от 25 до 1719 кВА на двигателях Ricardo/SDEC и Baudouin, ИБП серии ELEN от 10 до 800 кВА, изоляционные материалы НЕОСПАН. <strong>Всё с сертификатами качества и гарантией завода-изготовителя.</strong></p>
     </div>
     <div class="who-photo" style="border:none;background:#000;overflow:hidden;">
       <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80" 
@@ -605,111 +639,6 @@
   </div>
 </section>
 
-<!-- ── КЛИЕНТЫ ── -->
-<section class="s s-dark" id="clients">
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-bottom:64px;">
-    <div>
-      <div class="eyebrow">Нам доверяют</div>
-      <div class="sec-title sec-title-dark" style="margin-bottom:16px;">Государственные структуры, банки и крупные стройки</div>
-      <p style="font-size:15px;color:rgba(255,255,255,0.45);line-height:1.7;">Среди наших клиентов — организации с высочайшими требованиями к надёжности оборудования. Они выбрали нас и продолжают работать с нами.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
-        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">500+</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">объектов<br>по всему Узбекистану</div>
-      </div>
-      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
-        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">10+</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">лет<br>на рынке</div>
-      </div>
-      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
-        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">100%</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">сертифицированная<br>продукция</div>
-      </div>
-      <div style="background:#111C2A;border:1px solid rgba(232,135,42,0.2);border-radius:14px;padding:24px;text-align:center;">
-        <div style="font-size:40px;font-weight:900;color:#E8872A;letter-spacing:-2px;line-height:1;">12</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-top:6px;line-height:1.4;">месяцев<br>гарантии</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Клиенты горизонтальный скролл-список -->
-  <div class="clients-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);">
-
-    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-building-government" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Госструктуры</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">УДАП РУЗ</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Объединённая дирекция строящихся зданий и сооружений. Станции 1000 кВт, 200 кВт и 100 кВт.</div>
-    </div>
-
-    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-shield" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">МВД</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">ХОЗУ МВД & Интерпол</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Станция 100 кВт и ИБП 65 кВт. Подразделение «Интерпол» — станция 75 кВт. Центральный ОВИР — 100 кВт.</div>
-    </div>
-
-    <div style="background:#0E1929;padding:28px 28px 24px;border-bottom:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-crane" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Строительство</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">СМНУ-12</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Строительно-монтажное управление. Поставка дизельной станции мощностью 100 кВт.</div>
-    </div>
-
-    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">Национальный Банк Узбекистана</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Хамзинский филиал, Ташкент. Станция 60 кВт и два ИБП по 20 кВт каждый.</div>
-    </div>
-
-    <div style="background:#0E1929;padding:28px 28px 24px;border-right:1px solid rgba(255,255,255,0.06);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">АгроБанк Самарканд</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Поставка дизельной станции 100 кВт. Обеспечение бесперебойного питания регионального отделения.</div>
-    </div>
-
-    <div style="background:#0E1929;padding:28px 28px 24px;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-        <div style="width:36px;height:36px;background:rgba(232,135,42,0.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <i class="ti ti-building-bank" style="font-size:18px;color:#E8872A;"></i>
-        </div>
-        <div style="font-size:10px;font-weight:700;color:#E8872A;text-transform:uppercase;letter-spacing:1.2px;">Банки</div>
-      </div>
-      <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:8px;">ТрастБанк & Кишлок Курилиш</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">ТрастБанк Ташкент — станция 15 кВт. Банк «Кишлок Курилиш» — поставки в областные филиалы.</div>
-    </div>
-
-  </div>
-
-  <div style="margin-top:20px;padding:16px 24px;background:#111C2A;border-radius:10px;border-left:3px solid #E8872A;">
-    <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6;">Вся продукция имеет <strong style="color:rgba(255,255,255,0.7);">сертификаты качества, соответствия и происхождения</strong>, гарантию завода-изготовителя.</p>
-  </div>
-
-</section>
 
 <!-- ── CATALOG + FEATURED (единый блок) ── -->
 <section class="s s-mid">
@@ -717,8 +646,8 @@
   <!-- Верхняя часть: заголовок + кнопка по центру -->
   <div style="text-align:center; margin-bottom: 56px;">
     <div class="eyebrow" style="justify-content:center; display:flex;">Каталог продукции</div>
-    <div class="cta-big-title" style="margin: 10px 0 16px;">56 позиций<br><em>Всё в наличии</em></div>
-    <p class="cta-sub" style="margin-bottom: 32px;">Генераторы, ИБП, пароизоляция Изоспан и монтажные ленты</p>
+    <div class="cta-big-title" style="margin: 10px 0 16px;">57 позиций<br><em>Всё в наличии</em></div>
+    <p class="cta-sub" style="margin-bottom: 32px;">Генераторы TGU, ИБП ELEN и материалы НЕОСПАН</p>
     <a href="catalog.html" class="btn-big" style="display:inline-flex;">
       Смотреть весь каталог <i class="ti ti-arrow-right"></i>
     </a>
@@ -727,45 +656,77 @@
   <!-- Нижняя часть: три карточки хитов -->
   <div class="featured-grid">
 
-    <a href="product.html?id=aj-ella-150" class="feat-card">
+    <a href="product.html?id=tgu-100" class="feat-card">
       <div class="feat-img" style="background:#fff;padding:0;">
         <div class="feat-badge badge-hit">🔥 Хит продаж</div>
-        <img src="https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_2_1665491506_1697459388.jpg" alt="Генератор AJ-ELLA 150" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+        <img src="images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png" alt="Генератор TGU-100" style="width:100%;height:100%;object-fit:contain;padding:16px;">
       </div>
       <div class="feat-body">
         <div class="feat-cat">Генераторы</div>
-        <div class="feat-name">Дизельный генератор AJ-ELLA 150</div>
-        <div class="feat-desc">Для средних объектов: торговые центры, производства, строительные площадки. Мощность 150 кВА.</div>
+        <div class="feat-name">Дизель-генераторная установка TGU — 100</div>
+        <div class="feat-desc">Самая популярная модель серии. 125 кВА для торговых центров и производств.</div>
         <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
       </div>
     </a>
 
-    <a href="product.html?id=b" class="feat-card">
+    <a href="product.html?id=ibp-c1" class="feat-card">
       <div class="feat-img" style="background:#fff;padding:0;">
         <div class="feat-badge badge-best">✅ Bestseller</div>
-        <img src="https://isospan.gexa.ru/wp-content/uploads/2020/11/b_01.png" alt="Изоспан В" style="width:100%;height:100%;object-fit:contain;padding:16px;" onerror="this.style.display='none'">
+        <img src="images/products/photo_2026-03-02_00-27-49.jpg" alt="ИБП ELEN C1" style="width:100%;height:100%;object-fit:contain;padding:16px;">
       </div>
       <div class="feat-body">
-        <div class="feat-cat">Пароизоляция</div>
-        <div class="feat-name">Изоспан В</div>
-        <div class="feat-desc">Самая популярная пароизоляция для жилых домов и офисов. Защищает утеплитель от влаги изнутри.</div>
+        <div class="feat-cat">ИБП ELEN</div>
+        <div class="feat-name">ИБП Серия C1 | 10–120 кВА</div>
+        <div class="feat-desc">Онлайн ИБП с двойным преобразованием. Офисы, серверные, медучреждения.</div>
         <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
       </div>
     </a>
 
-    <a href="product.html?id=aj-s-825" class="feat-card">
+    <a href="product.html?id=tgu-b-1000" class="feat-card">
       <div class="feat-img" style="background:#fff;padding:0;">
-        <div class="feat-badge badge-new">⚡ Акция</div>
-        <img src="https://cdn.ulkansayt.uz/files/19544/thumbs/image/570x0_pic_1_1665491358_1697455274.jpg" alt="Генератор AJ-S 825" style="width:100%;height:100%;object-fit:contain;padding:16px;">
+        <div class="feat-badge badge-new">⚡ Флагман</div>
+        <img src="images/products/TGU-_1000-01.png" alt="Генератор TGU B-1000" style="width:100%;height:100%;object-fit:contain;padding:16px;">
       </div>
       <div class="feat-body">
-        <div class="feat-cat">Генераторы</div>
-        <div class="feat-name">Дизельный генератор AJ – S 825</div>
-        <div class="feat-desc">750 кВА на двигателе SDEC. Топ промышленной серии S для заводов и дата-центров.</div>
+        <div class="feat-cat">Генераторы Baudouin</div>
+        <div class="feat-name">Дизель-генераторная установка TGU B-1000</div>
+        <div class="feat-desc">1250 кВА на двигателе Baudouin. Флагман для крупнейших промышленных объектов.</div>
         <div class="feat-cta">Узнать цену <i class="ti ti-arrow-right"></i></div>
       </div>
     </a>
 
+  </div>
+</section>
+
+<!-- ── КАРТА ── -->
+<section class="map-section">
+  <div class="map-card">
+    <div class="map-card-inner">
+      <div class="map-info">
+        <div class="eyebrow">Наш офис</div>
+        <div class="map-address-row">
+          <div class="map-address-icon"><i class="ti ti-map-pin"></i></div>
+          <div class="map-address-text">
+            <strong>I GADGET</strong>
+            г. Ташкент, Узбекистан<br>
+            <span style="color:rgba(255,255,255,0.4);font-size:13px;">Точный адрес уточняется — свяжитесь с нами в Telegram</span>
+          </div>
+        </div>
+        <div class="map-address-row">
+          <div class="map-address-icon"><i class="ti ti-clock"></i></div>
+          <div class="map-address-text">
+            <strong>Часы работы</strong>
+            Пн–Пт: 9:00–18:00
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Tashkent,Uzbekistan" target="_blank" class="map-route-btn">
+          <i class="ti ti-route"></i> Построить маршрут
+        </a>
+      </div>
+      <div class="map-iframe-wrap">
+        <iframe src="https://www.google.com/maps?q=Tashkent,Uzbekistan&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -798,7 +759,7 @@
         <select id="f-product">
           <option>Дизельный генератор</option>
           <option>ИБП</option>
-          <option>Пароизоляция Изоспан</option>
+          <option>Материалы НЕОСПАН</option>
           <option>Соединительные ленты</option>
           <option>Другое</option>
         </select>
@@ -821,8 +782,8 @@
       <div class="f-tagline">Надёжные строительные материалы и промышленное оборудование. Поставки по всему Узбекистану.</div>
       <div class="f-phones">
         <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998903181917">+998-90-318-19-17</a></div>
-        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998981285">+998-99-898-12-85</a></div>
-        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998998911929">+998-99-891-19-29</a></div>
+        <div class="f-phone"><i class="ti ti-phone" style="color:#E8872A;font-size:14px;"></i><a href="tel:+998901285987">+998-90-128-59-87</a></div>
+        <div class="f-phone"><i class="ti ti-mail" style="color:#E8872A;font-size:14px;"></i><a href="mailto:t-es@yandex.uz">t-es@yandex.uz</a></div>
       </div>
     </div>
     <div>
