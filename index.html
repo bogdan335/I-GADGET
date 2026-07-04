@@ -16,13 +16,16 @@
     html { overflow-x: hidden; }
 
     /* ── NAV ── */
+    body { padding-top: 68px; }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
       background: rgba(11,20,32,0.95); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      position: sticky; top: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      transition: transform .3s ease;
     }
+    .nav.nav-hidden { transform: translateY(-100%); }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: #E8872A; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -150,6 +153,20 @@
     .s { padding: 88px 56px; }
     .s-dark { background: #0B1420; }
     .s-mid  { background: #0E1929; }
+    #about {
+      position: relative; overflow: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20transform%3D'rotate(-20%20100%20100)'%3E%3Cpath%20d%3D'M%20194.58%2091.06%20L%20194.58%20108.94%20L%20171.68%20106.78%20L%20161.97%20136.65%20L%20181.77%20148.36%20L%20171.26%20162.82%20L%20154.01%20147.61%20L%20128.59%20166.08%20L%20137.73%20187.19%20L%20120.72%20192.71%20L%20115.71%20170.27%20L%2084.29%20170.27%20L%2079.28%20192.71%20L%2062.27%20187.19%20L%2071.41%20166.08%20L%2045.99%20147.61%20L%2028.74%20162.82%20L%2018.23%20148.36%20L%2038.03%20136.65%20L%2028.32%20106.78%20L%205.42%20108.94%20L%205.42%2091.06%20L%2028.32%2093.22%20L%2038.03%2063.35%20L%2018.23%2051.64%20L%2028.74%2037.18%20L%2045.99%2052.39%20L%2071.41%2033.92%20L%2062.27%2012.81%20L%2079.28%207.29%20L%2084.29%2029.73%20L%20115.71%2029.73%20L%20120.72%207.29%20L%20137.73%2012.81%20L%20128.59%2033.92%20L%20154.01%2052.39%20L%20171.26%2037.18%20L%20181.77%2051.64%20L%20161.97%2063.35%20L%20171.68%2093.22%20Z%20M%20130.00%20100.00%20A%2030.00%2030.00%200%201%200%2070.00%20100.00%20A%2030.00%2030.00%200%201%200%20130.00%20100.00%20Z'%20fill%3D'%23ffffff'%20fill-opacity%3D'0.05'%20fill-rule%3D'evenodd'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat; background-position: right -140px top -120px; background-size: 520px 520px;
+    }
+    .why-section {
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'28'%20height%3D'28'%20viewBox%3D'0%200%2028%2028'%3E%3Ccircle%20cx%3D'2'%20cy%3D'2'%20r%3D'1.4'%20fill%3D'%23ffffff'%20fill-opacity%3D'0.09'%2F%3E%3C%2Fsvg%3E");
+      background-repeat: repeat;
+    }
+    .feat-section {
+      position: relative; overflow: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20transform%3D'rotate(50%20100%20100)'%3E%3Cpath%20d%3D'M%20194.58%2091.06%20L%20194.58%20108.94%20L%20171.68%20106.78%20L%20161.97%20136.65%20L%20181.77%20148.36%20L%20171.26%20162.82%20L%20154.01%20147.61%20L%20128.59%20166.08%20L%20137.73%20187.19%20L%20120.72%20192.71%20L%20115.71%20170.27%20L%2084.29%20170.27%20L%2079.28%20192.71%20L%2062.27%20187.19%20L%2071.41%20166.08%20L%2045.99%20147.61%20L%2028.74%20162.82%20L%2018.23%20148.36%20L%2038.03%20136.65%20L%2028.32%20106.78%20L%205.42%20108.94%20L%205.42%2091.06%20L%2028.32%2093.22%20L%2038.03%2063.35%20L%2018.23%2051.64%20L%2028.74%2037.18%20L%2045.99%2052.39%20L%2071.41%2033.92%20L%2062.27%2012.81%20L%2079.28%207.29%20L%2084.29%2029.73%20L%20115.71%2029.73%20L%20120.72%207.29%20L%20137.73%2012.81%20L%20128.59%2033.92%20L%20154.01%2052.39%20L%20171.26%2037.18%20L%20181.77%2051.64%20L%20161.97%2063.35%20L%20171.68%2093.22%20Z%20M%20130.00%20100.00%20A%2030.00%2030.00%200%201%200%2070.00%20100.00%20A%2030.00%2030.00%200%201%200%20130.00%20100.00%20Z'%20fill%3D'%23ffffff'%20fill-opacity%3D'0.04'%20fill-rule%3D'evenodd'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat; background-position: left -110px bottom -140px; background-size: 440px 440px;
+    }
     .s-light { background: #F6F7F9; color: #0B1420; }
     .eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 2px;
@@ -168,7 +185,9 @@
     }
     .who-text p {
       font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.75;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      background: #111C2A; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 20px 22px;
     }
     .who-text p:last-child { margin-bottom: 0; }
     .who-text strong { color: rgba(255,255,255,0.85); font-weight: 600; }
@@ -356,6 +375,18 @@
       transition: transform .2s, background .2s;
     }
     .tg-float:hover { background: #1a8ec4; transform: scale(1.08); }
+    .back-to-top {
+      position: fixed; bottom: 96px; right: 28px; width: 48px; height: 48px;
+      border-radius: 50%; background: #111C2A; border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; cursor: pointer; z-index: 998;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity .25s, transform .25s, visibility .25s, background .2s;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-to-top:hover { background: #1A2A3D; }
+    @media (max-width: 960px) { .back-to-top { bottom: 88px; right: 20px; width: 44px; height: 44px; font-size: 18px; } }
 
     /* ── MOBILE ── */
     /* ── TABLET ── */
@@ -375,7 +406,8 @@
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { padding: 44px 24px 36px; }
       .hero-h1 { font-size: 36px; letter-spacing: -1px; }
-      .hero-right { display: none; }
+      .hero-right { padding: 28px 24px 40px; }
+      .hero-img-box { width: 100%; max-width: 340px; }
       .strip { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
       .strip-item { padding: 4px 10px; font-size: 12px; border-right: none; }
       .s { padding: 52px 20px; }
@@ -614,7 +646,7 @@
 </section>
 
 <!-- ── WHY US ── -->
-<section class="s s-mid">
+<section class="s s-mid why-section">
   <div class="eyebrow">Почему выбирают нас</div>
   <div class="sec-title sec-title-dark">Три причины работать с нами</div>
   <div class="why-grid">
@@ -641,7 +673,7 @@
 
 
 <!-- ── CATALOG + FEATURED (единый блок) ── -->
-<section class="s s-mid">
+<section class="s s-mid feat-section">
 
   <!-- Верхняя часть: заголовок + кнопка по центру -->
   <div style="text-align:center; margin-bottom: 56px;">
@@ -822,12 +854,40 @@
 <a href="https://t.me/bltnkov" target="_blank" class="tg-float" title="Написать в Telegram">
   <i class="ti ti-brand-telegram"></i>
 </a>
+<button class="back-to-top" id="back-to-top" title="Наверх" aria-label="Наверх"><i class="ti ti-arrow-up"></i></button>
 
 <script>
   // Burger
   document.getElementById('burger').addEventListener('click', function() {
     document.getElementById('nav-links').classList.toggle('open');
   });
+
+  // Hide nav on scroll down, reveal on scroll up
+  (function() {
+    const nav = document.querySelector('.nav');
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', function() {
+      const y = window.scrollY;
+      if (y > lastY && y > 80) {
+        nav.classList.add('nav-hidden');
+        document.getElementById('nav-links').classList.remove('open');
+      } else {
+        nav.classList.remove('nav-hidden');
+      }
+      lastY = y;
+    }, { passive: true });
+  })();
+
+  // Back to top
+  (function() {
+    const btn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 500) btn.classList.add('show'); else btn.classList.remove('show');
+    }, { passive: true });
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 
   // Phone mask +998 (XX) XXX-XX-XX
   const phoneInput = document.getElementById('f-phone');

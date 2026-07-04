@@ -13,7 +13,9 @@
     html{scroll-behavior:smooth;overflow-x:hidden}
     body{font-family:'Inter',sans-serif;background:#0B1420;color:#fff;overflow-x:hidden;max-width:100vw}
     *{-webkit-tap-highlight-color:transparent}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:200}
+    body{padding-top:68px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:fixed;top:0;left:0;right:0;z-index:200;transition:transform .3s ease}
+    .nav.nav-hidden{transform:translateY(-100%)}
     .logo{font-size:21px;font-weight:900;color:#fff;text-decoration:none}.logo span{color:#E8872A}
     .nav-links{display:flex;gap:36px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
@@ -27,7 +29,7 @@
     .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.35)}
     .breadcrumb a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
     .breadcrumb a:hover{color:#E8872A}
-    .product-hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:#0E1929}
+    .product-hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:#0E1929;position:relative;overflow:hidden;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20transform%3D'rotate(25%20100%20100)'%3E%3Cpath%20d%3D'M%20194.58%2091.06%20L%20194.58%20108.94%20L%20171.68%20106.78%20L%20161.97%20136.65%20L%20181.77%20148.36%20L%20171.26%20162.82%20L%20154.01%20147.61%20L%20128.59%20166.08%20L%20137.73%20187.19%20L%20120.72%20192.71%20L%20115.71%20170.27%20L%2084.29%20170.27%20L%2079.28%20192.71%20L%2062.27%20187.19%20L%2071.41%20166.08%20L%2045.99%20147.61%20L%2028.74%20162.82%20L%2018.23%20148.36%20L%2038.03%20136.65%20L%2028.32%20106.78%20L%205.42%20108.94%20L%205.42%2091.06%20L%2028.32%2093.22%20L%2038.03%2063.35%20L%2018.23%2051.64%20L%2028.74%2037.18%20L%2045.99%2052.39%20L%2071.41%2033.92%20L%2062.27%2012.81%20L%2079.28%207.29%20L%2084.29%2029.73%20L%20115.71%2029.73%20L%20120.72%207.29%20L%20137.73%2012.81%20L%20128.59%2033.92%20L%20154.01%2052.39%20L%20171.26%2037.18%20L%20181.77%2051.64%20L%20161.97%2063.35%20L%20171.68%2093.22%20Z%20M%20130.00%20100.00%20A%2030.00%2030.00%200%201%200%2070.00%20100.00%20A%2030.00%2030.00%200%201%200%20130.00%20100.00%20Z'%20fill%3D'%23ffffff'%20fill-opacity%3D'0.045'%20fill-rule%3D'evenodd'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:right -130px top -110px;background-size:460px 460px}
     .product-img-side{padding:48px 56px;display:flex;flex-direction:column;gap:16px;border-right:1px solid rgba(255,255,255,.06)}
     .product-img-box{width:100%;aspect-ratio:4/3;background:#fff;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .product-img-box img{width:100%;height:100%;object-fit:contain;padding:16px}
@@ -87,6 +89,10 @@
     .tg-link{display:inline-flex;align-items:center;gap:8px;background:#229ED9;color:#fff;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none}
     .tg-float{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#229ED9;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;text-decoration:none;z-index:999;box-shadow:0 6px 24px rgba(34,158,217,.45);transition:transform .2s}
     .tg-float:hover{transform:scale(1.08)}
+    .back-to-top{position:fixed;bottom:96px;right:28px;width:48px;height:48px;border-radius:50%;background:#111C2A;border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:998;box-shadow:0 6px 20px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s,transform .25s,visibility .25s,background .2s}
+    .back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+    .back-to-top:hover{background:#1A2A3D}
+    @media(max-width:900px){.back-to-top{bottom:88px;right:20px;width:44px;height:44px;font-size:18px}}
     .not-found{padding:120px 56px;text-align:center}
     .not-found i{font-size:64px;color:rgba(255,255,255,.1);display:block;margin-bottom:20px}
     .not-found h2{font-size:28px;font-weight:700;color:#fff;margin-bottom:12px}
@@ -199,6 +205,7 @@
   </div>
 </footer>
 <a href="https://t.me/bltnkov" target="_blank" class="tg-float"><i class="ti ti-brand-telegram"></i></a>
+<button class="back-to-top" id="back-to-top" title="Наверх" aria-label="Наверх"><i class="ti ti-arrow-up"></i></button>
 <script>
 const PRODUCTS = {
   'tgu-100':{cat:'Генераторы Ricardo/SDEC',name:'Дизель-генераторная установка TGU — 100',img:'images/products/DIZEL-GENERATORNAYA-USTANOVKA-TGU-30.png',tagline:'125 кВА / 100 кВт на двигателе RICARDO R6105AZLD1 — для торговых и производственных объектов.',whofor:[{icon:'ti-building-store',label:'Торговый центр'},{icon:'ti-tools',label:'Производство'},{icon:'ti-crane',label:'Стройплощадка'}],specs:[{k:'Основная мощность',v:'125 кВА / 100 кВт'},{k:'Двигатель',v:'RICARDO R6105AZLD1'},{k:'Топливный бак',v:'250 л'},{k:'Запуск',v:'Автоматический'}],desc:'ДИЗЕЛЬ-ГЕНЕРАТОРНАЯ УСТАНОВКА TGU 100 | Основная мощность 50 Гц / 1500 об/мин | 125 кВА / 100 кВт. ОСНОВНЫЕ ХАРАКТЕРИСТИКИ ДГУ: дизельный двигатель с водяным охлаждением, наличие фильтров масла/топлива, электрический стартер 24 В, электронный регулятор, одноподшипниковый генератор переменного тока класса Н, выходное напряжение 230/400 В (50 Гц), регулятор напряжения AVR SE 350, трехполюсный автомат защиты, панель COMAP, стальная рама со встроенными антивибрационными компонентами, встроенный топливный бак емкостью 150 л, промышленный глушитель (9–18 дБА), степень защиты IP23, упаковка в пластиковую пленку, руководство по эксплуатации.',fullSpecs:[['Напряжение','380–440 В'],['Основная мощность','125 кВА / 100 кВт'],['Производитель','RICARDO'],['Модель двигателя','R6105AZLD1'],['Число цилиндров','6'],['Тип двигателя','Рядный'],['Стандартный регулятор','Электронный'],['Охлаждение','Турбокомпрессор / водяное'],['Диаметр и ход поршня','105 мм × 130 мм'],['Коэффициент сжатия','15,5:1'],['Объем двигателя','6,75 л'],['Режим запуска','Автоматический'],['Емкость аккумуляторных батарей','2 × 60 А·ч'],['Выходная мощность двигателя (основной режим)','110 кВт'],['Выходная мощность двигателя (резервный режим)','125 кВт'],['Погрешность регулирования напряжения генератора','±1,0%'],['Частота','50 Гц'],['Скорость вращения','1500 об/мин'],['Класс изоляции генератора переменного тока','Н'],['Расход топлива (основной режим, 100% нагрузка)','21,1 л/час'],['Рекомендованное топливо','Дизельное топливо №2'],['Система смазки','18 л'],['Топливный бак','250 л'],['Объем используемого хладагента','29 л'],['Тип двигателя (детально)','Четырехтактный с водяным охлаждением, турбокомпрессором'],['Конструкция двигателя','Два клапана на цилиндр, кованые коленчатый и распределительный валы'],['Система подачи топлива','Встроенные картриджные фильтры топлива'],['Система запуска','24 В, зарядный генератор 50 А'],['Фильтры','Воздушный фильтр с сухим компонентом; масляный фильтр'],['Система охлаждения','Стандартный радиатор 60 °С, кран слива'],['Генератор переменного тока тип','Одноподшипниковый четырехполюсный брызгозащищенный'],['Класс изоляции генератора','Н'],['Минимальная продолжительность использования подшипника','100 000 часов'],['Подстройка частоты','Изохронный режим при нагрузке 0-100%'],['Флуктуации частоты','±0,25% от среднего значения'],['Электрическая схема','Четырехполюсное бесщеточное исполнение, намотка 2/3'],['Температура генератора переменного тока','Класс изоляции Н'],['Стандарты соответствия','NEMA MG1-22, BS5000, CSA C22.2, IEC 34-1'],['Длина установки открытого типа','2300 мм'],['Ширина установки открытого типа','1100 мм'],['Высота установки открытого типа','1600 мм'],['Масса без жидкостей (открытый тип)','1500 кг'],['Длина установки закрытого типа','2750 мм'],['Ширина установки закрытого типа','1100 мм'],['Высота установки закрытого типа','1700 мм'],['Степень защиты','IP23'],['Возможные напряжения','243/440 В, 208/416 В, 240/416 В, 230/460 В, 230/400 В, 110/190 В, 220/380 В']]},
@@ -331,6 +338,25 @@ function render(){
 }
 
 document.getElementById('burger').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open')});
+
+(function(){
+  const nav=document.querySelector('.nav');
+  let lastY=window.scrollY;
+  window.addEventListener('scroll',function(){
+    const y=window.scrollY;
+    if(y>lastY && y>80){ nav.classList.add('nav-hidden'); document.getElementById('nav-links').classList.remove('open'); }
+    else { nav.classList.remove('nav-hidden'); }
+    lastY=y;
+  },{passive:true});
+})();
+
+(function(){
+  const btn=document.getElementById('back-to-top');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>500) btn.classList.add('show'); else btn.classList.remove('show');
+  },{passive:true});
+  btn.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
 render();
 </script>
 </body>
