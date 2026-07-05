@@ -14,8 +14,9 @@
     html{scroll-behavior:smooth;overflow-x:clip}
     body{font-family:'Inter',sans-serif;background:#0B1420;color:#fff;overflow-x:clip;max-width:100vw}
     *{-webkit-tap-highlight-color:transparent}
-    /* sticky, а не fixed: fixed-шапка лагает в iOS-вебвью (Telegram/Chrome) */
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:200}
+    /* Шапка в потоке страницы, уезжает вместе с контентом (как у gshop.uz) —
+       в Telegram/Chrome-вебвью нечему лагать. Наверх возвращает стрелка. */
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:#0B1420;border-bottom:1px solid rgba(255,255,255,.07);position:relative;z-index:200}
     .logo{font-size:21px;font-weight:900;color:#fff;text-decoration:none}.logo span{color:#E8872A}
     .nav-links{display:flex;gap:36px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
@@ -99,7 +100,7 @@
     .not-found p{color:rgba(255,255,255,.4);margin-bottom:28px}
     @media(max-width:900px){
       .nav{padding:0 20px}.nav-links,.nav-phone{display:none}.nav-burger{display:flex!important}
-      .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;left:0;right:0;height:calc(100vh - 68px);background:#0B1420;padding:0;border-top:1px solid rgba(255,255,255,.08);z-index:199;overflow-y:auto}
+      .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;left:0;right:0;height:calc(100vh - 68px);height:calc(100dvh - 68px);background:#0B1420;padding:0;border-top:1px solid rgba(255,255,255,.08);z-index:199;overflow-y:auto}
       .nav-links.open li{border-bottom:1px solid rgba(255,255,255,.07)}
       .nav-links.open a{font-size:17px;color:#fff;padding:18px 24px;display:block}
       .breadcrumb-bar{padding:12px 20px}
@@ -337,13 +338,14 @@ function render(){
     ${relatedHtml}`;
 }
 
-document.getElementById('burger').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open')});
-
-(function(){
-  window.addEventListener('scroll',function(){
-    document.getElementById('nav-links').classList.remove('open');
-  },{passive:true});
-})();
+// Перед открытием меню мгновенно доскролливаем к верху, чтобы меню (fixed, top:68px)
+// встало ровно под шапкой. Закрытие по скроллу убрано — на iOS инерционный скролл
+// после тапа сразу же закрывал только что открытое меню.
+document.getElementById('burger').addEventListener('click',function(){
+  const links=document.getElementById('nav-links');
+  if(!links.classList.contains('open')) window.scrollTo({top:0,behavior:'instant'});
+  links.classList.toggle('open');
+});
 
 (function(){
   const btn=document.getElementById('back-to-top');

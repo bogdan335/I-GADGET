@@ -27,13 +27,14 @@
     }
     * { -webkit-tap-highlight-color: transparent; }
 
-    /* sticky, а не fixed: fixed-шапка лагает в iOS-вебвью (Telegram/Chrome) */
+    /* Шапка в потоке страницы, уезжает вместе с контентом (как у gshop.uz) —
+       в Telegram/Chrome-вебвью нечему лагать. Наверх возвращает стрелка. */
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
-      background: rgba(11,20,32,0.97); backdrop-filter: blur(12px);
+      background: #0B1420;
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      position: sticky; top: 0; z-index: 200;
+      position: relative; z-index: 200;
     }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; }
     .logo span { color: #E8872A; }
@@ -62,7 +63,7 @@
 
     .catalog-layout { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: calc(100vh - 68px); }
 
-    .sidebar { background: #0E1929; border-right: 1px solid rgba(255,255,255,0.06); padding: 32px 24px; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; }
+    .sidebar { background: #0E1929; border-right: 1px solid rgba(255,255,255,0.06); padding: 32px 24px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
     .sidebar::-webkit-scrollbar { width: 4px; }
     .sidebar::-webkit-scrollbar-track { background: transparent; }
     .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
@@ -151,7 +152,7 @@
       .nav { padding: 0 20px; }
       .nav-links, .nav-phone { display: none; }
       .nav-burger { display: flex !important; }
-      .nav-links.open { display: flex; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; height: calc(100vh - 68px); background: #0B1420; padding: 0; border-top: 1px solid rgba(255,255,255,0.08); z-index: 199; overflow-y: auto; }
+      .nav-links.open { display: flex; flex-direction: column; gap: 0; position: fixed; top: 68px; left: 0; right: 0; height: calc(100vh - 68px); height: calc(100dvh - 68px); background: #0B1420; padding: 0; border-top: 1px solid rgba(255,255,255,0.08); z-index: 199; overflow-y: auto; }
       .nav-links.open li { border-bottom: 1px solid rgba(255,255,255,0.07); }
       .nav-links.open a { font-size: 17px; color: #fff; padding: 18px 24px; display: block; }
       .page-header { padding: 28px 20px 24px; }
@@ -470,16 +471,14 @@ document.getElementById('mobile-filter').addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('open');
 });
 
+// Перед открытием меню мгновенно доскролливаем к верху, чтобы меню (fixed, top:68px)
+// встало ровно под шапкой. Закрытие по скроллу убрано — на iOS инерционный скролл
+// после тапа сразу же закрывал только что открытое меню.
 document.getElementById('burger').addEventListener('click', function() {
-  document.getElementById('nav-links').classList.toggle('open');
+  const links = document.getElementById('nav-links');
+  if (!links.classList.contains('open')) window.scrollTo({ top: 0, behavior: 'instant' });
+  links.classList.toggle('open');
 });
-
-// Nav stays permanently fixed/visible. Just close the mobile menu on scroll.
-(function() {
-  window.addEventListener('scroll', function() {
-    document.getElementById('nav-links').classList.remove('open');
-  }, { passive: true });
-})();
 
 // Back to top
 (function() {

@@ -18,15 +18,15 @@
     html { overflow-x: clip; }
 
     /* ── NAV ── */
-    /* sticky, а не fixed: в iOS-вебвью (Telegram/Chrome) fixed-шапка репозиционируется
-       с лагом при сворачивании панели браузера и "отклеивается" — sticky едет вместе
-       со слоем скролла без лага */
+    /* Шапка лежит в потоке страницы и уезжает вместе с контентом (как у gshop.uz):
+       ничего не прилипает к верху — в Telegram/Chrome-вебвью нечему лагать
+       и отклеиваться. Наверх возвращает плавающая стрелка. */
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
-      background: rgba(11,20,32,0.95); backdrop-filter: blur(12px);
+      background: #0B1420;
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      position: sticky; top: 0; z-index: 200;
+      position: relative; z-index: 200;
     }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: #E8872A; }
@@ -398,7 +398,9 @@
       .nav-burger { display: block; }
       .nav-links.open {
         display: flex; flex-direction: column; gap: 0;
-        position: fixed; top: 68px; left: 0; right: 0; height: calc(100vh - 68px);
+        position: fixed; top: 68px; left: 0; right: 0;
+        height: calc(100vh - 68px);
+        height: calc(100dvh - 68px); /* dvh учитывает сворачивающуюся панель браузера на iOS */
         background: #0B1420; padding: 0;
         border-top: 1px solid rgba(255,255,255,0.08); z-index: 199;
         overflow-y: auto;
@@ -859,19 +861,14 @@
 <button class="back-to-top" id="back-to-top" title="Наверх" aria-label="Наверх"><i class="ti ti-arrow-up"></i></button>
 
 <script>
-  // Burger
+  // Burger: перед открытием мгновенно доскролливаем к верху, чтобы меню (fixed, top:68px)
+  // встало ровно под шапкой. Закрытие по скроллу убрано намеренно — на iOS инерционный
+  // скролл после тапа сразу же закрывал только что открытое меню.
   document.getElementById('burger').addEventListener('click', function() {
-    document.getElementById('nav-links').classList.toggle('open');
+    const links = document.getElementById('nav-links');
+    if (!links.classList.contains('open')) window.scrollTo({ top: 0, behavior: 'instant' });
+    links.classList.toggle('open');
   });
-
-  // Nav stays permanently fixed/visible (no hide-on-scroll — that caused the burger
-  // button to become untappable while scrolled, since it moved off-screen with the nav).
-  // Close the mobile menu automatically if the user scrolls the page behind it.
-  (function() {
-    window.addEventListener('scroll', function() {
-      document.getElementById('nav-links').classList.remove('open');
-    }, { passive: true });
-  })();
 
   // Back to top
   (function() {
