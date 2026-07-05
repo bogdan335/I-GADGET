@@ -12,17 +12,21 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0B1420; color: #fff; overflow-x: hidden; max-width: 100vw; }
-    html { overflow-x: hidden; }
+    /* overflow-x: clip (не hidden!) — clip обрезает горизонтальный вылет, но не создаёт
+       скролл-контейнер, поэтому position:sticky у шапки продолжает работать */
+    body { font-family: 'Inter', sans-serif; background: #0B1420; color: #fff; overflow-x: clip; max-width: 100vw; }
+    html { overflow-x: clip; }
 
     /* ── NAV ── */
-    body { padding-top: 68px; }
+    /* sticky, а не fixed: в iOS-вебвью (Telegram/Chrome) fixed-шапка репозиционируется
+       с лагом при сворачивании панели браузера и "отклеивается" — sticky едет вместе
+       со слоем скролла без лага */
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
       background: rgba(11,20,32,0.95); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: sticky; top: 0; z-index: 200;
     }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: #E8872A; }
@@ -477,8 +481,8 @@
     }
     * { -webkit-tap-highlight-color: transparent; }
     
-    /* Kill ALL horizontal overflow */
-    body, html { overflow-x: hidden !important; max-width: 100% !important; }
+    /* Kill ALL horizontal overflow (clip, not hidden — keeps sticky nav working) */
+    body, html { overflow-x: clip !important; max-width: 100% !important; }
     *, *::before, *::after { box-sizing: border-box; }
     
     /* Burger - big touch target */

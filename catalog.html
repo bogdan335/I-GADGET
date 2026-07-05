@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    /* clip, а не hidden — не ломает position:sticky у шапки */
+    html { scroll-behavior: smooth; overflow-x: clip; }
     body {
-      font-family: 'Inter', sans-serif; color: #fff; overflow-x: hidden; max-width: 100vw;
+      font-family: 'Inter', sans-serif; color: #fff; overflow-x: clip; max-width: 100vw;
       background-color: #0B1420;
       background-image:
         url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20200%20200'%3E%3Cg%20transform%3D'rotate(0%20100%20100)'%3E%3Cpath%20d%3D'M%20194.58%2091.06%20L%20194.58%20108.94%20L%20171.68%20106.78%20L%20161.97%20136.65%20L%20181.77%20148.36%20L%20171.26%20162.82%20L%20154.01%20147.61%20L%20128.59%20166.08%20L%20137.73%20187.19%20L%20120.72%20192.71%20L%20115.71%20170.27%20L%2084.29%20170.27%20L%2079.28%20192.71%20L%2062.27%20187.19%20L%2071.41%20166.08%20L%2045.99%20147.61%20L%2028.74%20162.82%20L%2018.23%20148.36%20L%2038.03%20136.65%20L%2028.32%20106.78%20L%205.42%20108.94%20L%205.42%2091.06%20L%2028.32%2093.22%20L%2038.03%2063.35%20L%2018.23%2051.64%20L%2028.74%2037.18%20L%2045.99%2052.39%20L%2071.41%2033.92%20L%2062.27%2012.81%20L%2079.28%207.29%20L%2084.29%2029.73%20L%20115.71%2029.73%20L%20120.72%207.29%20L%20137.73%2012.81%20L%20128.59%2033.92%20L%20154.01%2052.39%20L%20171.26%2037.18%20L%20181.77%2051.64%20L%20161.97%2063.35%20L%20171.68%2093.22%20Z%20M%20130.00%20100.00%20A%2030.00%2030.00%200%201%200%2070.00%20100.00%20A%2030.00%2030.00%200%201%200%20130.00%20100.00%20Z'%20fill%3D'%23ffffff'%20fill-opacity%3D'0.05'%20fill-rule%3D'evenodd'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
@@ -26,13 +27,13 @@
     }
     * { -webkit-tap-highlight-color: transparent; }
 
-    body { padding-top: 68px; }
+    /* sticky, а не fixed: fixed-шапка лагает в iOS-вебвью (Telegram/Chrome) */
     .nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
       background: rgba(11,20,32,0.97); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: sticky; top: 0; z-index: 200;
     }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; }
     .logo span { color: #E8872A; }
