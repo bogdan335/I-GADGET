@@ -23,9 +23,7 @@
       background: rgba(11,20,32,0.95); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      transition: transform .3s ease;
     }
-    .nav.nav-hidden { transform: translateY(-100%); }
     .logo { font-size: 21px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: #E8872A; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
@@ -396,7 +394,7 @@
       .nav-burger { display: block; }
       .nav-links.open {
         display: flex; flex-direction: column; gap: 0;
-        position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+        position: fixed; top: 68px; left: 0; right: 0; height: calc(100vh - 68px);
         background: #0B1420; padding: 0;
         border-top: 1px solid rgba(255,255,255,0.08); z-index: 199;
         overflow-y: auto;
@@ -862,19 +860,12 @@
     document.getElementById('nav-links').classList.toggle('open');
   });
 
-  // Hide nav on scroll down, reveal on scroll up
+  // Nav stays permanently fixed/visible (no hide-on-scroll — that caused the burger
+  // button to become untappable while scrolled, since it moved off-screen with the nav).
+  // Close the mobile menu automatically if the user scrolls the page behind it.
   (function() {
-    const nav = document.querySelector('.nav');
-    let lastY = window.scrollY;
     window.addEventListener('scroll', function() {
-      const y = window.scrollY;
-      if (y > lastY && y > 80) {
-        nav.classList.add('nav-hidden');
-        document.getElementById('nav-links').classList.remove('open');
-      } else {
-        nav.classList.remove('nav-hidden');
-      }
-      lastY = y;
+      document.getElementById('nav-links').classList.remove('open');
     }, { passive: true });
   })();
 

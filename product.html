@@ -14,8 +14,7 @@
     body{font-family:'Inter',sans-serif;background:#0B1420;color:#fff;overflow-x:hidden;max-width:100vw}
     *{-webkit-tap-highlight-color:transparent}
     body{padding-top:68px}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:fixed;top:0;left:0;right:0;z-index:200;transition:transform .3s ease}
-    .nav.nav-hidden{transform:translateY(-100%)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(11,20,32,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07);position:fixed;top:0;left:0;right:0;z-index:200}
     .logo{font-size:21px;font-weight:900;color:#fff;text-decoration:none}.logo span{color:#E8872A}
     .nav-links{display:flex;gap:36px;list-style:none}
     .nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
@@ -99,7 +98,7 @@
     .not-found p{color:rgba(255,255,255,.4);margin-bottom:28px}
     @media(max-width:900px){
       .nav{padding:0 20px}.nav-links,.nav-phone{display:none}.nav-burger{display:flex!important}
-      .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;left:0;right:0;bottom:0;background:#0B1420;padding:0;border-top:1px solid rgba(255,255,255,.08);z-index:199;overflow-y:auto}
+      .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;left:0;right:0;height:calc(100vh - 68px);background:#0B1420;padding:0;border-top:1px solid rgba(255,255,255,.08);z-index:199;overflow-y:auto}
       .nav-links.open li{border-bottom:1px solid rgba(255,255,255,.07)}
       .nav-links.open a{font-size:17px;color:#fff;padding:18px 24px;display:block}
       .breadcrumb-bar{padding:12px 20px}
@@ -340,13 +339,8 @@ function render(){
 document.getElementById('burger').addEventListener('click',function(){document.getElementById('nav-links').classList.toggle('open')});
 
 (function(){
-  const nav=document.querySelector('.nav');
-  let lastY=window.scrollY;
   window.addEventListener('scroll',function(){
-    const y=window.scrollY;
-    if(y>lastY && y>80){ nav.classList.add('nav-hidden'); document.getElementById('nav-links').classList.remove('open'); }
-    else { nav.classList.remove('nav-hidden'); }
-    lastY=y;
+    document.getElementById('nav-links').classList.remove('open');
   },{passive:true});
 })();
 
