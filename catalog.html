@@ -79,7 +79,6 @@
     .sidebar-cta { background: #E8872A; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 9px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
     .sidebar-cta:hover { background: #d0771e; }
 
-    .mobile-filter-btn { display: none; }
     .catalog-main { padding: 32px 40px; }
     .catalog-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
     .search-wrap { flex: 1; min-width: 200px; position: relative; }
@@ -110,6 +109,45 @@
     .p-more { font-size: 11px; color: #9CA3AF; display: flex; align-items: center; gap: 4px; }
     .p-choose { background: #E8872A; color: #fff; border: none; padding: 8px 12px; border-radius: 7px; font-size: 11px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background .2s; display: flex; align-items: center; gap: 5px; min-height: 36px; }
     .p-choose:hover { background: #d0771e; }
+
+    /* ── Витрина по категориям (главный вид каталога) ── */
+    .cat-section { margin-bottom: 44px; }
+    .cat-section:last-child { margin-bottom: 0; }
+    .cat-section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .cat-section-title { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.3px; }
+    .cat-section-count { font-size: 12px; color: rgba(255,255,255,0.35); white-space: nowrap; }
+    .see-all-btn {
+      margin-top: 14px; width: 100%; min-height: 48px;
+      background: #111C2A; border: 1.5px solid rgba(255,255,255,0.14); color: #fff;
+      padding: 13px; border-radius: 10px; font-size: 14px; font-weight: 700;
+      font-family: 'Inter', sans-serif; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .see-all-btn:hover { border-color: #E8872A; background: #16233a; }
+
+    /* ── Вид категории («Смотреть все») ── */
+    .back-cats {
+      background: none; border: none; color: rgba(255,255,255,0.5);
+      font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; margin-bottom: 6px;
+      transition: color .2s;
+    }
+    .back-cats:hover { color: #fff; }
+    .cat-view-title { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -0.5px; margin: 2px 0 18px; }
+    .group-heading {
+      grid-column: 1 / -1; display: flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #E8872A; margin-top: 10px;
+    }
+    .group-heading::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+
+    /* ── Пометки типа защиты у мембран (в теле карточки, не на фото) ── */
+    .p-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .p-tag { font-size: 9px; font-weight: 700; padding: 2.5px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .tag-moisture { background: #E8F0FE; color: #2563EB; }
+    .tag-vapor { background: #FDEEDD; color: #C96A15; }
+    .tag-wind { background: #E3F4EB; color: #1A7F4E; }
 
     .empty-state { grid-column: 1/-1; text-align: center; padding: 64px 24px; }
     .empty-state i { font-size: 48px; color: rgba(255,255,255,0.15); margin-bottom: 16px; display: block; }
@@ -159,10 +197,11 @@
       .page-header h1 { font-size: 26px; letter-spacing: -0.5px; }
       .page-header-sub { font-size: 14px; }
       .catalog-layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; height: auto; overflow: visible; padding: 16px 20px; display: none; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-      .sidebar.open { display: block; }
-      .mobile-filter-btn { display: flex; align-items: center; gap: 8px; background: #111C2A; border: 1.5px solid rgba(255,255,255,0.15); color: #fff; padding: 12px 18px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; margin-bottom: 16px; width: 100%; min-height: 48px; }
+      .sidebar { display: none; }
       .catalog-main { padding: 20px 16px; }
+      .cat-section { margin-bottom: 34px; }
+      .cat-section-title { font-size: 17px; }
+      .cat-view-title { font-size: 20px; }
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .catalog-bar { gap: 10px; margin-bottom: 16px; }
       .search-input { font-size: 16px; padding: 12px 12px 12px 40px; min-height: 48px; }
@@ -196,7 +235,7 @@
   </ul>
   <div class="nav-right">
     <a href="tel:+998903181917" class="nav-phone">+998-90-318-19-17</a>
-    <a href="index.html#contact" class="nav-cta">Узнать цену</a>
+    <a href="https://t.me/bltnkov" target="_blank" class="nav-cta">Узнать цену</a>
     <button class="nav-burger" id="burger" aria-label="Меню"><i class="ti ti-menu-2"></i></button>
   </div>
 </nav>
@@ -235,9 +274,7 @@
 
     <div class="cat-group">
       <div class="cat-group-label">НЕОСПАН</div>
-      <button class="cat-btn" data-cat="ns-vapor"><span><i class="ti ti-droplet" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Парозащита</span><span class="count">7</span></button>
-      <button class="cat-btn" data-cat="ns-wind"><span><i class="ti ti-wind" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Ветрозащита</span><span class="count">2</span></button>
-      <button class="cat-btn" data-cat="ns-moisture"><span><i class="ti ti-umbrella" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Влагозащита</span><span class="count">4</span></button>
+      <button class="cat-btn" data-cat="ns-mem"><span><i class="ti ti-droplet" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Мембраны</span><span class="count">9</span></button>
       <button class="cat-btn" data-cat="ns-tape"><span><i class="ti ti-rolls" style="margin-right:7px;font-size:14px;vertical-align:-2px;"></i>Ленты</span><span class="count">3</span></button>
     </div>
 
@@ -246,8 +283,6 @@
   </aside>
 
   <main class="catalog-main">
-    <button class="mobile-filter-btn" id="mobile-filter"><i class="ti ti-filter"></i> Фильтр по категории</button>
-
     <div class="catalog-bar">
       <div class="search-wrap">
         <i class="ti ti-search"></i>
@@ -256,7 +291,7 @@
       <div class="results-count">Показано: <span id="count-display">57</span> позиций</div>
     </div>
 
-    <div class="products-grid" id="products-grid"></div>
+    <div id="catalog-content"></div>
   </main>
 </div>
 
@@ -277,7 +312,7 @@
         <li><a href="#" data-cat="gen-rs">Генераторы Ricardo</a></li>
         <li><a href="#" data-cat="gen-bd">Генераторы Baudouin</a></li>
         <li><a href="#" data-cat="ibp">ИБП ELEN</a></li>
-        <li><a href="#" data-cat="ns-vapor">НЕОСПАН</a></li>
+        <li><a href="#" data-cat="ns-mem">НЕОСПАН</a></li>
       </ul>
     </div>
     <div>
@@ -382,44 +417,58 @@ const BADGE_HTML = {
 
 const CAT_LABEL = {
   'gen-rs': 'Ricardo/SDEC', 'gen-bd': 'Baudouin', 'ibp': 'ИБП ELEN', 'mast': 'Осв. мачты',
-  'ns-vapor': 'Парозащита', 'ns-wind': 'Ветрозащита', 'ns-moisture': 'Влагозащита', 'ns-tape': 'Ленты',
+  'ns-mem': 'НЕОСПАН', 'ns-tape': 'НЕОСПАН — ленты',
 };
+
+// Мембраны: порядок групп в виде категории и подписи-пометки на карточках
+const MEMBRANE_SUBCATS = ['ns-moisture', 'ns-vapor', 'ns-wind'];
+const SUBCAT_LABEL = { 'ns-moisture': 'Влагозащита', 'ns-vapor': 'Парозащита', 'ns-wind': 'Ветрозащита' };
+const SUBCAT_TAG_CLASS = { 'ns-moisture': 'tag-moisture', 'ns-vapor': 'tag-vapor', 'ns-wind': 'tag-wind' };
+
+// Витрина: блоки главного вида каталога и какие позиции в них показывать
+const SECTIONS = [
+  { id: 'gen-rs', title: 'Генераторы Ricardo/SDEC', featured: ['tgu-30', 'tgu-100', 'tgu-200', 'tgu-825'] },
+  { id: 'gen-bd', title: 'Генераторы Baudouin', featured: ['tgu-b-100', 'tgu-b-250', 'tgu-b-500', 'tgu-b-1000'] },
+  { id: 'ibp', title: 'ИБП ELEN', featured: ['ibp-c1', 'ibp-d1', 'ibp-e3', 'ibp-e4'] },
+  { id: 'mast', title: 'Осветительные мачты', featured: ['as1400l5t'] },
+  { id: 'ns-mem', title: 'НЕОСПАН — мембраны', featured: ['ns-fn-hpi', 'ns-hpi-anticond', 'ns-fn-pi', 'ns-prof-vz'] },
+  { id: 'ns-tape', title: 'НЕОСПАН — соединительные ленты', featured: ['ns-t-arm-clear', 'ns-t-butyl', 'ns-t-poly'] },
+];
+
+const BY_ID = {};
+ALL_PRODUCTS.forEach(p => BY_ID[p.id] = p);
+
+function catsOf(p) { return Array.isArray(p.cat) ? p.cat : [p.cat]; }
+function isMembrane(p) { return catsOf(p).some(c => MEMBRANE_SUBCATS.includes(c)); }
+function inCat(p, cat) { return cat === 'ns-mem' ? isMembrane(p) : catsOf(p).includes(cat); }
+// Товар попадает в первую подходящую группу по порядку MEMBRANE_SUBCATS
+function membraneGroup(p) { return MEMBRANE_SUBCATS.find(c => catsOf(p).includes(c)); }
 
 let currentCat = 'all';
 let searchQuery = '';
 
-function getFiltered() {
-  return ALL_PRODUCTS.filter(p => {
-    const catOk = currentCat === 'all' || (Array.isArray(p.cat) ? p.cat.includes(currentCat) : p.cat === currentCat);
-    const q = searchQuery.toLowerCase();
-    const searchOk = !q || p.name.toLowerCase().includes(q) || p.label.toLowerCase().includes(q);
-    return catOk && searchOk;
-  });
-}
-
-function renderGrid() {
-  const filtered = getFiltered();
-  const grid = document.getElementById('products-grid');
-  document.getElementById('count-display').textContent = filtered.length;
-
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="empty-state"><i class="ti ti-search-off"></i><p>Ничего не найдено. Попробуйте другой запрос.</p></div>`;
-    return;
+function cardHtml(p) {
+  const imgHtml = p.img
+    ? `<img src="${p.img}" alt="${p.label}" onerror="this.parentElement.innerHTML='${p.badge ? BADGE_HTML[p.badge].replace(/'/g,"\\'").replace(/"/g,'&quot;') : ''}<i class=\\'ti ti-photo\\'></i><span>Фото скоро</span>'">`
+    : `<i class="ti ti-photo"></i><span>Фото скоро</span>`;
+  let catLine, tagsRow = '';
+  if (isMembrane(p)) {
+    catLine = 'НЕОСПАН';
+    const tags = MEMBRANE_SUBCATS.filter(c => catsOf(p).includes(c));
+    tagsRow = `<div class="p-tags">${tags.map(c => `<span class="p-tag ${SUBCAT_TAG_CLASS[c]}">${SUBCAT_LABEL[c]}</span>`).join('')}</div>`;
+  } else {
+    catLine = catsOf(p).map(c => CAT_LABEL[c] || c).join(' / ');
   }
-
-  grid.innerHTML = filtered.map(p => {
-    const imgHtml = p.img
-      ? `<img src="${p.img}" alt="${p.label}" onerror="this.parentElement.innerHTML='${p.badge ? BADGE_HTML[p.badge].replace(/'/g,"\\'").replace(/"/g,'&quot;') : ''}<i class=\\'ti ti-photo\\'></i><span>Фото скоро</span>'">`
-      : `<i class="ti ti-photo"></i><span>Фото скоро</span>`;
-    return `
+  return `
     <div class="p-card" onclick="goToProduct('${p.id}')">
       <div class="p-img">
         ${p.badge ? BADGE_HTML[p.badge] : ''}
         ${imgHtml}
       </div>
       <div class="p-body">
-        <div class="p-cat">${(Array.isArray(p.cat)?p.cat:[p.cat]).map(c=>CAT_LABEL[c]).join(" / ")}</div>
+        <div class="p-cat">${catLine}</div>
         <div class="p-name">${p.label}</div>
+        ${tagsRow}
         <div class="p-hint">${p.hint}</div>
       </div>
       <div class="p-footer">
@@ -428,8 +477,73 @@ function renderGrid() {
           <i class="ti ti-check"></i> Выбрать
         </button>
       </div>
-    </div>
-  `}).join('');
+    </div>`;
+}
+
+const EMPTY_HTML = `<div class="empty-state"><i class="ti ti-search-off"></i><p>Ничего не найдено. Попробуйте другой запрос.</p></div>`;
+
+function render() {
+  const content = document.getElementById('catalog-content');
+  const q = searchQuery.trim().toLowerCase();
+  const backBtn = currentCat === 'all' ? '' : `<button class="back-cats" onclick="setCat('all')"><i class="ti ti-arrow-left"></i> Все категории</button>`;
+
+  // Поиск: внутри открытой категории, либо по всему каталогу с витрины
+  if (q) {
+    const pool = currentCat === 'all' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => inCat(p, currentCat));
+    const found = pool.filter(p => p.name.toLowerCase().includes(q) || p.label.toLowerCase().includes(q));
+    document.getElementById('count-display').textContent = found.length;
+    content.innerHTML = backBtn + `<div class="products-grid">${found.length ? found.map(cardHtml).join('') : EMPTY_HTML}</div>`;
+    return;
+  }
+
+  if (currentCat === 'all') {
+    // Витрина: блоки по категориям
+    document.getElementById('count-display').textContent = ALL_PRODUCTS.length;
+    content.innerHTML = SECTIONS.map(sec => {
+      const all = ALL_PRODUCTS.filter(p => inCat(p, sec.id));
+      const items = sec.featured.map(id => BY_ID[id]).filter(Boolean);
+      const seeAll = all.length > items.length
+        ? `<button class="see-all-btn" onclick="setCat('${sec.id}')">Смотреть все ${all.length} <i class="ti ti-arrow-right"></i></button>`
+        : '';
+      return `
+        <section class="cat-section">
+          <div class="cat-section-head">
+            <h2 class="cat-section-title">${sec.title}</h2>
+            <span class="cat-section-count">${all.length} поз.</span>
+          </div>
+          <div class="products-grid">${items.map(cardHtml).join('')}</div>
+          ${seeAll}
+        </section>`;
+    }).join('');
+    return;
+  }
+
+  // Вид категории: все товары, мембраны — группами по типу защиты
+  const sec = SECTIONS.find(s => s.id === currentCat);
+  const items = ALL_PRODUCTS.filter(p => inCat(p, currentCat));
+  document.getElementById('count-display').textContent = items.length;
+  let gridInner;
+  if (currentCat === 'ns-mem') {
+    gridInner = MEMBRANE_SUBCATS.map(sub => {
+      const group = items.filter(p => membraneGroup(p) === sub);
+      if (!group.length) return '';
+      return `<div class="group-heading">${SUBCAT_LABEL[sub]}</div>` + group.map(cardHtml).join('');
+    }).join('');
+  } else {
+    gridInner = items.map(cardHtml).join('');
+  }
+  content.innerHTML = backBtn +
+    `<h2 class="cat-view-title">${sec ? sec.title : (CAT_LABEL[currentCat] || '')}</h2>` +
+    `<div class="products-grid">${gridInner || EMPTY_HTML}</div>`;
+}
+
+function setCat(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  // Категория в URL — чтобы «назад» со страницы товара возвращал в тот же вид
+  history.replaceState(null, '', cat === 'all' ? 'catalog.html' : 'catalog.html?cat=' + cat);
+  render();
+  document.querySelector('.catalog-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function goToProduct(id) {
@@ -442,33 +556,20 @@ function chooseProd(name) {
 }
 
 document.querySelectorAll('.cat-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    currentCat = this.dataset.cat;
-    renderGrid();
-    document.querySelector('.catalog-main').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  btn.addEventListener('click', function() { setCat(this.dataset.cat); });
 });
 
 document.querySelectorAll('.f-links a[data-cat]').forEach(a => {
   a.addEventListener('click', function(e) {
     e.preventDefault();
-    const cat = this.dataset.cat;
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-    currentCat = cat;
-    renderGrid();
+    setCat(this.dataset.cat);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
 
 document.getElementById('search').addEventListener('input', function() {
   searchQuery = this.value;
-  renderGrid();
-});
-
-document.getElementById('mobile-filter').addEventListener('click', function() {
-  document.getElementById('sidebar').classList.toggle('open');
+  render();
 });
 
 // Перед открытием меню мгновенно доскролливаем к верху, чтобы меню (fixed, top:68px)
@@ -492,17 +593,15 @@ document.getElementById('burger').addEventListener('click', function() {
 })();
 
 const urlParams = new URLSearchParams(window.location.search);
-const catParam = urlParams.get('cat');
-if (catParam) {
-  const btn = document.querySelector(`.cat-btn[data-cat="${catParam}"]`);
-  if (btn) {
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentCat = catParam;
-  }
+let catParam = urlParams.get('cat');
+// Старые ссылки на подкатегории НЕОСПАН ведут в объединённые «Мембраны»
+if (['ns-vapor', 'ns-wind', 'ns-moisture'].includes(catParam)) catParam = 'ns-mem';
+if (catParam && (catParam === 'all' || SECTIONS.some(s => s.id === catParam))) {
+  currentCat = catParam;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === catParam));
 }
 
-renderGrid();
+render();
 </script>
 </body>
 </html>

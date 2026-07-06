@@ -1,2 +1,5 @@
 .claude/
 serve.json
+centrum-scanner.js
+centrum.har
+*.har
