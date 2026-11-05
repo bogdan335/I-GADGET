@@ -181,8 +181,8 @@
       <div class="f-col-title">Продукция</div>
       <ul class="f-links">
         <li><a href="catalog.html">Генераторы</a></li>
-        <li><a href="catalog.html">ИБП ELEN</a></li>
-        <li><a href="catalog.html">НЕОСПАН</a></li>
+        <li><a href="catalog.html?cat=ibp">ИБП ELEN</a></li>
+        <li><a href="catalog.html?cat=ns-mem">НЕОСПАН</a></li>
       </ul>
     </div>
     <div>
@@ -346,6 +346,13 @@ document.getElementById('burger').addEventListener('click',function(){
   if(!links.classList.contains('open')) window.scrollTo({top:0,behavior:'instant'});
   links.classList.toggle('open');
 });
+
+// Закрываем мобильное меню после нажатия на пункт (иначе при переходе по якорю оно остаётся открытым)
+document.querySelectorAll('#nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('nav-links').classList.remove('open'); });
+});
+// При возврате кнопкой «Назад» (страница из кэша) меню не должно оставаться открытым
+window.addEventListener('pageshow', function() { document.getElementById('nav-links').classList.remove('open'); });
 
 (function(){
   const btn=document.getElementById('back-to-top');

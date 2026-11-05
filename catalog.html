@@ -291,7 +291,7 @@
         <i class="ti ti-search"></i>
         <input type="text" class="search-input" id="search" placeholder="Поиск по названию...">
       </div>
-      <div class="results-count">Показано: <span id="count-display">57</span> позиций</div>
+      <div class="results-count" id="results-count">Показано: <span id="count-display">57</span> позиций</div>
     </div>
 
     <div id="catalog-content"></div>
@@ -450,6 +450,27 @@ function membraneGroup(p) { return MEMBRANE_SUBCATS.find(c => catsOf(p).includes
 let currentCat = 'all';
 let searchQuery = '';
 
+function pluralPos(n) {
+  const m10 = n % 10, m100 = n % 100;
+  if (m10 === 1 && m100 !== 11) return 'позиция';
+  if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return 'позиции';
+  return 'позиций';
+}
+function setCount(n) {
+  document.getElementById('results-count').innerHTML = `Показано: <span id="count-display">${n}</span> ${pluralPos(n)}`;
+}
+
+// Поиск без учёта дефисов, пробелов и окончаний: «TGU 100», «tgu-100», «ленты», «мембрану»
+function normSearch(s) { return s.toLowerCase().replace(/ё/g, 'е'); }
+function compact(s) { return normSearch(s).replace(/[^a-zа-я0-9]+/g, ''); }
+function matchesQuery(p, q) {
+  const hay = normSearch([p.name, p.label].concat(SECTIONS.filter(s => inCat(p, s.id)).map(s => s.title)).join(' '));
+  const cq = compact(q);
+  if (cq && compact(p.name + ' ' + p.label).includes(cq)) return true;
+  const tokens = normSearch(q).split(/[^a-zа-я0-9]+/).filter(Boolean);
+  return tokens.length > 0 && tokens.every(t => hay.includes(t) || (t.length > 4 && hay.includes(t.slice(0, -1))));
+}
+
 function cardHtml(p) {
   const imgHtml = p.img
     ? `<img src="${p.img}" alt="${p.label}" onerror="this.parentElement.innerHTML='${p.badge ? BADGE_HTML[p.badge].replace(/'/g,"\\'").replace(/"/g,'&quot;') : ''}<i class=\\'ti ti-photo\\'></i><span>Фото будет добавлено</span>'">`
@@ -493,15 +514,15 @@ function render() {
   // Поиск: внутри открытой категории, либо по всему каталогу с витрины
   if (q) {
     const pool = currentCat === 'all' ? ALL_PRODUCTS : ALL_PRODUCTS.filter(p => inCat(p, currentCat));
-    const found = pool.filter(p => p.name.toLowerCase().includes(q) || p.label.toLowerCase().includes(q));
-    document.getElementById('count-display').textContent = found.length;
+    const found = pool.filter(p => matchesQuery(p, q));
+    setCount(found.length);
     content.innerHTML = backBtn + `<div class="products-grid">${found.length ? found.map(cardHtml).join('') : EMPTY_HTML}</div>`;
     return;
   }
 
   if (currentCat === 'all') {
     // Витрина: блоки по категориям
-    document.getElementById('count-display').textContent = ALL_PRODUCTS.length;
+    setCount(ALL_PRODUCTS.length);
     content.innerHTML = SECTIONS.map(sec => {
       const all = ALL_PRODUCTS.filter(p => inCat(p, sec.id));
       const items = sec.featured.map(id => BY_ID[id]).filter(Boolean);
@@ -524,7 +545,7 @@ function render() {
   // Вид категории: все товары, мембраны — группами по типу защиты
   const sec = SECTIONS.find(s => s.id === currentCat);
   const items = ALL_PRODUCTS.filter(p => inCat(p, currentCat));
-  document.getElementById('count-display').textContent = items.length;
+  setCount(items.length);
   let gridInner;
   if (currentCat === 'ns-mem') {
     gridInner = MEMBRANE_SUBCATS.map(sub => {
@@ -583,6 +604,13 @@ document.getElementById('burger').addEventListener('click', function() {
   if (!links.classList.contains('open')) window.scrollTo({ top: 0, behavior: 'instant' });
   links.classList.toggle('open');
 });
+
+// Закрываем мобильное меню после нажатия на пункт (иначе при переходе по якорю оно остаётся открытым)
+document.querySelectorAll('#nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('nav-links').classList.remove('open'); });
+});
+// При возврате кнопкой «Назад» (страница из кэша) меню не должно оставаться открытым
+window.addEventListener('pageshow', function() { document.getElementById('nav-links').classList.remove('open'); });
 
 // Back to top
 (function() {

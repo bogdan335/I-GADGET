@@ -788,7 +788,7 @@
       </div>
       <div class="field">
         <label>Телефон</label>
-        <input type="tel" id="f-phone" placeholder="+998 (__) ___-__-__" maxlength="19" autocomplete="tel">
+        <input type="tel" id="f-phone" placeholder="+998 (__) ___-__-__" autocomplete="tel">
       </div>
       <div class="field">
         <label>Что вас интересует?</label>
@@ -826,10 +826,10 @@
       <div class="f-col-title">Продукция</div>
       <ul class="f-links">
         <li><a href="catalog.html">Генераторы</a></li>
-        <li><a href="catalog.html">ИБП</a></li>
-        <li><a href="catalog.html">Пароизоляция</a></li>
-        <li><a href="catalog.html">Мембраны</a></li>
-        <li><a href="catalog.html">Ленты</a></li>
+        <li><a href="catalog.html?cat=ibp">ИБП</a></li>
+        <li><a href="catalog.html?cat=ns-vapor">Пароизоляция</a></li>
+        <li><a href="catalog.html?cat=ns-mem">Мембраны</a></li>
+        <li><a href="catalog.html?cat=ns-tape">Ленты</a></li>
       </ul>
     </div>
     <div>
@@ -870,6 +870,13 @@
     links.classList.toggle('open');
   });
 
+// Закрываем мобильное меню после нажатия на пункт (иначе при переходе по якорю оно остаётся открытым)
+document.querySelectorAll('#nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() { document.getElementById('nav-links').classList.remove('open'); });
+});
+// При возврате кнопкой «Назад» (страница из кэша) меню не должно оставаться открытым
+window.addEventListener('pageshow', function() { document.getElementById('nav-links').classList.remove('open'); });
+
   // Back to top
   (function() {
     const btn = document.getElementById('back-to-top');
@@ -889,6 +896,8 @@
   phoneInput.addEventListener('input', function(e) {
     let digits = this.value.replace(/\D/g, '');
     if (digits.startsWith('998')) digits = digits.slice(3);
+    // Номер введён целиком с кодом страны (+998 90 123 45 67) — убираем повторный код
+    if (digits.length > 9 && digits.startsWith('998')) digits = digits.slice(3);
     digits = digits.slice(0, 9);
     let out = '+998 (';
     if (digits.length > 0) out += digits.slice(0, 2);
@@ -936,6 +945,10 @@
 
     if (!name || !phone) {
       alert('Пожалуйста, укажите имя и телефон');
+      return;
+    }
+    if (phone.replace(/\D/g, '').length !== 12) {
+      alert('Пожалуйста, укажите номер телефона полностью');
       return;
     }
 
